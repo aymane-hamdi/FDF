@@ -1,8 +1,6 @@
 #include"fdf.h"
-
-int main (int argc,char **argv)
+void printf_matrix(char **argv,char ***matrix)
 {
-    char ***matrix;
     int i = 0;
     int y;
     int len;
@@ -28,4 +26,14 @@ int main (int argc,char **argv)
         printf("\n");
         i++;
     }
+}
+int main (int argc,char **argv)
+{
+    // char ***matrix;
+    void *mlx_ptr;
+    void *win_ptr;
+
+    mlx_ptr = mlx_init();
+    win_ptr = mlx_new_window(mlx_ptr, 500, 5000, "FDF project");
+    mlx_loop(mlx_ptr);
 }

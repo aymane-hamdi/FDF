@@ -4,6 +4,7 @@
 #include"get_next_line/get_next_line.h"
 #include<stdio.h>
 #include<fcntl.h>
+#include"minilibx-linux/mlx.h"
 
 char ***red_file(char *argv);
 int get_height(char *argv);
