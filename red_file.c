@@ -53,7 +53,7 @@ int get_height(char *argv)
 	
 }
 
-int **red_file(char *argv)
+char ***red_file(char *argv)
 {
 	int width;
 	int height;
@@ -61,15 +61,15 @@ int **red_file(char *argv)
 	int y = 0;
 	char *line;
 	char **line_int;
-	int **matrix;
+	char ***matrix;
 	int  fd;
    
 	width = get_width(argv);
 	height = get_height(argv);
-	matrix = (int **)malloc ((height)*sizeof(int *));
+	matrix = malloc ((height + 1)*sizeof(char **));
 	while(i <  height)
 	{
-		matrix[y] = (int *)malloc ((width) *sizeof(int ));
+		matrix[y] = malloc ((width + 1) * sizeof(char* ));
 		y++;
 		i++;
 	}
@@ -81,11 +81,15 @@ int **red_file(char *argv)
 		y = 0;
 		while(line_int[y])
 		{
-			matrix[i][y]= ft_atoi(line_int[y]);
+			
+			if(ft_strchr(line_int[y],'\n') != NULL)
+				line_int[y][ft_strlen(line_int[y]) - 1] = '\0';
+			matrix[i][y]= ft_strdup(line_int[y]);
 			y++;
 		}
 		i++;
 	}
+	matrix[i] = NULL;
 	i = 0;
 	while(line_int[i])
 	{
@@ -96,20 +100,4 @@ int **red_file(char *argv)
 	free(line);
 	return(matrix);
 }
-int	ft_len(int nb)
-{
-	int	len;
 
-	len = 0;
-	if (nb <= 0)
-	{
-		nb *= -1;
-		len = 1;
-	}
-	while (nb > 0)
-	{
-		nb /= 10;
-		len++;
-	}
-	return (len);
-}

@@ -5,8 +5,8 @@
 #include<stdio.h>
 #include<fcntl.h>
 
-int **red_file(char *argv);
+char ***red_file(char *argv);
 int get_height(char *argv);
 int get_width(char *argv);
-int	ft_len(int nb);
+// int	ft_len(int nb);
 #endif

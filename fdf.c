@@ -2,7 +2,7 @@
 
 int main (int argc,char **argv)
 {
-    int **matrix;
+    char ***matrix;
     int i = 0;
     int y;
     int len;
@@ -17,9 +17,10 @@ int main (int argc,char **argv)
         y = 0;
         while(y < len)
         {
-            printf("%d",matrix[i][y]);
+            if(matrix[i][y] != NULL)
+                printf("%s",matrix[i][y]);
             y++;
-            if(ft_len(matrix[i][y])== 2)
+            if(ft_strlen(matrix[i][y]) > 1)
                 printf(" ");
             else
                 printf("  ");
