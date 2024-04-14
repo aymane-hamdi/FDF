@@ -1,4 +1,5 @@
 #include"fdf.h"
+
 void printf_matrix(char **argv,char ***matrix)
 {
     int i = 0;
@@ -28,24 +29,25 @@ void printf_matrix(char **argv,char ***matrix)
     }
 }
 
-int close_window(void *param)
+int close_window(char *param)
 {
-    ft_putstr_fd("windows close\n",1);
+    ft_putstr_fd(param,1);
     exit(0); // Quitte le programme proprement
 }
 
 int main(int argc, char **argv)
 {
+     int color =0xFF;
     void *mlx_ptr;
     void *win_ptr;
     void *img_ptr;
-    int width = 200, height = 200;
+    int width = 800, height = 600;
 
     mlx_ptr = mlx_init();
     if (mlx_ptr == NULL)
     {
         printf("Failed to initialize mlx.\n");
-        return 1;
+        exit (1);
     }
     win_ptr = mlx_new_window(mlx_ptr, width, height, "FDF project");
     if (win_ptr == NULL)
@@ -53,15 +55,22 @@ int main(int argc, char **argv)
         printf("Failed to create a new window.\n");
         return 1;
     }
+    draw_line(mlx_ptr, win_ptr,150,100,150,500, color);
+    draw_line(mlx_ptr, win_ptr,150,100,240,100, color);
+    draw_line(mlx_ptr, win_ptr,240,100,240,260, color);
+    draw_line(mlx_ptr, win_ptr,240,350,240,500, color);
+    draw_line(mlx_ptr, win_ptr,150,500,240,500, color);
+//************************************************************//
+    draw_line(mlx_ptr, win_ptr,500,100,500,260, color);
+     draw_line(mlx_ptr, win_ptr,500,350,500,500, color);
+    draw_line(mlx_ptr, win_ptr,500,100,590,100, color);
+    draw_line(mlx_ptr, win_ptr,590,100,590,500, color);
+    draw_line(mlx_ptr, win_ptr,500,500,590,500, color);
+//************************************************************//
+    draw_line(mlx_ptr, win_ptr,240,350,500,350, color);
+    draw_line(mlx_ptr, win_ptr,240,260,500,260, color);
 
-    img_ptr = mlx_xpm_file_to_image(mlx_ptr, argv[1], &width, &height);
-    if (img_ptr == NULL)
-    {
-        printf("Failed to load the image.\n");
-        return 1;
-    }
-    mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 40, 40);
-    mlx_hook(win_ptr, 17, 0, close_window, NULL); 
+    mlx_hook(win_ptr, 17, 0, close_window, "Close window\n"); 
     mlx_loop(mlx_ptr);
     return(0);
 }

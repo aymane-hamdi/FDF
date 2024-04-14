@@ -1,4 +1,4 @@
-src = fdf.c  red_file.c  get_next_line/get_next_line_utils.c get_next_line/get_next_line.c
+src = fdf.c  red_file.c  get_next_line/get_next_line_utils.c get_next_line/get_next_line.c drawin_line.c
 obj = $(src:.c=.o)
 NAME =	fdf
 LIBFT = libft/libft.a
