@@ -7,7 +7,7 @@ all: $(NAME)
 
 $(NAME): $(obj)
 	$(MAKE) -C libft 
-	gcc -o $(NAME) $(obj) $(LIBFT) minilibx-linux/libmlx_Linux.a  -lX11 -lXext -lm
+	gcc -o $(NAME) $(obj) $(LIBFT) minilibx_macos/libmlx.a  -framework OpenGL -framework AppKit  
 
 %.o: %.c fdf.h get_next_line/get_next_line.h
 	gcc -c $< -o $@

@@ -18,21 +18,11 @@ static int	ft_count_words(char const *str, char sep)
 	return (count);
 }
 
-int get_width(char *argv)
+int get_width(char *line)
 {
-	char *line;
 	int width;
-  
-	int fd = open(argv,O_RDONLY);
-	if(fd == -1)
-	{
-		ft_putstr_fd("erreure in open file",2);
-		exit(3);
-	}
-	line = get_next_line(fd);
+
 	width = ft_count_words(line, ' ');
-	free(line);
-	close(fd);
 	return(width);
 }
 
@@ -53,29 +43,31 @@ int get_height(char *argv)
 	
 }
 
-char ***red_file(char *argv)
+void red_file(char *argv,fdf **data)
 {
-	int width;
-	int height;
 	int i = 0;
 	int y = 0;
 	char *line;
 	char **line_int;
-	char ***matrix;
 	int  fd;
-   
-	width = get_width(argv);
-	height = get_height(argv);
-	matrix = malloc ((height + 1)*sizeof(char **));
-	while(i <  height)
+	int fd1;
+
+	(*data)->height = get_height(argv);
+	(*data)->matrix = malloc (((*data)->height  + 1)*sizeof(char **));
+	fd1 = open(argv,O_RDONLY);
+	while(i <  (*data)->height )
 	{
-		matrix[y] = malloc ((width + 1) * sizeof(char* ));
-		y++;
+		line = get_next_line(fd1);
+		(*data)->width= get_width(line);
+		(*data)->matrix[i] = malloc (((*data)->width + 1) * sizeof(char* ));
 		i++;
 	}
+	close(fd1);
 	fd = open(argv,O_RDONLY);
 	i = 0;
-	while(line = get_next_line(fd))
+	line = get_next_line(fd);
+	
+	while(line)
 	{
 		line_int = ft_split(line,' ');
 		y = 0;
@@ -84,12 +76,13 @@ char ***red_file(char *argv)
 			
 			if(ft_strchr(line_int[y],'\n') != NULL)
 				line_int[y][ft_strlen(line_int[y]) - 1] = '\0';
-			matrix[i][y]= ft_strdup(line_int[y]);
+			(*data)->matrix[i][y]= ft_strdup(line_int[y]);
 			y++;
 		}
 		i++;
+		line = get_next_line(fd);
 	}
-	matrix[i] = NULL;
+	(*data)->matrix[i] = NULL;
 	i = 0;
 	while(line_int[i])
 	{
@@ -98,6 +91,5 @@ char ***red_file(char *argv)
 	}
 	free(line_int);
 	free(line);
-	return(matrix);
 }
 
