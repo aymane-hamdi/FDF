@@ -1,33 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
+/*   Updated: 2024/04/17 17:58:41 by ahamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"fdf.h"
 
-// void printf_matrix(char **argv,char ***matrix)
-// {
-//     int i = 0;
-//     int y;
-//     int len;
-//     int LEN;
+void adjustWindowSize(int *width, int *height, int direction) {
+    if (direction == 1) { // Augmenter la taille de la fenêtre
+        (*width) += 10;
+        (*height) += 10;
+    } else { // Réduire la taille de la fenêtre
+        (*width) -= 10;
+        (*height) -= 10;
+    }
+}
 
-//     matrix = red_file(argv[1]);
-//     LEN = get_height(argv[1]);
-//     len = get_width(argv[1]);
-//     i = 0;
-//     while(i < LEN)
-//     {
-//         y = 0;
-//         while(y < len)
-//         {
-//             if(matrix[i][y] != NULL)
-//                 printf("%s",matrix[i][y]);
-//             y++;
-//             if(ft_strlen(matrix[i][y]) > 1)
-//                 printf(" ");
-//             else
-//                 printf("  ");
-//         }
-//         printf("\n");
-//         i++;
-//     }
-// }
+int dealWithKeyboard(int keycode, int *width, int *height) {
+    if (keycode == 43) // Touche '+' pour augmenter la taille
+        adjustWindowSize(width, height, 1);
+    else if (keycode == 45) // Touche '-' pour réduire la taille
+        adjustWindowSize(width, height, -1);
+    else
+        return 0;
+    return 1;
+}
+
+int dealWithMouse(int button, int *width, int *height) {
+    if (button == 4) // Bouton de la molette de la souris vers le haut pour augmenter la taille
+        adjustWindowSize(width, height, 1);
+    else if (button == 5) // Bouton de la molette de la souris vers le bas pour réduire la taille
+        adjustWindowSize(width, height, -1);
+    else
+        return 0;
+    return 1;
+}
 
 int close_window(char *param)
 {
@@ -52,8 +65,10 @@ int main(int argc, char **argv)
         printf("Failed to create a new window.\n");
         return 1;
     } 
-    draw (argv,data);
+    draw (argv,&data);
     mlx_hook(data->win_ptr, 17, 0, close_window, "Close window\n"); 
+     mlx_key_hook(data->win_ptr, dealWithKeyboard, data);
+    mlx_mouse_hook(data->win_ptr, dealWithMouse, data);
     mlx_loop(data->mlx_ptr);
     return(0);
 }

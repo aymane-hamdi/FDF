@@ -1,3 +1,16 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/17 17:58:05 by ahamdi            #+#    #+#              #
+#    Updated: 2024/04/17 17:58:06 by ahamdi           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
 src = fdf.c  red_file.c  get_next_line/get_next_line_utils.c get_next_line/get_next_line.c drawin_line.c
 obj = $(src:.c=.o)
 NAME =	fdf

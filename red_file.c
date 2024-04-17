@@ -50,30 +50,20 @@ void red_file(char *argv,fdf **data)
 	char *line;
 	char **line_int;
 	int  fd;
-	int fd1;
 
 	(*data)->height = get_height(argv);
-	(*data)->matrix = malloc (((*data)->height  + 1)*sizeof(char **));
-	fd1 = open(argv,O_RDONLY);
-	while(i <  (*data)->height )
-	{
-		line = get_next_line(fd1);
-		(*data)->width= get_width(line);
-		(*data)->matrix[i] = malloc (((*data)->width + 1) * sizeof(char* ));
-		i++;
-	}
-	close(fd1);
+	(*data)->matrix = malloc (((*data)->height + 1)*sizeof(char **));
 	fd = open(argv,O_RDONLY);
 	i = 0;
 	line = get_next_line(fd);
-	
 	while(line)
 	{
+		(*data)->width= get_width(line);
+		(*data)->matrix[i] = malloc (((*data)->width + 1) * sizeof(char* ));
 		line_int = ft_split(line,' ');
 		y = 0;
 		while(line_int[y])
 		{
-			
 			if(ft_strchr(line_int[y],'\n') != NULL)
 				line_int[y][ft_strlen(line_int[y]) - 1] = '\0';
 			(*data)->matrix[i][y]= ft_strdup(line_int[y]);
@@ -91,5 +81,9 @@ void red_file(char *argv,fdf **data)
 	}
 	free(line_int);
 	free(line);
+	close (fd);
 }
 
+int hexToInt(const char *hex) {
+    return (int)strtol(hex, NULL, 16);
+}
