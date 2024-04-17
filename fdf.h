@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/17 17:58:13 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/17 19:35:47 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct
     void *mlx_ptr;
     void *win_ptr;
 }fdf;
+
 int hexToInt(const char *hex) ;
 void red_file(char *argv,fdf **data);
 int get_height(char *argv);

@@ -136,7 +136,6 @@ void draw (char **argv,fdf **data)
         }
         free(line);
         y++;
-        printf("y = %d \n",y);
     }
     close(fd);
 }
