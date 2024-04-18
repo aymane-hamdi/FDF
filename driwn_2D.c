@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:37:31 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/18 17:06:27 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/18 19:06:59 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,15 +79,13 @@ void draw_2D(fdf **data)
        (*data)->width = get_width(line) -1 ;
         while(x < (*data)->width)
         { 
-            x1= (x + 1);
-            y1 = y;
-            if(x + 1 <(*data)->width && (*data)->matrix[y][x + 1])
+            if(x + 1 < (*data)->width && (*data)->matrix[y][x + 1])
             {
                 x1= (x + 1);
                 y1 = y;
                 if(ft_atoi((*data)->matrix[y][x + 1]) != 0)
                 {
-                     (*data)->z = ft_atoi((*data)->matrix[y][x + 1]);
+                    (*data)->z = ft_atoi((*data)->matrix[y][x + 1]);
                    bresenham_2D(x , y , x1 , y1 ,data);
                 }
                 else

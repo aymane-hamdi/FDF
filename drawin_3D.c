@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/18 17:54:17 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/18 19:13:32 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,8 @@ void bresenham(float x1, float y1, float x2, float y2, fdf **data)
     y_step /= MAX; // Correction de la division par MAX
     (*data)->x=(int)x1+ mov_cote;
     (*data)->y=(int)y1 + mouv_haut;
+    if(z1 !=0)
+        (*data)->z = z1;
     while ((int)(x2 - x1) != 0 || (int)(y2 - y1) != 0)
     {
         mlx_pixel_put((*data)->mlx_ptr,(*data)->win_ptr, (int)x1+ mov_cote , (int)y1 + mouv_haut, color); // Arrondissement à la valeur entière la plus proche
@@ -131,27 +133,18 @@ void draw_3D(fdf **data)
                 x1= (x + 1);
                 y1 = y;
                 if(ft_atoi((*data)->matrix[y][x + 1]) != 0)
-                {
-                     (*data)->z = ft_atoi((*data)->matrix[y][x + 1]);
                     bresenham(x , y , x1 , y1 ,data);
-                }
                 else
-                {
                    bresenham(x , y , x1 , y1 ,data);
-                }
             }
             if(y + 1 <(*data)->height && (*data)->matrix[y + 1])
             {
                 x1= x;
                 y1 = y+1;
                 if(ft_atoi((*data)->matrix[y + 1][x]) != 0)
-                {
                     bresenham(x, y , x1, y1,data);
-                }
                 else
-                {
                     bresenham(x , y , x1 , y1 ,data);
-                }
             }
             x++;
         }

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/18 17:20:41 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/18 21:26:12 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include"get_next_line/get_next_line.h"
 #include<stdio.h>
 #include<fcntl.h>
-#include "minilibx_macos/mlx.h"
+#include "miniliblx/minilibx_macos/mlx.h"
 #include<math.h>
 #include "key_macro.h"
 #include "color.h"
@@ -40,6 +40,7 @@ typedef struct
     void *mlx_ptr;
     void *win_ptr;
     char **argv;
+    void *img;
     int form;
 }fdf;
 
@@ -50,5 +51,9 @@ int get_width(char *argv);
 void draw_3D(fdf **data);
 void draw_2D(fdf **data);
 void	print_menu2D(fdf *data);
-void	print_menu3D(fdf *data);
+void	print_menu3D(fdf **data);
+int	mouse_press(int button, int x, int y, fdf **data);
+int autour_pres(int key, fdf **data);
+int key_press(int key, fdf **data);
+int close_window(fdf *data);
 #endif
