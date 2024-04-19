@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/18 19:13:32 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/19 18:36:48 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,42 +114,25 @@ void draw_3D(fdf **data)
     int y;
     int x1;
     int y1;
-    char *line;
     int fd;
-    red_file((*data)->argv[1],data);
     y = 0;
-    fd = open((*data)->argv[1],O_RDONLY);
     while(y < (*data)->height)
     {
         x = 0;
-        line = get_next_line(fd);
-       (*data)->width = get_width(line) -1 ;
         while(x < (*data)->width)
         { 
-            x1= (x + 1);
+            x1 = (x + 1);
             y1 = y;
             if(x + 1 <(*data)->width && (*data)->matrix[y][x + 1])
-            {
-                x1= (x + 1);
-                y1 = y;
-                if(ft_atoi((*data)->matrix[y][x + 1]) != 0)
-                    bresenham(x , y , x1 , y1 ,data);
-                else
-                   bresenham(x , y , x1 , y1 ,data);
-            }
+                bresenham(x , y , x1 , y1 ,data);
             if(y + 1 <(*data)->height && (*data)->matrix[y + 1])
             {
-                x1= x;
+                x1 = x;
                 y1 = y+1;
-                if(ft_atoi((*data)->matrix[y + 1][x]) != 0)
-                    bresenham(x, y , x1, y1,data);
-                else
-                    bresenham(x , y , x1 , y1 ,data);
+                bresenham(x , y , x1 , y1 ,data);
             }
             x++;
         }
-        free(line);
         y++;
     }
-    close(fd);
 }

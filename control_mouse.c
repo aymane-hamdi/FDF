@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/18 21:37:51 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/19 18:37:30 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,6 @@ void	print_menu3D(fdf **data)
     int img_width;
     int img_height;
 
-    (*data)->img = mlx_xpm_file_to_image((*data)->mlx_ptr, "background.xpm", &img_width, &img_height);
-    if ( (*data)->img == NULL)
-    {
-        ft_putstr_fd("Error loading image\n",2);
-        return ;
-    }
-    mlx_put_image_to_window((*data)->mlx_ptr, (*data)->win_ptr, (*data)->img, 0, 0);
 	y = 0;
 	mlx = (*data)->mlx_ptr;
 	win = (*data)->win_ptr;

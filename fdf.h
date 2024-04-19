@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/18 21:26:12 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/19 19:49:28 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 
 typedef struct
 {
+    int x1;
+    int x2;
+    int y1;
+    int y2;
     float angel_x;
     float angel_y;
     float angel_z;
@@ -40,7 +44,6 @@ typedef struct
     void *mlx_ptr;
     void *win_ptr;
     char **argv;
-    void *img;
     int form;
 }fdf;
 

@@ -56,9 +56,9 @@ void red_file(char *argv,fdf **data)
 	fd = open(argv,O_RDONLY);
 	i = 0;
 	line = get_next_line(fd);
+	(*data)->width= get_width(line)-1;
 	while(line)
 	{
-		(*data)->width= get_width(line);
 		(*data)->matrix[i] = malloc (((*data)->width + 1) * sizeof(char* ));
 		line_int = ft_split(line,' ');
 		y = 0;
