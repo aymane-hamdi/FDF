@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/19 19:10:52 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/22 12:59:02 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int close_window(fdf *data)
 int main(int argc, char **argv)
 {
     fdf *data;
-    int width =  1500, height = 1500;
+    int width =  1000, height = 1000;
     data = (fdf*)malloc(sizeof(fdf));
     data->mlx_ptr = mlx_init();
     if (data->mlx_ptr == NULL)
@@ -41,14 +41,13 @@ int main(int argc, char **argv)
         return 1;
     }
     red_file(argv[1],&data);
-    double centerX = width / 2;
-    double centerY = height / 2;
+    data->width_window = width;
+    data->height_window = height;
     data->form = 2;
+    data->haut=1;
     data->zoom = 1;
-    centerX -= data->zoom / 2;
-    centerY -= data->zoom / 2;
-    data->mov_cote = centerX;
-    data->mouv_haut = centerY;
+    data->mov_cote =  0;
+    data->mouv_haut = 0;
     data->button = 0;
     data->argv = argv;
     data->angel_x = 0;
