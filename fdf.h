@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/22 15:25:20 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/22 22:54:16 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct
     float angel_z;
     int x;
     int y;
+    int color_change;
     int color_start_x;
     int color_start_y;
     int color_end_x;

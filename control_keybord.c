@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/22 15:26:08 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/22 22:59:38 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,14 @@ void mouve_haute(int key ,fdf **data)
     else if(key ==ARROW_DOWN)
          (*data)->mouv_haut += 100;
 }
-// int  c_v(int key,fdf *data)
-// {
-//     if(key == 8)
-//     {
-//         mlx_clear_window(data->mlx_ptr, data->win_ptr);
-//         draw_3D_sans_bas(&data);
-//         print_menu3D(&data);
-//     }
-//     else if(key == 9)
-//     {
-//         mlx_clear_window(data->mlx_ptr, data->win_ptr);
-//         draw_3D(&data); 
-//         print_menu3D(&data);
-//     }
-//     return(0);
-// }
+int  c_v(int key,fdf **data)
+{
+    if(key == 8)
+      (*data)->color_change =16777216;
+    else if(key == 9)
+        (*data)->color_change =16777215;
+    return(0);
+}
 int key_press(int key, fdf **data)
 {
     printf("key = %d\n",key);
@@ -81,7 +73,7 @@ int key_press(int key, fdf **data)
     else if(key == 85)
         (*data)->form = 3; 
     mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
-    // c_v(key,*data);
+    c_v(key,data);
     zoom(key, data);
     mouv_cote(key,data);
     mouve_haute(key ,data);

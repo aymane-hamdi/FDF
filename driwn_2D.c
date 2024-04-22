@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:37:31 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/21 16:28:10 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/22 23:02:02 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,41 @@ void bresenham_2D(float x1, float y1, float x2, float y2, fdf **data)
     float x_step;
     float y_step;
     float MAX;
-    char *color_split;
+    float z1;
     int color;
-    
-    (*data)->x1 = x1;
-    (*data)->x2 = x2;
-    (*data)->y1 = y1;
-    (*data)->y2 = y2;
-    color = get_color(data);
-    x_step = (*data)->x2 - (*data)->x1;
-    y_step =  (*data)->y2 -  (*data)->y1;
-    MAX = fmaxf(fabsf(x_step), fabsf(y_step)); // Utilisation de fmaxf pour trouver le maximum absolu
+    float z2;
+    z1 = ft_atoi((*data)->matrix[(int)y1][(int)x1]);
+    z2 = ft_atoi((*data)->matrix[(int)y2][(int)x2]); 
+    (*data)->color_start_x=x1;
+    (*data)->color_start_y=y1;
+    (*data)->color_end_x=x2;
+    (*data)->color_end_y=y2;
+    x1*=(*data)->zoom;
+    y1*=(*data)->zoom;
+    x2*=(*data)->zoom;
+    y2*=(*data)->zoom;
+    z1*=(*data)->zoom;
+    z2*=(*data)->zoom;
+    x_step = x2 - x1;
+    y_step = y2 - y1;
+    MAX = fmaxf(fabsf(x_step), fabsf(y_step));
     x_step /= MAX;
-    y_step /= MAX; // Correction de la division par MAX
-    while (((*data)->x2 - (*data)->x1) != 0 || ( (*data)->y2 -  (*data)->y1) != 0)
-    { 
-        (*data)->x= (*data)->x1 + (*data)->mov_cote;
-        (*data)->y= (*data)->y1+(*data)->mouv_haut;
-        mlx_pixel_put((*data)->mlx_ptr,(*data)->win_ptr,(*data)->x ,(*data)->y, color); // Arrondissement à la valeur entière la plus proche
-        (*data)->x1 += x_step;
-         (*data)->y1 += y_step;
-    }
+    y_step /= MAX;
+    (*data)->x2 = x2;
+    (*data)->y2 =y2;
+    (*data)->start_x= x1;
+    (*data)->start_y= y1;
+    (*data)->end_x= x2;
+    (*data)->end_y= y2;
+    while ((int)(x2 - x1) != 0 || (int)(y2 - y1) != 0)
+    {
+        (*data)->x1 = x1;
+        (*data)->y1 =y1;
+        color = get_color_3d(data);
+        mlx_pixel_put((*data)->mlx_ptr,(*data)->win_ptr, (int)x1+ (*data)->mov_cote, (int)y1+(*data)->mouv_haut,  color); 
+        x1 += x_step;
+        y1 += y_step;
+    }  
 }
 
 void draw_2D(fdf **data)

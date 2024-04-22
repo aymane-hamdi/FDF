@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/22 12:59:02 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/22 22:56:20 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int main(int argc, char **argv)
     data->form = 2;
     data->haut=1;
     data->zoom = 1;
+    data->color_change = 16777215;
     data->mov_cote =  0;
     data->mouv_haut = 0;
     data->button = 0;

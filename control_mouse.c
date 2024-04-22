@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/22 15:57:54 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/22 23:04:17 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,4 +155,46 @@ int	mouse_press(int button, int x, int y, fdf **data)
     }
     
     return(0);
+}
+int get_color_3d(fdf **data)
+{
+    int color;
+    int color1;
+    int color2; // Initialisation par défaut de color2
+    int value;
+    int min;
+    int max;
+    int start_color;
+    int end_color;
+    float ratio;
+
+    float dx = (*data)->x2 - (*data)->start_x;
+    float dy = (*data)->y2 - (*data)->start_y;
+    if (dx > dy)
+    {
+        value = (*data)->x1;
+        min = (*data)->start_x;
+        max = (*data)->end_x;
+    }
+    else
+    {
+        value = (*data)->y1;
+        min = (*data)->start_y;
+        max = (*data)->end_y;
+    }
+    ratio = (value - min) / (float)(max - min);
+    start_color = ft_atoi((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x]);
+    end_color = ft_atoi((*data)->matrix[(*data)->color_end_y][(*data)->color_end_x]);
+    if (start_color != 0)
+        color1 = 65289; // Rouge
+    else
+        color1 = (*data)->color_change; // Blanc 16777215
+    if (end_color != 0)
+        color2 = 65289; // Rouge
+    else
+        color2 = (*data)->color_change; // Blanc
+    color = get_gradient(color1, color2, ratio);
+    if(ft_strchr((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x],',') != NULL)
+        color = hexToInt(ft_strchr((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x],',')+1);
+    return (color);
 }
