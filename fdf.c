@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/23 16:52:42 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/23 23:32:28 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void set_zoom(fdf **data)
    else
    (*data)->zoom = y_zoom;
    if((*data)->zoom == 0)
-   (*data)->zoom = 1;
+    (*data)->zoom = 1;
 }
 int close_window(fdf *data)
 {
@@ -34,7 +34,10 @@ int close_window(fdf *data)
 void initial_data(fdf **data,char **argv)
 {
     (*data)->width_window = 1000;
-    (*data)->height_window = 1000;
+    if((*data)->height >=500)
+        (*data)->height_window = (*data)->height *2;
+    else
+        (*data)->height_window = 1000;
     (*data)->form = 2;
     (*data)->haut=1;
     set_zoom(data);

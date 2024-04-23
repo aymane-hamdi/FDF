@@ -50,15 +50,17 @@ void red_file(char *argv,fdf **data)
 	char *line;
 	char **line_int;
 	int  fd;
+	int z_max =0;
 
 	(*data)->height = get_height(argv);
 	(*data)->matrix = malloc (((*data)->height + 1)*sizeof(char **));
 	fd = open(argv,O_RDONLY);
 	i = 0;
 	line = get_next_line(fd);
-	(*data)->width= get_width(line)-1;
+	
 	while(line)
 	{
+		(*data)->width = (get_width(line));
 		(*data)->matrix[i] = malloc (((*data)->width + 1) * sizeof(char* ));
 		line_int = ft_split(line,' ');
 		y = 0;
@@ -67,18 +69,16 @@ void red_file(char *argv,fdf **data)
 			if(ft_strchr(line_int[y],'\n') != NULL)
 				line_int[y][ft_strlen(line_int[y]) - 1] = '\0';
 			(*data)->matrix[i][y]= ft_strdup(line_int[y]);
+			if(ft_atoi(line_int[y]) > z_max)
+				z_max = ft_atoi(line_int[y]);
 			y++;
 		}
+		(*data)->matrix[i][y] = NULL;
 		i++;
 		line = get_next_line(fd);
 	}
 	(*data)->matrix[i] = NULL;
-	(*data)->min_x = 0;
-	(*data)->max_x = (*data)->width;
-	(*data)->min_y = 0;
-	(*data)->max_y = (*data)->height;
-	(*data)->min_z = 0;
-	(*data)->max_z = 0;
+	(*data)->z_max = z_max;
 	i = 0;
 	while(line_int[i])
 	{
@@ -88,6 +88,8 @@ void red_file(char *argv,fdf **data)
 	free(line_int);
 	free(line);
 	close (fd);
+	printf("z_max = %d\n",	(*data)->z_max );
+	
 }
 
 int hexToInt(const char *hex) {

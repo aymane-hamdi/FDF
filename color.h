@@ -2,7 +2,7 @@
 
 # define COLOR_H
 
-# define TEXT_COLOR		   0xFFFFFF
+# define TEXT_COLOR		 16777215
 # define BACKGROUND			0xFF0000
 # define MENU_BACKGROUND	  0x00FF00
 
