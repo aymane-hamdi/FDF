@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:37:31 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/22 23:02:02 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/23 10:23:17 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,32 @@ void bresenham_2D(float x1, float y1, float x2, float y2, fdf **data)
     MAX = fmaxf(fabsf(x_step), fabsf(y_step));
     x_step /= MAX;
     y_step /= MAX;
-    (*data)->x2 = x2;
-    (*data)->y2 =y2;
-    (*data)->start_x= x1;
-    (*data)->start_y= y1;
-    (*data)->end_x= x2;
-    (*data)->end_y= y2;
-    while ((int)(x2 - x1) != 0 || (int)(y2 - y1) != 0)
-    {
-        (*data)->x1 = x1;
-        (*data)->y1 =y1;
-        color = get_color_3d(data);
-        mlx_pixel_put((*data)->mlx_ptr,(*data)->win_ptr, (int)x1+ (*data)->mov_cote, (int)y1+(*data)->mouv_haut,  color); 
-        x1 += x_step;
-        y1 += y_step;
-    }  
+    if(ft_strchr((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x],',') != NULL)
+	{
+		color = hexToInt(ft_strchr((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x],',')+1);
+		while ((int)(x2 - x1) != 0 || (int)(y2 - y1) != 0)
+		{
+			mlx_pixel_put((*data)->mlx_ptr,(*data)->win_ptr, (int)x1+ (*data)->mov_cote, (int)y1+(*data)->mouv_haut,  color); 
+			x1 += x_step;
+			y1 += y_step;
+		}  
+	}
+	else
+	{
+		(*data)->x2 = x2;
+		(*data)->y2 =y2;
+		(*data)->start_x= x1;
+		(*data)->start_y= y1;
+		while ((int)(x2 - x1) != 0 || (int)(y2 - y1) != 0)
+		{
+			(*data)->x1 = x1;
+			(*data)->y1 =y1;
+			color = get_color_3d(data);
+			mlx_pixel_put((*data)->mlx_ptr,(*data)->win_ptr, (int)x1+ (*data)->mov_cote, (int)y1+(*data)->mouv_haut,  color); 
+			x1 += x_step;
+			y1 += y_step;
+		}  
+	}
 }
 
 void draw_2D(fdf **data)

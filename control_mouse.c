@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/22 23:04:17 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/23 10:19:41 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,13 +174,13 @@ int get_color_3d(fdf **data)
     {
         value = (*data)->x1;
         min = (*data)->start_x;
-        max = (*data)->end_x;
+        max = (*data)->x2;
     }
     else
     {
         value = (*data)->y1;
         min = (*data)->start_y;
-        max = (*data)->end_y;
+        max = (*data)->y2;
     }
     ratio = (value - min) / (float)(max - min);
     start_color = ft_atoi((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x]);
@@ -194,7 +194,5 @@ int get_color_3d(fdf **data)
     else
         color2 = (*data)->color_change; // Blanc
     color = get_gradient(color1, color2, ratio);
-    if(ft_strchr((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x],',') != NULL)
-        color = hexToInt(ft_strchr((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x],',')+1);
     return (color);
 }

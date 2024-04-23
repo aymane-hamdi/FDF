@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/22 22:54:16 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/23 10:12:13 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,7 @@ typedef struct
     int width_window;
     int height_window;
     float start_x;
-    float end_x;
     float start_y;
-    float end_y;
     char  ***matrix;
     void *mlx_ptr;
     void *win_ptr;
