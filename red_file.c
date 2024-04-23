@@ -73,6 +73,12 @@ void red_file(char *argv,fdf **data)
 		line = get_next_line(fd);
 	}
 	(*data)->matrix[i] = NULL;
+	(*data)->min_x = 0;
+	(*data)->max_x = (*data)->width;
+	(*data)->min_y = 0;
+	(*data)->max_y = (*data)->height;
+	(*data)->min_z = 0;
+	(*data)->max_z = 0;
 	i = 0;
 	while(line_int[i])
 	{

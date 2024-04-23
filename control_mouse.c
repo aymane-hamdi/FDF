@@ -6,156 +6,144 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/23 10:19:41 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/23 16:09:36 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf.h"
 
-void	print_menu3D(fdf **data)
+void set_background_image(fdf *data, char *filename)
 {
-	int		y;
-	void	*mlx;
-	void	*win;
-	char *zom;
-	char *z;
-    zom = ft_itoa((*data)->zoom);
-    zom = ft_strjoin("Zoom : ",zom);
-    char *x_str = ft_itoa((*data)->x);
-    x_str = ft_strjoin("X-Axis : ",x_str);
-    char *y_str = ft_itoa((*data)->y);
-    y_str = ft_strjoin("Y-Axis : ",y_str);
-    int img_width;
-    int img_height;
+    int width, height;
+    void *image;
 
-	y = 0;
-	mlx = (*data)->mlx_ptr;
-	win = (*data)->win_ptr;
-	mlx_string_put(mlx, win, 65, y += 20, TEXT_COLOR, "How to Use");
-	mlx_string_put(mlx, win, 15, y += 35, TEXT_COLOR, "Zoom: Scroll or +/-");
-	mlx_string_put(mlx, win, 15, y += 35, TEXT_COLOR, zom);
-	mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Move: Arrows");
-	mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Flatten: </>");
-	mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Rotate: Press & Move");
-	mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Rotate:");
-	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, x_str);
-	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, y_str);
-	mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Projection");
-	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "ISO: 3 Key");
-	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "Parallel: 2 Key");
-
-	
+    image = mlx_xpm_file_to_image(data->mlx_ptr, filename, &width, &height);
+    if (image == NULL)
+        return;
+    mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, image, 0, 0);
 }
-/***********************le menu de2D ***********************************************/
-void	print_menu2D(fdf *data)
+void	print_menu(fdf *data)
 {
 	int		y;
 	void	*mlx;
 	void	*win;
 	char *zom;
-    zom = ft_itoa(data->zoom);
-    zom = ft_strjoin("Zoom : ",zom);
-    char *x_str = ft_itoa(data->x);
-    x_str = ft_strjoin("X-Axis : ",x_str);
-    char *y_str = ft_itoa(data->y);
-    y_str = ft_strjoin("Y-Axis : ",y_str);
-    
-	y = 0;
-	 mlx = data->mlx_ptr;
-    win = data->win_ptr;	
+    char *itoi;
+    itoi =ft_itoa(data->zoom);
+    zom = ft_strjoin("zomm  : ",itoi);
+	mlx = data->mlx_ptr;
+    win = data->win_ptr;
+    set_background_image(data, "fond-texture-abstrait-_1_.xpm");
     mlx_string_put(mlx, win, 65, y += 20, TEXT_COLOR, "How to Use");
     mlx_string_put(mlx, win, 15, y += 35, TEXT_COLOR, "Zoom: Scroll or +/-");
     mlx_string_put(mlx, win, 15, y += 35, TEXT_COLOR, zom);
     mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Move: Arrows");
     mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Flatten: </>");
     mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Rotate: Press & Move");
-    mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Rotate:");
-    mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, x_str);
-    mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, y_str);
+    mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "x/d: Rotate X axis");
+    mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Y/U: Rotate Y axis");
+    mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Q/W: Rotate Z axis");
     mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Projection");
     mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "ISO: 3 Key");
     mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "Parallel: 2 Key");
-	
+    free(itoi);
+    free(zom);
 }
-int	mouse_press(int button, int x, int y, fdf **data)
+void clear_area(fdf *data, int x_start, int y_start, int width, int height, int color)
 {
-    printf("button = %d\n",button);
-	if ( button == 4)
+    int x, y;
+
+    y = y_start;
+    while (y < y_start + height)
     {
-        printf("zoom in\n");
-        mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
-       
-        (*data)->zoom +=1;
-         (*data)->zoom *=2;
-        if((*data)->form == 2)
+        x = x_start;
+        while (x < x_start + width)
         {
-            draw_2D(data); 
-            print_menu2D(*data);
+            mlx_pixel_put(data->mlx_ptr, data->win_ptr, x, y, color);
+            x++;
         }
-        else
-        {
-            draw_3D(data); 
-            print_menu3D(data);
-        }
+        y++;
     }
-    else if (button == 5 )
-    {
-       
-        printf("zoom out\n");
-       
-        mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
-        (*data)->zoom /= 2;
-        if((*data)->zoom < 2)
-            (*data)->zoom = 1;
-        if((*data)->form == 2)
-        {
-            draw_2D(data); 
-            print_menu2D(*data);
-        }
-        else
-        {
-            draw_3D(data); 
-            print_menu3D(data);
-        }
-        // Zoom arrière lorsque la touche '-' est pressée
-    }
-     else if(button == 2)
-    {
-         printf("mouv RIGHT\n");
-        mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
-        (*data)->mov_cote += 200;
-        if((*data)->form == 2)
-        {
-            draw_2D(data); 
-            print_menu2D(*data);
-        }
-        else
-        {
-            draw_3D(data); 
-            print_menu3D(data);
-        }
-        // Zoom arrière lorsque la touche '-' est pressée
-    }
-    else if(button == 1)
-    {
-        printf("mouv LEFT\n");
-        mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
-        (*data)->mov_cote -= 200;
-        if((*data)->form == 2)
-        {
-            draw_2D(data); 
-            print_menu2D(*data);
-        }
-        else
-        {
-            draw_3D(data); 
-            print_menu3D(data);
-        };
-        // Zoom arrière lorsque la touche '-' est pressée
-    }
-    
-    return(0);
 }
+// int	mouse_press(int button, int x, int y, fdf **data)
+// {
+//     printf("button = %d\n",button);
+// 	if ( button == 4)
+//     {
+//         printf("zoom in\n");
+//         mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
+       
+//         (*data)->zoom +=1;
+//          (*data)->zoom *=2;
+//         if((*data)->form == 2)
+//         {
+//             draw_2D(data); 
+//             print_menu2D(*data);
+//         }
+//         else
+//         {
+//             draw_3D(data); 
+//             print_menu3D(data);
+//         }
+//     }
+//     else if (button == 5 )
+//     {
+       
+//         printf("zoom out\n");
+       
+//         mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
+//         (*data)->zoom /= 2;
+//         if((*data)->zoom < 2)
+//             (*data)->zoom = 1;
+//         if((*data)->form == 2)
+//         {
+//             draw_2D(data); 
+//             print_menu2D(*data);
+//         }
+//         else
+//         {
+//             draw_3D(data); 
+//             print_menu3D(data);
+//         }
+//         // Zoom arrière lorsque la touche '-' est pressée
+//     }
+//      else if(button == 2)
+//     {
+//          printf("mouv RIGHT\n");
+//         mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
+//         (*data)->mov_cote += 200;
+//         if((*data)->form == 2)
+//         {
+//             draw_2D(data); 
+//             print_menu2D(*data);
+//         }
+//         else
+//         {
+//             draw_3D(data); 
+//             print_menu3D(data);
+//         }
+//         // Zoom arrière lorsque la touche '-' est pressée
+//     }
+//     else if(button == 1)
+//     {
+//         printf("mouv LEFT\n");
+//         mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
+//         (*data)->mov_cote -= 200;
+//         if((*data)->form == 2)
+//         {
+//             draw_2D(data); 
+//             print_menu2D(*data);
+//         }
+//         else
+//         {
+//             draw_3D(data); 
+//             print_menu3D(data);
+//         };
+//         // Zoom arrière lorsque la touche '-' est pressée
+//     }
+    
+//     return(0);
+// }
 int get_color_3d(fdf **data)
 {
     int color;

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/22 22:59:38 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/23 16:43:51 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,12 @@ int autour_pres(int key, fdf **data)
         (*data)->angel_y +=0.2;
     else if(key == 32 && (*data)->form == 3)
         (*data)->angel_y -=0.2;
-     else if(key == 6  && (*data)->form == 3)
+    else if(key == 6  && (*data)->form == 3)
+    {
+        // mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
         (*data)->angel_z +=0.2;
+        // draw_3D(data); 
+    }
     else if(key == 257  && (*data)->form == 3)
         (*data)->angel_z -=0.2;
     return(0);
@@ -37,7 +41,6 @@ void zoom(int key, fdf **data)
         (*data)->zoom -= 1;
         if((*data)->zoom < 2)
             (*data)->zoom = 1;
-        // Zoom arrière lorsque la touche '-' est pressée
     }
 }
 void mouv_cote(int key,fdf **data)
@@ -65,7 +68,6 @@ int  c_v(int key,fdf **data)
 int key_press(int key, fdf **data)
 {
     printf("key = %d\n",key);
-    autour_pres(key,data);
     if (key == MAIN_PAD_ESC)
         close_window(*data); // Fermer la fenêtre lorsque la touche ESC est pressée
     else if(key == 84)
@@ -79,13 +81,14 @@ int key_press(int key, fdf **data)
     mouve_haute(key ,data);
      if((*data)->form == 2)
     {
-            draw_2D(data); 
-            print_menu2D(*data);
+        draw_2D(data); 
+       print_menu(*data);
     }
     else
     {
         draw_3D(data); 
-        print_menu3D(data);
-    }   
+       print_menu(*data);
+    }
+    autour_pres(key,data);
     return (0);
 }
