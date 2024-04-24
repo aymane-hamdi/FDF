@@ -6,7 +6,7 @@
 #    By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 17:58:05 by ahamdi            #+#    #+#              #
-#    Updated: 2024/04/21 11:04:16 by ahamdi           ###   ########.fr        #
+#    Updated: 2024/04/24 10:56:50 by ahamdi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ all: $(NAME)
 
 $(NAME): $(obj)
 	$(MAKE) -C libft 
-	gcc -o $(NAME) $(obj) $(LIBFT) miniliblx/minilibx_macos/libmlx.a -framework OpenGL -framework AppKit  
+	gcc -o $(NAME) $(obj) $(LIBFT) miniliblx/minilibx_macos/libmlx.a -framework OpenGL -framework AppKit  -O3
 
 %.o: %.c fdf.h get_next_line/get_next_line.h
 	gcc -c $< -o $@

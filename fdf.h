@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/23 23:28:01 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/24 11:00:03 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct
     double z1;
    double z2;
     int color;
-    int button;
     int haut;
     int mov_cote;
     int mouv_haut;
