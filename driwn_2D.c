@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:37:31 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/24 18:46:17 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/24 19:08:28 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ void draw_2D(fdf **data)
 void	my_mlx_pixel_put(fdf **data, int x, int y, int color)
 {
 	char	*dst;
+	if(x < 0 || y < 0 || x >= 2000 || y >= 2000)
+		return ;
 	(*data)->addr = mlx_get_data_addr((*data)->img, &(*data)->bits_per_pixel, &(*data)->line_length,&(*data)->endian);
 	dst = (*data)->addr + (y * (*data)->line_length + x * ((*data)->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;

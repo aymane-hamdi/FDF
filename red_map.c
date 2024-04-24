@@ -88,10 +88,9 @@ void red_map(char *argv,fdf **data)
 	free(line_int);
 	free(line);
 	close (fd);
-	printf("z_max = %d\n",	(*data)->z_max );
-	
 }
 
-int hexToInt(const char *hex) {
+int hexToInt(const char *hex)
+{
     return (int)strtol(hex, NULL, 16);
 }

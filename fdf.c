@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/24 13:19:27 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/24 19:12:57 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void set_zoom(fdf **data)
 	int x_zoom;
 	int y_zoom;
 	
-	x_zoom= (((*data)->width_window-230) / (*data)->width)/2;
+	x_zoom= (((*data)->width_window) / (*data)->width)/2;
 	y_zoom = ((*data)->height_window / (*data)->height)/2;
    	if(x_zoom < y_zoom)
-		(*data)->zoom = x_zoom;
+		(*data)->zoom = x_zoom+1;
    	else
-		(*data)->zoom = y_zoom;
+		(*data)->zoom = y_zoom+1;
    	if((*data)->zoom == 0)
-	(*data)->zoom = 1;
+	(*data)->zoom = 2;
 }
 int close_window(fdf *data)
 {
@@ -43,16 +43,15 @@ void initial_data(fdf **data,char **argv)
 	(*data)->form = 2;
 	set_zoom(data);
 	(*data)->color_change = 16777215;
-	(*data)->mov_cote = (((*data)->width_window - 230) /2) +230;
+	(*data)->mov_cote = (((*data)->width_window) /2);
 	(*data)->mouv_haut = (*data)->height_window /2;
 	(*data)->argv = argv;
 	(*data)->angel_x = 0;
 	(*data)->angel_y = 0;
-	(*data)->angel_z = 0;
+	(*data)->angel_z = -1.400000;
 }
 void fontion_mlx_and_draw(fdf **data)
 {
-	// draw_image(data);
 	draw_2D(data);
 	print_menu(*data); 
 	mlx_key_hook((*data)->win_ptr, key_press, data);
@@ -74,7 +73,7 @@ int main(int argc, char **argv)
 		free(data); // Libérer la mémoire allouée à data
 		exit (1);
 	}
-	data->win_ptr = mlx_new_window(data->mlx_ptr,  data->width_window,   data->height_window, "FDF project");
+	data->win_ptr = mlx_new_window(data->mlx_ptr,  data->width_window+200,   data->height_window+200, "FDF project");
 	if (data->win_ptr == NULL)
 	{
 		ft_putstr_fd("Failed to create a new window.\n",2);
