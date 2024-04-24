@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/23 22:50:53 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/24 12:02:55 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,10 @@ void mouve_haute(int key ,fdf **data)
     else if(key == 125)
          (*data)->mouv_haut += 100;
 }
-int  c_v(int key,fdf **data)
+int key_press(int key, fdf **data)
 {
-    if (key == 53)
+    autour_pres(key,data);
+     if (key == 53)
         close_window(*data); 
     else if(key == 84)
         (*data)->form = 2;
@@ -65,25 +66,14 @@ int  c_v(int key,fdf **data)
       (*data)->color_change =16777216;
     else if(key == 9)
         (*data)->color_change =16777215;
-    return(0);
-}
-int key_press(int key, fdf **data)
-{
-    autour_pres(key,data);
-    c_v(key,data);
     mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
     zoom(key, data);
     mouv_cote(key,data);
     mouve_haute(key ,data);
     if((*data)->form == 2)
-    {
         draw_2D(data); 
-       print_menu(*data);
-    }
     else
-    {
         draw_3D(data); 
-        print_menu(*data);
-    }
+    print_menu(*data);
     return (0);
 }

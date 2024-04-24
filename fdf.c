@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/24 11:00:16 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/24 13:19:27 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void initial_data(fdf **data,char **argv)
 	else
 		(*data)->height_window = 1000;
 	(*data)->form = 2;
-	(*data)->haut=1;
 	set_zoom(data);
 	(*data)->color_change = 16777215;
 	(*data)->mov_cote = (((*data)->width_window - 230) /2) +230;
@@ -53,6 +52,7 @@ void initial_data(fdf **data,char **argv)
 }
 void fontion_mlx_and_draw(fdf **data)
 {
+	// draw_image(data);
 	draw_2D(data);
 	print_menu(*data); 
 	mlx_key_hook((*data)->win_ptr, key_press, data);
@@ -66,7 +66,7 @@ int main(int argc, char **argv)
    
 	data = (fdf*)malloc(sizeof(fdf));
 	data->mlx_ptr = mlx_init();
-	red_file(argv[1],&data);
+	red_map(argv[1],&data);
 	initial_data(&data,argv);
 	if (data->mlx_ptr == NULL)
 	{

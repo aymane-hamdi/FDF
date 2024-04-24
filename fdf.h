@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/24 11:00:03 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/24 18:40:54 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ typedef struct
     int color_end_x;
     int color_end_y;
     double z1;
-   double z2;
+    double z2;
     int color;
-    int haut;
     int mov_cote;
     int mouv_haut;
     int zoom;
@@ -57,19 +56,27 @@ typedef struct
     char **argv;
     int form;
     int z_max;
-    int stop_rotation;
+    void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }fdf;
-typedef struct {
+
+typedef struct
+{
     int r;
     int g;
     int b;
 } Color;
+void	my_mlx_pixel_put(fdf **data, int x, int y, int color);
+void draw_image(fdf **data);
 int len_str(char **str);
 void draw_bresenham(double x1, double y1, double x2, double y2, fdf **data);
 int hexToInt(const char *hex) ;
 void center_and_zoom(fdf **data, double *x1, double *y1, double *x2, double *y2);
 unsigned int get_gradient(unsigned int start_int, unsigned int end_int, double ratio);
-void red_file(char *argv,fdf **data);
+void red_map(char *argv,fdf **data);
 int get_height(char *argv);
 int get_width(char *argv);
 void draw_3D(fdf **data);

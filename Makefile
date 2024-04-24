@@ -6,12 +6,12 @@
 #    By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 17:58:05 by ahamdi            #+#    #+#              #
-#    Updated: 2024/04/24 10:56:50 by ahamdi           ###   ########.fr        #
+#    Updated: 2024/04/24 12:22:18 by ahamdi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-src = fdf.c  red_file.c  get_next_line/get_next_line_utils.c get_next_line/get_next_line.c drawin_3D.c control_mouse.c driwn_2D.c control_keybord.c rotation.c graden_colore.c
+src = fdf.c  red_map.c  get_next_line/get_next_line_utils.c get_next_line/get_next_line.c drawin_3D.c control_mouse.c driwn_2D.c control_keybord.c rotation.c graden_colore.c image.c
 obj = $(src:.c=.o)
 NAME =	fdf
 LIBFT = libft/libft.a

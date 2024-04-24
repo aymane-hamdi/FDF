@@ -43,7 +43,7 @@ int get_height(char *argv)
 	
 }
 
-void red_file(char *argv,fdf **data)
+void red_map(char *argv,fdf **data)
 {
 	int i = 0;
 	int y = 0;
