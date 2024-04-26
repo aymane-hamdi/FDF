@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/24 10:40:19 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/26 21:57:31 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,17 @@
 
 void	print_menu(fdf *data)
 {
-	int		y;
-	void	*mlx;
-	void	*win;
-	char *zom;
-    char *itoi;
-    
-    itoi = ft_itoa(data->zoom);
-    zom = ft_strjoin("zomm  : ",itoi);
-	mlx = data->mlx_ptr;
-    win = data->win_ptr;
-    mlx_string_put(mlx, win, 65, y += 20,  16777215, "How to Use");
-    mlx_string_put(mlx, win, 15, y += 35,  16777215, "Zoom: Scroll or +/-");
-    mlx_string_put(mlx, win, 15, y += 35,  16777215, zom);
-    mlx_string_put(mlx, win, 15, y += 30,  16777215, "Move: Arrows");
-    mlx_string_put(mlx, win, 15, y += 30,  16777215, "Flatten: </>");
-    mlx_string_put(mlx, win, 15, y += 30,  16777215, "Rotate: Press & Move");
-    mlx_string_put(mlx, win, 15, y += 30,  16777215, "x/d: Rotate X axis");
-    mlx_string_put(mlx, win, 15, y += 30,  16777215, "Y/U: Rotate Y axis");
-    mlx_string_put(mlx, win, 15, y += 30,  16777215, "Rotate Z axis :");
-     mlx_string_put(mlx, win, 30, y += 30,  16777215, "SHIFT/z");
-    mlx_string_put(mlx, win, 15, y += 30,  16777215, "Projection");
-    mlx_string_put(mlx, win, 57, y += 25,  16777215, "ISO: 3 Key");
-    mlx_string_put(mlx, win, 57, y += 25,  16777215, "Parallel: 2 Key");
-    free(itoi);
-    free(zom);
+	
+    int img_width, img_height;
+    void *img_ptr;
+
+    img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, "X-Axis-rotation-_1_.xpm", &img_width, &img_height);
+    if (img_ptr == NULL)
+    {
+        ft_putstr_fd("Failed to load background image.\n", 2);
+        return;
+    }
+    mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img_ptr, 0, 0);
 }
 void intianl(fdf *data,int *min ,int *max,int *value)
 {
@@ -72,13 +58,41 @@ int get_color_3d(fdf **data)
     start_color = ft_atoi((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x]);
     end_color = ft_atoi((*data)->matrix[(*data)->color_end_y][(*data)->color_end_x]);
     if (start_color != 0)
-        color1 =16711680; // Rouge 16711680
+        color1 = 0x9F6976; // Rouge 0x432371
     else
-        color1 = 65289; //(*data)->color_change; // Blanc 16777215
+        color1 =  0x432371; //(*data)->color_change; // Blanc 0x9F6976
     if (end_color != 0)
-        color2 = 16711680; // Rouge 16711680
+        color2 =  0x9F6976; // Rouge 16711680
     else
-        color2 = 65289;//(*data)->color_change; // Blanc
+        color2 =  0x432371;//(*data)->color_change; // Blanc
     color = get_gradient(color1, color2, ratio);
     return (color);
 }
+int  mouse_press(int key,int x,int y,fdf **data)
+{
+	if(key == 4)
+    {
+        (*data)->zoom -= 1;
+         if( (*data)->zoom < 2)
+             (*data)->zoom = 1;
+    }
+    else if(key == 5)
+        (*data)->zoom += 1;
+    mlx_clear_window( (*data)->mlx_ptr,  (*data)->win_ptr);
+    if((*data)->form == 2)
+        draw_2D(data); 
+    else
+        draw_3D(data); 
+    print_menu(*data);
+	return(0);
+}
+// if (percent < 0.2)
+// 		return (0x432371);
+// 	else if (percent < 0.4)
+// 		return (0x714674);
+// 	else if (percent < 0.6)
+// 		return (0x9F6976);
+// 	else if (percent < 0.8)
+// 		return (0xCC8B79);
+// 	else
+// 		return (0xFAAE7B);

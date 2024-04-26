@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:27:04 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/24 19:06:56 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/24 21:30:30 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void rotate_z(double *x, double *y, double angle)
 {
     double x_temp;
-    
     x_temp = *x;
     *x = (*x * cos(angle)) - (*y * sin(angle));
     *y = x_temp * sin(angle) + *y * cos(angle);

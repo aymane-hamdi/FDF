@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/24 18:45:26 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/25 11:19:15 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void trasformation(double *x1, double *y1, double *x2, double *y2, fdf **data)
 	int tmp_x1;
 	int tmp_x2;
 	double angle;
+	
 	rotate_x(y1,data,y2);
 	rotate_y(x1, data,x2);
 	rotate_z(x1, y1,(*data)->angel_z);
@@ -32,7 +33,11 @@ void trasformation(double *x1, double *y1, double *x2, double *y2, fdf **data)
 void draw_bresenham(double x1, double y1, double x2, double y2, fdf **data)
 {
 	(*data)->z1 = ft_atoi((*data)->matrix[(int)y1][(int)x1]);
-	(*data)->z2 = ft_atoi((*data)->matrix[(int)y2][(int)x2]); 
+	(*data)->z2 = ft_atoi((*data)->matrix[(int)y2][(int)x2]);
+	if((*data)->z1!=0)
+		(*data)->z1 +=(*data)->h;
+	if((*data)->z2!=0)
+		(*data)->z2 +=(*data)->h;
 	(*data)->color_start_x=x1;
 	(*data)->color_start_y=y1;
 	(*data)->color_end_x=x2;
@@ -63,14 +68,14 @@ void bresenham(double x1, double y1, double x2, double y2, fdf **data)
 		if(ft_strchr((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x],',') != NULL)
 		{
 			color = hexToInt(ft_strchr((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x],',')+1);
-			my_mlx_pixel_put(data, x1+(*data)->mov_cote, y1+(*data)->mouv_haut, color);
+			my_mlx_pixel_put(data, x1+(*data)->mov_cote+300, y1+(*data)->mouv_haut, color);
 		}
 		else
 		{
 			(*data)->x1 = x1;
         	(*data)->y1 = y1;
         	color = get_color_3d(data);
-			my_mlx_pixel_put(data, x1+(*data)->mov_cote, y1+(*data)->mouv_haut, color);
+			my_mlx_pixel_put(data, x1+(*data)->mov_cote+300, y1+(*data)->mouv_haut, color);
 		}
         x1 += x_step;
         y1 += y_step;

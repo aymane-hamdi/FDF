@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/24 19:12:57 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/26 21:52:52 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,29 +35,34 @@ int close_window(fdf *data)
 
 void initial_data(fdf **data,char **argv)
 {
-	(*data)->width_window = 1000;
-	if((*data)->height >=500)
-		(*data)->height_window = (*data)->height *2;
-	else
-		(*data)->height_window = 1000;
-	(*data)->form = 2;
+	(*data)->width_window = 1500;
+	// if((*data)->height >=500)
+	// 	(*data)->height_window = (*data)->height *2;
+	// else
+		(*data)->height_window = 1500;
+	(*data)->form = 3;
 	set_zoom(data);
 	(*data)->color_change = 16777215;
-	(*data)->mov_cote = (((*data)->width_window) /2);
+	(*data)->mov_cote = (((*data)->width_window-300) /2);
 	(*data)->mouv_haut = (*data)->height_window /2;
 	(*data)->argv = argv;
+	(*data)->h= 0;
 	(*data)->angel_x = 0;
 	(*data)->angel_y = 0;
 	(*data)->angel_z = -1.400000;
 }
 void fontion_mlx_and_draw(fdf **data)
 {
-	draw_2D(data);
+	
+	int img_width, img_height;
+    void *img_ptr;
+
+	draw_3D(data);
 	print_menu(*data); 
 	mlx_key_hook((*data)->win_ptr, key_press, data);
+	mlx_hook((*data)->win_ptr, 4, 0, mouse_press,data);
 	mlx_hook((*data)->win_ptr, 17, 0, close_window, *data);
-	// mlx_hook((*data)->win_ptr, 4, 0, mouse_press, data);
-	// mlx_hook((*data)->win_ptr, 5, 0, mouse_press, data);
+	
 }
 int main(int argc, char **argv)
 {
@@ -83,6 +88,7 @@ int main(int argc, char **argv)
 	}
 	fontion_mlx_and_draw(&data);
 	mlx_loop(data->mlx_ptr);
+	system("leaks fdf");
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	return(0);
 }
