@@ -6,12 +6,13 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/26 21:57:20 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/27 12:18:25 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf.h"
 #include <time.h>
+
 int autour_pres(int key, fdf **data)
 {
     if (key == 7)
@@ -22,40 +23,32 @@ int autour_pres(int key, fdf **data)
         (*data)->angel_y += 0.2;
     else if (key == 32)
         (*data)->angel_y -= 0.2;
-    if (key == 6) {
-         (*data)->angel_z += 0.2;
-    }
+    if (key == 6)
+        (*data)->angel_z += 0.2;;
     if (key == 0)
         (*data)->angel_z -= 0.2;
     return (0);
 }
 
-// Fonction pour effectuer une rotation continue de l'objet autour de l'axe z
-void rotate_continuous_z(fdf **data) {
-    clock_t start_time = clock(); // Heure de début de la rotation
-    double duration; // Durée écoulée depuis le début de la rotation
-
-    while ((*data)->rotating < 1000) {
-        // Calculer la durée écoulée depuis le début de la rotation en secondes
-        duration = (double)(clock() - start_time) / CLOCKS_PER_SEC;
-
-        if (duration >= 1.0) { // Rotation pendant 1 seconde
-            (*data)->rotating = 1000; // Arrêter la rotation continue
-        } else {
-            (*data)->angel_z += 0.2; // Continuer la rotation
-            mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
-            draw_3D(data);
-            usleep(10000); // Attendre 10 millisecondes entre chaque rafraîchissement
-        }
+void rotate_continuous_z(fdf **data)
+{
+    while ((*data)->rotating < 1000)
+    {
+        (*data)->angel_z += 0.2;
+        mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
+        draw_3D(data);
+        usleep(100000);
+        (*data)->rotating++;
     }
 }
-// int  stop_rotation(int key, fdf **data)
-// {
-//     printf("%d\n",key);
-//     if(key == 49)
-//         (*data)->rotating = 0;
-//     return(0);
-// }
+
+int  stop_rotation(int key, fdf **data)
+{
+    printf("%d\n",key);
+    if(key == 49)
+        (*data)->rotating = 0;
+    return(0);
+}
 void zoom(int key, fdf **data)
 {
     if (key == 69)
@@ -86,7 +79,7 @@ int reset(int key,fdf **data)
     if(key== 15)
     {
         set_zoom(data);
-        (*data)->mov_cote = (((*data)->width_window-300) /2);
+        (*data)->mov_cote = (((*data)->width_window - 300) /2);
         (*data)->mouv_haut = (*data)->height_window /2;
         (*data)->angel_x = 0;
         (*data)->angel_y = 0;
@@ -114,9 +107,9 @@ int key_press(int key, fdf **data)
     else if(key == 85)
         (*data)->form = 3; 
     if(key == 8)
-      (*data)->color_change =16777216;
+      (*data)->color_change = 16777216;
     else if(key == 9)
-        (*data)->color_change =16777215;
+        (*data)->color_change = 16777215;
     mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
     zoom(key, data);
     mouv_cote(key,data);
