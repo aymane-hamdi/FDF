@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   control_mouse.c                                    :+:      :+:    :+:   */
+/*   control_mouse_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/26 21:57:31 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/27 22:39:40 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"fdf.h"
+#include"fdf_bonus.h"
 
 void	print_menu(fdf *data)
 {
@@ -18,7 +18,7 @@ void	print_menu(fdf *data)
     int img_width, img_height;
     void *img_ptr;
 
-    img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, "X-Axis-rotation-_1_.xpm", &img_width, &img_height);
+    img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, "bonus/X-Axis-rotation-_1_.xpm", &img_width, &img_height);
     if (img_ptr == NULL)
     {
         ft_putstr_fd("Failed to load background image.\n", 2);
@@ -58,13 +58,13 @@ int get_color_3d(fdf **data)
     start_color = ft_atoi((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x]);
     end_color = ft_atoi((*data)->matrix[(*data)->color_end_y][(*data)->color_end_x]);
     if (start_color != 0)
-        color1 = 0x9F6976; // Rouge 0x432371
+        color1 = 16711680; // Rouge 0x432371
     else
-        color1 =  0x432371; //(*data)->color_change; // Blanc 0x9F6976
+        color1 =  0x9F6976; //(*data)->color_change; // Blanc 0x9F6976
     if (end_color != 0)
-        color2 =  0x9F6976; // Rouge 16711680
+        color2 =  16711680; // Rouge 16711680
     else
-        color2 =  0x432371;//(*data)->color_change; // Blanc
+        color2 =  0x9F6976;//(*data)->color_change; // Blanc
     color = get_gradient(color1, color2, ratio);
     return (color);
 }
@@ -86,13 +86,3 @@ int  mouse_press(int key,int x,int y,fdf **data)
     print_menu(*data);
 	return(0);
 }
-// if (percent < 0.2)
-// 		return (0x432371);
-// 	else if (percent < 0.4)
-// 		return (0x714674);
-// 	else if (percent < 0.6)
-// 		return (0x9F6976);
-// 	else if (percent < 0.8)
-// 		return (0xCC8B79);
-// 	else
-// 		return (0xFAAE7B);

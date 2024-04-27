@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/26 21:55:57 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/27 22:16:59 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#ifndef FDF_H
-#define FDF_H
-#include"libft/libft.h"
-#include"get_next_line/get_next_line.h"
+#ifndef FDF_BONUS_H
+#define FDF_BONUS_H
+#include"../libft/libft.h"
+#include"../get_next_line/get_next_line.h"
 #include<stdio.h>
 #include<fcntl.h>
-#include "miniliblx/minilibx_macos/mlx.h"
+#include "../miniliblx/minilibx_macos/mlx.h"
 #include<math.h>
 #include<stdio.h>
 
@@ -27,6 +27,7 @@ typedef struct
     int x1;
     int x2;
     int y1;
+    int key;
     int y2;
     float angel_x;
     float angel_y;
@@ -70,10 +71,10 @@ typedef struct
     int g;
     int b;
 } Color;
-void rotate_continuous_z(fdf **data);
-int  stop_rotation(int key, fdf **data);
+int rotate_object_z(fdf **data);
+int rotate_object_y(fdf **data);
+int rotate_object_x(fdf **data);
 void	my_mlx_pixel_put(fdf **data, int x, int y, int color);
-void draw_image(fdf **data);
 int len_str(char **str);
 void draw_bresenham(double x1, double y1, double x2, double y2, fdf **data);
 int hexToInt(const char *hex) ;
@@ -94,4 +95,5 @@ void rotate_y(double *x1, fdf **data, double *x2);
 void rotate_x(double *y1,fdf **data,double *y2);
 void set_zoom(fdf **data);
 int  mouse_press(int key,int x,int y,fdf **data);
+int rotate_object(fdf **data);
 #endif

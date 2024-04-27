@@ -1,49 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawin_3D.c                                        :+:      :+:    :+:   */
+/*   driwn_2D_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/25 11:19:15 by ahamdi           ###   ########.fr       */
+/*   Created: 2024/04/18 16:37:31 by ahamdi            #+#    #+#             */
+/*   Updated: 2024/04/27 22:17:41 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"fdf.h"
+#include"fdf_bonus.h"
 
-void trasformation(double *x1, double *y1, double *x2, double *y2, fdf **data)
+void center_and_zoom(fdf **data, double *x1, double *y1, double *x2, double *y2)
 {
-	int tmp_x1;
-	int tmp_x2;
-	double angle;
+	double new_with = (*data)->width / 2;
+	double new_height =(*data)->height / 2;
 	
-	rotate_x(y1,data,y2);
-	rotate_y(x1, data,x2);
-	rotate_z(x1, y1,(*data)->angel_z);
-	rotate_z(x2,y2,(*data)->angel_z);
-	angle = 30 * M_PI / 180;
-	tmp_x1 = *x1;
-	*x1 = (tmp_x1 - *y1) * cos(angle);
-	*y1 = (tmp_x1 + *y1) * sin(angle) - (*data)->z1;
-	tmp_x2 = *x2;
-	*x2 = (tmp_x2 - *y2) * cos(angle);
-	*y2 = (tmp_x2 + *y2) * sin(angle) - (*data)->z2;
+	*x1 =(*x1 - new_with) * (*data)->zoom;
+	*y1=(*y1 - new_height) * (*data)->zoom;
+	*x2=(*x2 -  new_with) * (*data)->zoom;
+	*y2=(*y2 - new_height) * (*data)->zoom;
+	if((*data)->z_max <= 50)
+	{
+		(*data)->z1*= (*data)->zoom;
+		(*data)->z2*= (*data)->zoom;
+	}
 }
-void draw_bresenham(double x1, double y1, double x2, double y2, fdf **data)
-{
-	(*data)->z1 = ft_atoi((*data)->matrix[(int)y1][(int)x1]);
-	(*data)->z2 = ft_atoi((*data)->matrix[(int)y2][(int)x2]);
-	if((*data)->z1!=0)
-		(*data)->z1 +=(*data)->h;
-	if((*data)->z2!=0)
-		(*data)->z2 +=(*data)->h;
-	(*data)->color_start_x=x1;
-	(*data)->color_start_y=y1;
-	(*data)->color_end_x=x2;
-	(*data)->color_end_y=y2;
-}
-void bresenham(double x1, double y1, double x2, double y2, fdf **data)
+
+void bresenham_2D(double x1, double y1, double x2, double y2, fdf **data)
 {
     double x_step;
 	double y_step;
@@ -51,7 +36,6 @@ void bresenham(double x1, double y1, double x2, double y2, fdf **data)
 	int color;
 	draw_bresenham(x1,  y1, x2,  y2, data);
 	center_and_zoom(data,&x1, &y1, &x2, &y2);
-	trasformation(&x1, &y1,&x2,&y2,data);
 	x_step = x2 - x1;
 	y_step = y2 - y1;
 	double abs_x_step = fabs(x_step);
@@ -82,7 +66,7 @@ void bresenham(double x1, double y1, double x2, double y2, fdf **data)
     }  
 }
 
-void draw_3D(fdf **data)
+void draw_2D(fdf **data)
 {
     int x;
     int y;
@@ -97,13 +81,23 @@ void draw_3D(fdf **data)
         while (x < (*data)->width)
         {
               if( (*data)->matrix[y][x + 1])
-				bresenham(x,(y), (x+1),y,data);
+				bresenham_2D(x,(y), (x+1),y,data);
 			
             if((*data)->matrix[y + 1])
-				bresenham(x,(y), x, (y+1), data);
+				bresenham_2D(x,(y), x, (y+1), data);
             x++;
         }
         y++;
     }
 	mlx_put_image_to_window((*data)->mlx_ptr, (*data)->win_ptr, (*data)->img, 0, 0);
 }
+void	my_mlx_pixel_put(fdf **data, int x, int y, int color)
+{
+	char	*dst;
+	if(x < 0 || y < 0 || x >= 2000 || y >= 2000)
+		return ;
+	(*data)->addr = mlx_get_data_addr((*data)->img, &(*data)->bits_per_pixel, &(*data)->line_length,&(*data)->endian);
+	dst = (*data)->addr + (y * (*data)->line_length + x * ((*data)->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+

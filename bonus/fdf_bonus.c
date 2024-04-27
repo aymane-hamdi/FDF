@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   fdf_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/26 21:52:52 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/27 22:17:45 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"fdf.h"
+#include"fdf_bonus.h"
+
 void set_zoom(fdf **data)
 {
 	int x_zoom;
@@ -51,6 +52,7 @@ void initial_data(fdf **data,char **argv)
 	(*data)->angel_y = 0;
 	(*data)->angel_z = -1.400000;
 }
+
 void fontion_mlx_and_draw(fdf **data)
 {
 	

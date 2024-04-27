@@ -1,54 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   control_keybord.c                                  :+:      :+:    :+:   */
+/*   control_keybord_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 12:18:25 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/27 22:17:30 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"fdf.h"
-#include <time.h>
+#include"fdf_bonus.h"
 
 int autour_pres(int key, fdf **data)
 {
     if (key == 7)
-        (*data)->angel_x += 0.2;
+    {
+        (*data)->key = 1;
+        mlx_loop_hook((*data)->mlx_ptr, rotate_object_x, data);
+    }
     else if (key == 2)
         (*data)->angel_x -= 0.2;
     if (key == 16)
-        (*data)->angel_y += 0.2;
+    {
+        (*data)->key = 1;
+        mlx_loop_hook((*data)->mlx_ptr, rotate_object_y, data);
+    }
     else if (key == 32)
         (*data)->angel_y -= 0.2;
     if (key == 6)
-        (*data)->angel_z += 0.2;;
+    {
+        (*data)->key = 1;
+        mlx_loop_hook((*data)->mlx_ptr, rotate_object_z, data);
+    }
+    if(key == 49)
+    {
+        (*data)->key = 0;
+    }
     if (key == 0)
         (*data)->angel_z -= 0.2;
     return (0);
 }
 
-void rotate_continuous_z(fdf **data)
-{
-    while ((*data)->rotating < 1000)
-    {
-        (*data)->angel_z += 0.2;
-        mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
-        draw_3D(data);
-        usleep(100000);
-        (*data)->rotating++;
-    }
-}
-
-int  stop_rotation(int key, fdf **data)
-{
-    printf("%d\n",key);
-    if(key == 49)
-        (*data)->rotating = 0;
-    return(0);
-}
 void zoom(int key, fdf **data)
 {
     if (key == 69)
