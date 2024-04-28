@@ -6,25 +6,24 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 22:39:40 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/28 21:46:10 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf_bonus.h"
 
-void	print_menu(fdf *data)
+void	print_menu(fdf **data)
 {
 	
     int img_width, img_height;
-    void *img_ptr;
 
-    img_ptr = mlx_xpm_file_to_image(data->mlx_ptr, "bonus/X-Axis-rotation-_1_.xpm", &img_width, &img_height);
-    if (img_ptr == NULL)
+     (*data)->img_print= mlx_xpm_file_to_image((*data)->mlx_ptr, "bonus/X-Axis-rotation-_1_.xpm", &img_width, &img_height);
+    if ((*data)->img_print == NULL)
     {
         ft_putstr_fd("Failed to load background image.\n", 2);
         return;
     }
-    mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img_ptr, 0, 0);
+    mlx_put_image_to_window((*data)->mlx_ptr, (*data)->win_ptr, (*data)->img_print, 0, 0);
 }
 void intianl(fdf *data,int *min ,int *max,int *value)
 {
@@ -58,13 +57,13 @@ int get_color_3d(fdf **data)
     start_color = ft_atoi((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x]);
     end_color = ft_atoi((*data)->matrix[(*data)->color_end_y][(*data)->color_end_x]);
     if (start_color != 0)
-        color1 = 16711680; // Rouge 0x432371
+        color1 = (*data)->color1; // Rouge 0x432371
     else
-        color1 =  0x9F6976; //(*data)->color_change; // Blanc 0x9F6976
+        color1 = (*data)->color1; //(*data)->color_change; // Blanc 0x9F6976
     if (end_color != 0)
-        color2 =  16711680; // Rouge 16711680
+        color2 =  (*data)->color1; // Rouge 16711680
     else
-        color2 =  0x9F6976;//(*data)->color_change; // Blanc
+        color2 = (*data)->color1;//(*data)->color_change; // Blanc
     color = get_gradient(color1, color2, ratio);
     return (color);
 }
@@ -79,10 +78,12 @@ int  mouse_press(int key,int x,int y,fdf **data)
     else if(key == 5)
         (*data)->zoom += 1;
     mlx_clear_window( (*data)->mlx_ptr,  (*data)->win_ptr);
+    mlx_destroy_image((*data)->mlx_ptr, (*data)->img_print);
+    mlx_destroy_image((*data)->mlx_ptr, (*data)->img);
     if((*data)->form == 2)
         draw_2D(data); 
     else
         draw_3D(data); 
-    print_menu(*data);
+    print_menu(data);
 	return(0);
 }

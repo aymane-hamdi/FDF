@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 22:17:45 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/28 21:44:40 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ void set_zoom(fdf **data)
    	if((*data)->zoom == 0)
 	(*data)->zoom = 2;
 }
-int close_window(fdf *data)
+int close_window(fdf **data)
 {
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	mlx_destroy_window((*data)->mlx_ptr,(*data)->win_ptr);
+	mlx_destroy_image((*data)->mlx_ptr, (*data)->img_print);
+    mlx_destroy_image((*data)->mlx_ptr, (*data)->img);
 	ft_putstr_fd(" close window",1);
-	free(data); 
+	free(*data); 
 	exit(0); 
 }
 
@@ -51,6 +53,11 @@ void initial_data(fdf **data,char **argv)
 	(*data)->angel_x = 0;
 	(*data)->angel_y = 0;
 	(*data)->angel_z = -1.400000;
+	(*data)->r = 255;
+	(*data)->g = 30;
+	(*data)->b = 90;
+	(*data)->color1 =  16753920;
+	(*data)->color2 = 65280;
 }
 
 void fontion_mlx_and_draw(fdf **data)
@@ -60,10 +67,11 @@ void fontion_mlx_and_draw(fdf **data)
     void *img_ptr;
 
 	draw_3D(data);
-	print_menu(*data); 
+	draw_3D_inverce(data);
+	print_menu(data); 
 	mlx_key_hook((*data)->win_ptr, key_press, data);
 	mlx_hook((*data)->win_ptr, 4, 0, mouse_press,data);
-	mlx_hook((*data)->win_ptr, 17, 0, close_window, *data);
+	mlx_hook((*data)->win_ptr, 17, 0, close_window, data);
 	
 }
 int main(int argc, char **argv)
@@ -91,6 +99,5 @@ int main(int argc, char **argv)
 	fontion_mlx_and_draw(&data);
 	mlx_loop(data->mlx_ptr);
 	system("leaks fdf");
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	return(0);
 }

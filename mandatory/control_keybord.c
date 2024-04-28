@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 21:51:06 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/28 14:49:25 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int key_press(int key, fdf **data)
 {
     if (key == 53)
-        close_window(*data);
+        close_window(data);
     return (0);
 }

@@ -6,11 +6,12 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 22:03:17 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/28 14:49:19 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf.h"
+
 void set_zoom(fdf **data)
 {
 	int x_zoom;
@@ -25,11 +26,11 @@ void set_zoom(fdf **data)
    	if((*data)->zoom == 0)
 	(*data)->zoom = 2;
 }
-int close_window(fdf *data)
+int close_window(fdf **data)
 {
-	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
+	mlx_destroy_window((*data)->mlx_ptr, (*data)->win_ptr);
 	ft_putstr_fd(" close window",1);
-	free(data); 
+	free(*data); 
 	exit(0); 
 }
 
@@ -57,7 +58,7 @@ void fontion_mlx_and_draw(fdf **data)
 
 	draw_3D(data);
 	mlx_key_hook((*data)->win_ptr, key_press, data);
-	mlx_hook((*data)->win_ptr, 17, 0, close_window, *data);
+	mlx_hook((*data)->win_ptr, 17, 0, close_window, data);
 }
 int main(int argc, char **argv)
 {

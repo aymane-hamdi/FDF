@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 22:17:37 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/28 21:32:46 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,16 +91,48 @@ void draw_3D(fdf **data)
     
     y = 0;
 	(*data)->img = mlx_new_image((*data)->mlx_ptr,2000, 2000);
-   while (y < (*data)->height )
+   while (y < (*data)->height)
     {
        x = 0;
         while (x < (*data)->width)
         {
               if( (*data)->matrix[y][x + 1])
 				bresenham(x,(y), (x+1),y,data);
-			
             if((*data)->matrix[y + 1])
 				bresenham(x,(y), x, (y+1), data);
+            x++;
+        }
+        y++;
+    }
+	mlx_put_image_to_window((*data)->mlx_ptr, (*data)->win_ptr, (*data)->img, 0, 0);
+}
+void draw_3D_inverce(fdf **data)
+{
+    int x;
+    int y;
+    int x1;
+    int y1;
+    
+    y = 0;
+   while (y < (*data)->height)
+    {
+       x = 0;
+        while (x < (*data)->width)
+        {
+			if(y < (*data)->height - 1)
+			{
+				if( (*data)->matrix[y+1][x + 1])
+				{
+					bresenham(x,y, x+1,y+1,data);
+			  	}
+			}
+			if(y > 0)
+			{
+				if((*data)->matrix[y-1][x+1])
+				{
+					bresenham(x,y, x+1, y-1, data);
+				}
+			}
             x++;
         }
         y++;

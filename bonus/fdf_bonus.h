@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 22:16:59 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/28 20:46:42 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,13 @@ typedef struct
     char **argv;
     int form;
     int z_max;
+    int r;
+    int g;
+    int b;
+    int color1;
+    int color2;
     void	*img;
+    void    *img_print;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -85,15 +91,17 @@ int get_height(char *argv);
 int get_width(char *argv);
 void draw_3D(fdf **data);
 void draw_2D(fdf **data);
-void	print_menu(fdf *data);
+void	print_menu(fdf **data);
+int change_colore(fdf **data);
 int autour_pres(int key, fdf **data);
 int key_press(int key, fdf **data);
-int close_window(fdf *data);
+int close_window(fdf **data);
 int get_color_3d(fdf **data);
 void rotate_z(double *x, double *y, double angle);
 void rotate_y(double *x1, fdf **data, double *x2);
 void rotate_x(double *y1,fdf **data,double *y2);
 void set_zoom(fdf **data);
 int  mouse_press(int key,int x,int y,fdf **data);
-int rotate_object(fdf **data);
+int rgb_to_number(int r, int g, int b);
+void draw_3D_inverce(fdf **data);
 #endif
