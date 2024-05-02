@@ -6,46 +6,50 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:37:31 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/02 21:25:03 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/02 22:15:26 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf_bonus.h"
 
-void center_and_zoom(t_fdf **data)
+void	center_and_zoom(t_fdf **data)
 {
-	double new_with = (*data)->width / 2;
-	double new_height =(*data)->height / 2;
-	
-	(*data)->x1 =((*data)->x1 - new_with) * (*data)->zoom;
-	(*data)->y1=((*data)->y1 - new_height) * (*data)->zoom;
-	(*data)->x2=((*data)->x2 -  new_with) * (*data)->zoom;
-	(*data)->y2=((*data)->y2 - new_height) * (*data)->zoom;
-	if((*data)->z_max <= 50)
+	double	new_with;
+	double	new_height;
+
+	new_with = (*data)->width / 2;
+	new_height = (*data)->height / 2;
+	(*data)->x1 = ((*data)->x1 - new_with) * (*data)->zoom;
+	(*data)->y1 = ((*data)->y1 - new_height) * (*data)->zoom;
+	(*data)->x2 = ((*data)->x2 - new_with) * (*data)->zoom;
+	(*data)->y2 = ((*data)->y2 - new_height) * (*data)->zoom;
+	if ((*data)->z_max <= 50)
 	{
-		(*data)->z1*= (*data)->zoom;
-		(*data)->z2*= (*data)->zoom;
+		(*data)->z1 *= (*data)->zoom;
+		(*data)->z2 *= (*data)->zoom;
 	}
 }
 
-void bresenham_2D(t_fdf **data)
+void	bresenham_2D(t_fdf **data)
 {
-	double x_step;
-	double y_step;
-	double MAX;
-	int color;
+	double	x_step;
+	double	y_step;
+	double	MAX;
+	int		color;
+	double	abs_x_step;
+	double	abs_y_step;
 
 	draw_bresenham(data);
 	center_and_zoom(data);
 	x_step = (*data)->x2 - (*data)->x1;
 	y_step = (*data)->y2 - (*data)->y1;
-	double abs_x_step = fabs(x_step);
-    double abs_y_step = fabs(y_step);
+	abs_x_step = fabs(x_step);
+	abs_y_step = fabs(y_step);
 	MAX = fmaxf(abs_x_step, abs_y_step);
 	x_step /= MAX;
 	y_step /= MAX;
-	(*data)->start_x= (*data)->x1;
-	(*data)->start_y= (*data)->y1;
+	(*data)->start_x = (*data)->x1;
+	(*data)->start_y = (*data)->y1;
    	while ((x_step > 0 && (*data)->x1 <= (*data)->x2) || (x_step < 0 && (*data)->x1 >= (*data)->x2) || 
        (y_step > 0 && (*data)->y1 <= (*data)->y2) || (y_step < 0 && (*data)->y1 >= (*data)->y2))
     {
