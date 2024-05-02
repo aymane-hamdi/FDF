@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 22:02:57 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/02 17:24:43 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,41 +23,41 @@
 
 typedef struct
 {
-    int h;
-    int x1;
-    int x2;
-    int y1;
-    int key;
-    int y2;
-    float angel_x;
-    float angel_y;
-    float angel_z;
-    int x;
-    int y;
-    int color_change;
-    int color_start_x;
-    int color_start_y;
-    int color_end_x;
-    int color_end_y;
-    double z1;
-    double z2;
-    int color;
-    int mov_cote;
-    int mouv_haut;
-    int zoom;
-    int width;
-    int height;
-    int width_window;
-    int height_window;
-    float start_x;
-    float start_y;
-    char  ***matrix;
-    void *mlx_ptr;
-    void *win_ptr;
-    char **argv;
-    int form;
-    int z_max;
-    void	*img;
+	int h;
+	float x1;
+	float x2;
+	float y1;
+	float y2;
+	int key;
+	float angel_x;
+	float angel_y;
+	float angel_z;
+	int x;
+	int y;
+	int color_change;
+	int color_start_x;
+	int color_start_y;
+	int color_end_x;
+	int color_end_y;
+	double z1;
+	double z2;
+	int color;
+	int mov_cote;
+	int mouv_haut;
+	int zoom;
+	int width;
+	int height;
+	int width_window;
+	int height_window;
+	float start_x;
+	float start_y;
+	char  ***matrix;
+	void *mlx_ptr;
+	void *win_ptr;
+	char **argv;
+	int form;
+	int z_max;
+	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -66,21 +66,22 @@ typedef struct
 
 typedef struct
 {
-    int r;
-    int g;
-    int b;
+	int r;
+	int g;
+	int b;
 } Color;
-int key_press(int key, fdf **data);
-void	my_mlx_pixel_put(fdf **data, int x, int y, int color);
-int len_str(char **str);
-void draw_bresenham(double x1, double y1, double x2, double y2, fdf **data);
-int hexToInt(const char *hex) ;
-void center_and_zoom(fdf **data, double *x1, double *y1, double *x2, double *y2);
-unsigned int get_gradient(unsigned int start_int, unsigned int end_int, double ratio);
-void red_map(char *argv,fdf **data);
-int get_height(char *argv);
-int get_width(char *argv);
-void draw_3D(fdf **data);
-int close_window(fdf *data);
-int get_color_3d(fdf **data);
+
+int				key_press(int key, fdf **data);
+void			my_mlx_pixel_put(fdf **data, int x, int y, int color);
+int				len_str(char **str);
+void			draw_bresenham(fdf **data);
+int				hexToInt(const char *hex);
+void			center_and_zoom(fdf **data);
+unsigned int	get_gradient(unsigned int start_int, unsigned int end_int, double ratio);
+void			red_map(char *argv, fdf **data);
+int				get_height(char *argv);
+int				get_width(char *argv);
+void			draw_3d(fdf **data);
+int				close_window(fdf **data);
+int				get_color_3d(fdf **data);
 #endif

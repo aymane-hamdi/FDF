@@ -8,6 +8,7 @@
         "string_view": "c",
         "vector": "c",
         "sstream": "c",
-        "time.h": "c"
+        "time.h": "c",
+        "fdf_bonus.h": "c"
     }
 }

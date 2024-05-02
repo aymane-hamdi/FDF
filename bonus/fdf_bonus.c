@@ -6,13 +6,13 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/28 21:44:40 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/02 21:25:56 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf_bonus.h"
 
-void set_zoom(fdf **data)
+void set_zoom(t_fdf**data)
 {
 	int x_zoom;
 	int y_zoom;
@@ -26,7 +26,7 @@ void set_zoom(fdf **data)
    	if((*data)->zoom == 0)
 	(*data)->zoom = 2;
 }
-int close_window(fdf **data)
+int close_window(t_fdf**data)
 {
 	mlx_destroy_window((*data)->mlx_ptr,(*data)->win_ptr);
 	mlx_destroy_image((*data)->mlx_ptr, (*data)->img_print);
@@ -36,31 +36,28 @@ int close_window(fdf **data)
 	exit(0); 
 }
 
-void initial_data(fdf **data,char **argv)
+void initial_data(t_fdf**data,char **argv)
 {
-	(*data)->width_window = 1500;
-	// if((*data)->height >=500)
-	// 	(*data)->height_window = (*data)->height *2;
-	// else
-		(*data)->height_window = 1500;
+	(*data)->width_window =  1920;
+	(*data)->height_window = 1080;
 	(*data)->form = 3;
 	set_zoom(data);
 	(*data)->color_change = 16777215;
 	(*data)->mov_cote = (((*data)->width_window-300) /2);
 	(*data)->mouv_haut = (*data)->height_window /2;
 	(*data)->argv = argv;
-	(*data)->h= 0;
+	(*data)->h = 0;
 	(*data)->angel_x = 0;
 	(*data)->angel_y = 0;
 	(*data)->angel_z = -1.400000;
 	(*data)->r = 255;
 	(*data)->g = 30;
 	(*data)->b = 90;
-	(*data)->color1 =  16753920;
+	(*data)->color1 =  16711680;
 	(*data)->color2 = 65280;
 }
 
-void fontion_mlx_and_draw(fdf **data)
+void fontion_mlx_and_draw(t_fdf**data)
 {
 	
 	int img_width, img_height;
@@ -72,13 +69,12 @@ void fontion_mlx_and_draw(fdf **data)
 	mlx_key_hook((*data)->win_ptr, key_press, data);
 	mlx_hook((*data)->win_ptr, 4, 0, mouse_press,data);
 	mlx_hook((*data)->win_ptr, 17, 0, close_window, data);
-	
 }
 int main(int argc, char **argv)
 {
-	fdf *data;
+	t_fdf*data;
    
-	data = (fdf*)malloc(sizeof(fdf));
+	data = (t_fdf*)malloc(sizeof(t_fdf));
 	data->mlx_ptr = mlx_init();
 	red_map(argv[1],&data);
 	initial_data(&data,argv);
@@ -88,7 +84,7 @@ int main(int argc, char **argv)
 		free(data); // Libérer la mémoire allouée à data
 		exit (1);
 	}
-	data->win_ptr = mlx_new_window(data->mlx_ptr,  data->width_window+200,   data->height_window+200, "FDF project");
+	data->win_ptr = mlx_new_window(data->mlx_ptr,  data->width_window+200,   data->height_window+200, "t_t_fdfproject");
 	if (data->win_ptr == NULL)
 	{
 		ft_putstr_fd("Failed to create a new window.\n",2);
@@ -98,6 +94,5 @@ int main(int argc, char **argv)
 	}
 	fontion_mlx_and_draw(&data);
 	mlx_loop(data->mlx_ptr);
-	system("leaks fdf");
 	return(0);
 }

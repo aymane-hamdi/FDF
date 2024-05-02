@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/28 14:49:19 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/30 21:43:30 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,13 @@ int close_window(fdf **data)
 
 void initial_data(fdf **data,char **argv)
 {
-	(*data)->width_window = 1500;
-	// if((*data)->height >=500)
-	// 	(*data)->height_window = (*data)->height *2;
-	// else
-		(*data)->height_window = 1500;
+	(*data)->width_window = 1000;
+	(*data)->height_window = 1000;
 	(*data)->form = 3;
 	set_zoom(data);
 	(*data)->color_change = 16777215;
-	(*data)->mov_cote = (((*data)->width_window-300) /2);
-	(*data)->mouv_haut = (*data)->height_window /2;
+	(*data)->mov_cote = ((*data)->width_window - (*data)->width*(*data)->zoom) /2;
+	(*data)->mouv_haut = ((*data)->height_window  - (*data)->height) /2;
 	(*data)->argv = argv;
 	(*data)->angel_z = -1.400000;
 }
@@ -56,7 +53,7 @@ void fontion_mlx_and_draw(fdf **data)
 	int img_width, img_height;
     void *img_ptr;
 
-	draw_3D(data);
+	draw_3d(data);
 	mlx_key_hook((*data)->win_ptr, key_press, data);
 	mlx_hook((*data)->win_ptr, 17, 0, close_window, data);
 }

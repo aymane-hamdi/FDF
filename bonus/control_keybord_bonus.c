@@ -6,15 +6,14 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/28 21:39:00 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/02 21:24:25 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"fdf_bonus.h"
 
-int autour_pres(int key, fdf **data)
+int autour_pres(int key, t_fdf **data)
 {
-    printf("key = %d\n",key);
    if(key == 257)
    {
         mlx_loop_hook((*data)->mlx_ptr, change_colore, data);
@@ -47,7 +46,8 @@ int autour_pres(int key, fdf **data)
     return (0);
 }
 
-void zoom(int key, fdf **data)
+
+void zoom(int key, t_fdf **data)
 {
     if (key == 69)
         (*data)->zoom +=1;
@@ -58,21 +58,21 @@ void zoom(int key, fdf **data)
             (*data)->zoom = 1;
     }
 }
-void mouv_cote(int key,fdf **data)
+void mouv_cote(int key,t_fdf **data)
 {
     if(key == 124)
         (*data)->mov_cote += 100;
     else if(key == 123)
         (*data)->mov_cote -= 100;
 }
-void mouve_haute(int key ,fdf **data)
+void mouve_haute(int key ,t_fdf **data)
 {
     if(key == 	126)
         (*data)->mouv_haut -= 100;
     else if(key == 125)
          (*data)->mouv_haut += 100;
 }
-int reset(int key,fdf **data)
+int reset(int key,t_fdf **data)
 {
     if(key== 15)
     {
@@ -86,7 +86,7 @@ int reset(int key,fdf **data)
     
     return (0);
 }
-int key_press(int key, fdf **data)
+int key_press(int key, t_fdf **data)
 {
     reset(key,data);
     autour_pres(key,data);
@@ -115,7 +115,10 @@ int key_press(int key, fdf **data)
     mouv_cote(key,data);
     mouve_haute(key ,data);
     if((*data)->form == 2)
+    {
         draw_2D(data); 
+        draw_2D_inverce(data);
+    }
     else
     {
         draw_3D(data);

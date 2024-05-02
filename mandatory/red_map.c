@@ -1,4 +1,5 @@
 #include"fdf.h"
+
 static int	ft_count_words(char const *str, char sep)
 {
 	int	i;

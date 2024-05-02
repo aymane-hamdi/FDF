@@ -1,4 +1,4 @@
-#include"fdf_bonus.h"
+#include "fdf_bonus.h"
 
 static int	ft_count_words(char const *str, char sep)
 {
@@ -44,7 +44,7 @@ int get_height(char *argv)
 	
 }
 
-void red_map(char *argv,fdf **data)
+void red_map(char *argv,t_fdf **data)
 {
 	int i = 0;
 	int y = 0;

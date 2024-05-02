@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:32:16 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 22:00:06 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/04/30 21:25:38 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,13 @@ unsigned int get_gradient(unsigned int start_int, unsigned int end_int, double r
     int b = (int)(start.b + ratio * (end.b - start.b));
     unsigned int rgb = (r << 16) | (g << 8) | b;
     return rgb;
+}
+void	my_mlx_pixel_put(fdf **data, int x, int y, int color)
+{
+	char	*dst;
+	if(x < 0 || y < 0 || x >= 2000 || y >= 2000)
+		return ;
+	(*data)->addr = mlx_get_data_addr((*data)->img, &(*data)->bits_per_pixel, &(*data)->line_length,&(*data)->endian);
+	dst = (*data)->addr + (y * (*data)->line_length + x * ((*data)->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
 }
