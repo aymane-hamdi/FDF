@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:32:16 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/02 21:39:44 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/02 21:50:02 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ unsigned int	get_gradient(unsigned int start_int,
 	return ((r << 16) | (g << 8) | b);
 }
 
-void	intianl(t_fdf *data,int *min , int *max, int *value)
+void	intianl(t_fdf *data, int *min, int *max, int *value)
 {
 	if ((data->x2 - data->start_x) > (data->y2 - data->start_y))
 	{

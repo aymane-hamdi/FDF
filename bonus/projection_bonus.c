@@ -6,22 +6,27 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:27:04 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/02 21:27:04 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/02 21:49:20 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"fdf_bonus.h"
+#include "fdf_bonus.h"
 
-void rotate_z(t_fdf**data)
+void	rotate_z(t_fdf**data)
 {
-	double x1_temp;
+	double	x1_temp;
+	double	x2_temp;
+
 	x1_temp = (*data)->x1;
-	(*data)->x1 = ((*data)->x1 * cos((*data)->angel_z)) - ((*data)->y1 * sin((*data)->angel_z));
-	(*data)->y1 = x1_temp * sin((*data)->angel_z) + ((*data)->y1 * cos((*data)->angel_z));
-	double x2_temp;
+	(*data)->x1 = ((*data)->x1 * cos((*data)->angel_z)) 
+		- ((*data)->y1 * sin((*data)->angel_z));
+	(*data)->y1 = x1_temp * sin((*data)->angel_z) 
+		+ ((*data)->y1 * cos((*data)->angel_z));
 	x2_temp = (*data)->x2;
-	(*data)->x2 = ((*data)->x2 * cos((*data)->angel_z)) - ((*data)->y2 * sin((*data)->angel_z));
-	(*data)->y2 = x2_temp * sin((*data)->angel_z) + ((*data)->y2 * cos((*data)->angel_z));
+	(*data)->x2 = ((*data)->x2 * cos((*data)->angel_z)) 
+		- ((*data)->y2 * sin((*data)->angel_z));
+	(*data)->y2 = x2_temp * sin((*data)->angel_z) 
+		+ ((*data)->y2 * cos((*data)->angel_z));
 }
 
 void	rotate_y(t_fdf**data)
