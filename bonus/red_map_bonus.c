@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   red_map_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/03 12:12:43 by ahamdi            #+#    #+#             */
+/*   Updated: 2024/05/03 15:45:04 by ahamdi           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf_bonus.h"
 
 static int	ft_count_words(char const *str, char sep)
@@ -39,9 +51,9 @@ int	get_height(char *argv)
 	while (line)
 	{
 		i++;
+		free(line);
 		line = get_next_line(fd);
 	}
-	free(line);
 	close(fd);
 	return (i);
 }
@@ -76,22 +88,17 @@ void	red_map(char *argv, t_fdf **data)
 			(*data)->matrix[i][y] = ft_strdup(line_int[y]);
 			if (ft_atoi(line_int[y]) > z_max)
 				z_max = ft_atoi(line_int[y]);
+			free(line_int[y]);
 			y++;
 		}
+		free(line_int);
 		(*data)->matrix[i][y] = NULL;
 		i++;
+		free(line);
 		line = get_next_line(fd);
 	}
 	(*data)->matrix[i] = NULL;
 	(*data)->z_max = z_max;
-	i = 0;
-	while (line_int[i])
-	{
-		free(line_int[i]);
-		i++;
-	}
-	free(line_int);
-	free(line);
 	close (fd);
 }
 

@@ -6,10 +6,9 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/02 21:28:20 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 15:00:23 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef FDF_BONUS_H
 # define FDF_BONUS_H
@@ -77,32 +76,41 @@ typedef struct s_Color
 	int	b;
 }t_Color;
 
-int rotate_object_z(t_fdf **data);
-int rotate_object_y(t_fdf **data);
-int rotate_object_x(t_fdf **data);
-void	my_mlx_pixel_put(t_fdf **data, int x, int y, int color);
-int len_str(char **str);
-void draw_bresenham(t_fdf **data);
-int hexToInt(const char *hex) ;
-void center_and_zoom(t_fdf **data);
-unsigned int get_gradient(unsigned int start_int, unsigned int end_int, double ratio);
-void red_map(char *argv,t_fdf **data);
-int get_height(char *argv);
-int get_width(char *argv);
-void draw_3D(t_fdf **data);
-void draw_2D(t_fdf **data);
-void	print_menu(t_fdf **data);
-int change_colore(t_fdf **data);
-int autour_pres(int key, t_fdf **data);
-int key_press(int key, t_fdf **data);
-int close_window(t_fdf **data);
-int get_color_3d(t_fdf **data);
-void rotate_z(t_fdf **data);
-void rotate_y(t_fdf **data);
-void rotate_x(t_fdf **data);
-void set_zoom(t_fdf **data);
-int  mouse_press(int key,int x,int y,t_fdf **data);
-int rgb_to_number(int r, int g, int b);
-void draw_3D_inverce(t_fdf **data);
-void draw_2D_inverce(t_fdf **data);
+int				rotate_object_z(t_fdf **data);
+int				reset(int key, t_fdf **data);
+int				rotate_object_y(t_fdf **data);
+void			draw(t_fdf **data);
+int				rotate_object_x(t_fdf **data);
+void			my_mlx_pixel_put(t_fdf **data, int x, int y, int color);
+int				len_str(char **str);
+void			draw_bresenham(t_fdf **data);
+int				hexToInt(const char *hex);
+void			center_and_zoom(t_fdf **data);
+unsigned int	get_gradient(unsigned int start_int, 
+					unsigned int end_int, double ratio);
+void			red_map(char *argv, t_fdf **data);
+int				get_height(char *argv);
+void			while_loop(t_fdf **data, double x_step, double y_step);
+int				get_width(char *argv);
+void			draw_3d(t_fdf **data);
+void			draw_2d(t_fdf **data);
+void			print_menu(t_fdf **data);
+int				change_colore(t_fdf **data);
+int				autour_pres(int key, t_fdf **data);
+int				key_press(int key, t_fdf **data);
+int				close_window(t_fdf **data);
+int				get_color_3d(t_fdf **data);
+void			mouve_haute(int key, t_fdf **data);
+void			rotate_z(t_fdf **data);
+void			rotate_y(t_fdf **data);
+void			rotate_x(t_fdf **data);
+void			chek_leaks(void);
+void			set_zoom(t_fdf **data);
+int				mouse_press(int key, int x, int y, t_fdf **data);
+void			free_3d_char_array(t_fdf **data);
+int				rgb_to_number(int r, int g, int b);
+void			draw_3d_inverce(t_fdf **data);
+void			draw_2d_inverce(t_fdf **data);
+void			my_mlx_pixel_put(t_fdf **data, int x, int y, int color);
+void			free_data(t_fdf **data);
 #endif

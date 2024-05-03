@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/02 21:24:38 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:50:12 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,27 @@ int	mouse_press(int key, int x, int y, t_fdf **data)
 	mlx_destroy_image((*data)->mlx_ptr, (*data)->img);
 	if ((*data)->form == 2)
 	{
-		draw_2D(data);
-		draw_2D_inverce(data);
+		draw_2d(data);
+		draw_2d_inverce(data);
 	}
 	else
 	{
-		draw_3D(data);
-		draw_3D_inverce(data);
+		draw_3d(data);
+		draw_3d_inverce(data);
 	}
 	print_menu(data);
 	return (0);
+}
+
+void	my_mlx_pixel_put(t_fdf **data, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x < 0 || y < 0 || x >= 2000 || y >= 2000)
+		return ;
+	(*data)->addr = mlx_get_data_addr((*data)->img,
+			&(*data)->bits_per_pixel, &(*data)->line_length, &(*data)->endian);
+	dst = (*data)->addr + (y * (*data)->line_length 
+			+ x * ((*data)->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

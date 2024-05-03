@@ -6,12 +6,11 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:32:16 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/02 21:50:02 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 12:11:03 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"fdf_bonus.h"
-
+#include "fdf_bonus.h"
 
 t_Color	int_to_color(unsigned int rgb)
 {
@@ -34,7 +33,6 @@ unsigned int	get_gradient(unsigned int start_int,
 
 	start = int_to_color(start_int);
 	end = int_to_color(end_int);
-
 	r = (int)(start.r + ratio * (end.r - start.r));
 	g = (int)(start.g + ratio * (end.g - start.g));
 	b = (int)(start.b + ratio * (end.b - start.b));
@@ -56,6 +54,7 @@ void	intianl(t_fdf *data, int *min, int *max, int *value)
 		*max = data->y2;
 	}
 }
+
 int	get_color_3d(t_fdf **data)
 {
 	int		color;
@@ -68,23 +67,25 @@ int	get_color_3d(t_fdf **data)
 	int		end_color;
 	float	ratio;
 
-	intianl(*data,&min ,&max,&value);
+	intianl(*data, &min , &max, &value);
 	ratio = (value - min) / (float)(max - min);
-	start_color = ft_atoi((*data)->matrix[(*data)->color_start_y][(*data)->color_start_x]);
-	end_color = ft_atoi((*data)->matrix[(*data)->color_end_y][(*data)->color_end_x]);
+	start_color = ft_atoi((*data)->matrix[(*data)->color_start_y]
+		[(*data)->color_start_x]);
+	end_color = ft_atoi((*data)->matrix[(*data)->color_end_y]
+		[(*data)->color_end_x]);
 	if (start_color > 0)
-		color1 = (*data)->color1; // Rouge 0x432371
+		color1 = (*data)->color1; 
 	else
-		color1 = (*data)->color2; // Rouge 16711680
-  if ( end_color > 0)
-		color2 = (*data)->color1; // Rouge 0x432371   16777215
+		color1 = (*data)->color2;
+	if (end_color > 0)
+		color2 = (*data)->color1;
 	else
-		color2 = (*data)->color2 ; // Rouge 16711680
+		color2 = (*data)->color2 ;
 	color = get_gradient(color1, color2, ratio);
 	return (color);
 }
 
-int change_colore(t_fdf **data)
+int	change_colore(t_fdf **data)
 {
 	(*data)->r += 1;
 	if ((*data)->r > 255)
@@ -95,6 +96,6 @@ int change_colore(t_fdf **data)
 	(*data)->b += 1;
 	if ((*data)->b > 255)
 		(*data)->b = 0;
-	(*data)->color1 = rgb_to_number((*data)->r,(*data)->g,(*data)->b);
-	return(0);
+	(*data)->color1 = rgb_to_number((*data)->r, (*data)->g, (*data)->b);
+	return (0);
 }

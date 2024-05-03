@@ -6,11 +6,11 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:10:45 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/02 21:27:39 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 10:27:58 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fdf_bonus.h"
+#include "fdf_bonus.h"
 
 int	rotate_object_z(t_fdf **data)
 {
@@ -31,8 +31,8 @@ int	rotate_object_z(t_fdf **data)
 		(*data)->color1 = rgb_to_number((*data)->r, (*data)->g, (*data)->b);
 		(*data)->color2 = 16777215;
 		(*data)->angel_z += 0.02;
-		draw_3D(data);
-		draw_3D_inverce(data); 
+		draw_3d(data);
+		draw_3d_inverce(data); 
 		print_menu(data);
 	}
 	return (0);
@@ -46,8 +46,8 @@ int	rotate_object_y(t_fdf **data)
 		mlx_destroy_image((*data)->mlx_ptr, (*data)->img_print);
 		mlx_destroy_image((*data)->mlx_ptr, (*data)->img);
 		(*data)->angel_y += 0.02;
-		draw_3D(data);
-		draw_3D_inverce(data); 
+		draw_3d(data);
+		draw_3d_inverce(data); 
 		print_menu(data);
 	}
 	return (0);
@@ -61,8 +61,8 @@ int	rotate_object_x(t_fdf **data)
 		mlx_destroy_image((*data)->mlx_ptr, (*data)->img_print);
 		mlx_destroy_image((*data)->mlx_ptr, (*data)->img);
 		(*data)->angel_x += 0.02;
-		draw_3D(data);
-		draw_3D_inverce(data);
+		draw_3d(data);
+		draw_3d_inverce(data);
 		print_menu(data);
 	}
 	return (0);

@@ -9,6 +9,7 @@
         "vector": "c",
         "sstream": "c",
         "time.h": "c",
-        "fdf_bonus.h": "c"
+        "fdf_bonus.h": "c",
+        "__tuple": "c"
     }
 }
