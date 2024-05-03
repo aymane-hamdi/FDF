@@ -27,21 +27,24 @@ int get_width(char *line)
 	return(width);
 }
 
-int get_height(char *argv)
+int	get_height(char *argv)
 {
-	char *line;
-	int fd = open(argv,O_RDONLY);
-	int i = 0;
+	char	*line;
+
+	int	fd;
+	int	i;
+
+	i = 0;
+	fd = open(argv, O_RDONLY);
 	line = get_next_line(fd);
 	while(line)
 	{
 		i++;
+		free(line);
 		line = get_next_line(fd);
 	}
-	free(line);
 	close(fd);
-	return(i);
-	
+	return (i);
 }
 
 void red_map(char *argv,fdf **data)
@@ -72,22 +75,17 @@ void red_map(char *argv,fdf **data)
 			(*data)->matrix[i][y]= ft_strdup(line_int[y]);
 			if(ft_atoi(line_int[y]) > z_max)
 				z_max = ft_atoi(line_int[y]);
+			free(line_int[y]);
 			y++;
 		}
+		free(line_int);
 		(*data)->matrix[i][y] = NULL;
 		i++;
+		free(line);
 		line = get_next_line(fd);
 	}
 	(*data)->matrix[i] = NULL;
 	(*data)->z_max = z_max;
-	i = 0;
-	while(line_int[i])
-	{
-		free(line_int[i]);
-		i++;
-	}
-	free(line_int);
-	free(line);
 	close (fd);
 }
 

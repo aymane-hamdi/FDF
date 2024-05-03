@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/30 21:43:30 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 15:56:46 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int close_window(fdf **data)
 {
 	mlx_destroy_window((*data)->mlx_ptr, (*data)->win_ptr);
 	ft_putstr_fd(" close window",1);
+	free_3d_char_array(data);
 	free(*data); 
 	exit(0); 
 }
@@ -62,6 +63,7 @@ int main(int argc, char **argv)
 	fdf *data;
    
 	data = (fdf*)malloc(sizeof(fdf));
+		atexit(chek_leaks);
 	data->mlx_ptr = mlx_init();
 	red_map(argv[1],&data);
 	initial_data(&data,argv);
@@ -82,5 +84,5 @@ int main(int argc, char **argv)
 	fontion_mlx_and_draw(&data);
 	mlx_loop(data->mlx_ptr);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	return(0);
+	return (0);
 }

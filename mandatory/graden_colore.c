@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:32:16 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/30 21:25:38 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 15:53:03 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,35 @@ void	my_mlx_pixel_put(fdf **data, int x, int y, int color)
 	(*data)->addr = mlx_get_data_addr((*data)->img, &(*data)->bits_per_pixel, &(*data)->line_length,&(*data)->endian);
 	dst = (*data)->addr + (y * (*data)->line_length + x * ((*data)->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+}
+
+
+void	free_3d_char_array(fdf **data)
+{
+    int	i;
+    int	j;
+
+    i = 0;
+    while ((*data)->matrix[i])
+    {
+        j = 0;
+        while ((*data)->matrix[i][j])
+        {
+            free((*data)->matrix[i][j]);
+            j++; 
+        }
+        free((*data)->matrix[i]);
+        i++;
+    }
+    free((*data)->matrix);
+}
+
+void free_data(fdf **data)
+{
+    free_3d_char_array(data);
+    free(*data);
+}
+void chek_leaks(void)
+{
+	system("leaks fdf");
 }

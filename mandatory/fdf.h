@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/02 17:24:43 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 15:53:30 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,12 @@ void			draw_bresenham(fdf **data);
 int				hexToInt(const char *hex);
 void			center_and_zoom(fdf **data);
 unsigned int	get_gradient(unsigned int start_int, unsigned int end_int, double ratio);
+void	free_3d_char_array(fdf **data);
 void			red_map(char *argv, fdf **data);
 int				get_height(char *argv);
 int				get_width(char *argv);
 void			draw_3d(fdf **data);
+void chek_leaks(void);
 int				close_window(fdf **data);
 int				get_color_3d(fdf **data);
 #endif
