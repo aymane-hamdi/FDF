@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:06 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 13:06:00 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 15:46:18 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,18 @@ int	reset(int key, t_fdf **data)
 	return (0);
 }
 
-void	draw(t_fdf **data)
+void	draw(t_fdf **data, int key)
 {
 	if ((*data)->form == 2)
-	{
 		draw_2d(data); 
+	else
+		draw_3d(data);
+	if (key == 92 && (*data)->form == 2)
+	{
+		draw_2d(data);
 		draw_2d_inverce(data);
 	}
-	else
+	if (key == 92 && (*data)->form == 3)
 	{
 		draw_3d(data);
 		draw_3d_inverce(data);
@@ -49,28 +53,26 @@ void	mouve_haute(int key, t_fdf **data)
 		(*data)->mouv_haut += 100;
 }
 
-void	free_3d_char_array(t_fdf **data)
+void	free_data(t_fdf **data)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while ((*data)->matrix[i])
+	if ((*data)->matrix != NULL)
 	{
-		j = 0;
-		while ((*data)->matrix[i][j])
+		while ((*data)->matrix[i])
 		{
-			free((*data)->matrix[i][j]);
-			j++; 
+			j = 0;
+			while ((*data)->matrix[i][j])
+			{
+				free((*data)->matrix[i][j]);
+				j++; 
+			}
+			free((*data)->matrix[i]);
+			i++;
 		}
-		free((*data)->matrix[i]);
-		i++;
+		free((*data)->matrix);
 	}
-	free((*data)->matrix);
-}
-
-void	free_data(t_fdf **data)
-{
-	free_3d_char_array(data);
 	free(*data);
 }

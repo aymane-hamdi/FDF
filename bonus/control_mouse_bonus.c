@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/03 11:50:12 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 16:57:26 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,7 @@ void	print_menu(t_fdf **data)
 	int	img_width;
 	int	img_height;
 
-	(*data)->img_print = mlx_xpm_file_to_image((*data)->mlx_ptr,
-			"bonus/X-Axis-rotation-_1_.xpm", &img_width, &img_height);
-	if ((*data)->img_print == NULL)
-	{
-		ft_putstr_fd("Failed to load background image.\n", 2);
-		return ;
-	}
-	mlx_put_image_to_window((*data)->mlx_ptr, (*data)->win_ptr, 
-		(*data)->img_print, 0, 0);
+	
 }
 
 int	mouse_press(int key, int x, int y, t_fdf **data)

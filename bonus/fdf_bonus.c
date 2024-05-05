@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 13:07:49 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 17:14:57 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	close_window(t_fdf**data)
 
 void	initial_data(t_fdf **data, char **argv)
 {
-	(*data)->width_window = 1500;
-	(*data)->height_window = 1500;
+	(*data)->width_window = 1920;
+	(*data)->height_window = 1080;
 	(*data)->form = 3;
 	set_zoom(data);
 	(*data)->color_change = 16777215;
@@ -55,7 +55,7 @@ void	initial_data(t_fdf **data, char **argv)
 	(*data)->g = 30;
 	(*data)->b = 90;
 	(*data)->color1 = 16711680;
-	(*data)->color2 = 16777216;
+	(*data)->color2 = 16777215;
 }
 
 void	fontion_mlx_and_draw(t_fdf**data)
@@ -65,7 +65,6 @@ void	fontion_mlx_and_draw(t_fdf**data)
 	void	*img_ptr;
 
 	draw_3d(data);
-	draw_3d_inverce(data);
 	print_menu(data); 
 	mlx_key_hook((*data)->win_ptr, key_press, data);
 	mlx_hook((*data)->win_ptr, 4, 0, mouse_press, data);

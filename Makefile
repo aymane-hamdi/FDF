@@ -6,7 +6,7 @@
 #    By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 17:58:05 by ahamdi            #+#    #+#              #
-#    Updated: 2024/05/05 13:15:02 by ahamdi           ###   ########.fr        #
+#    Updated: 2024/05/05 16:55:51 by ahamdi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ $(NAME): $(obj)
 bonus: $(BONUS)
 
 $(BONUS): $(objb)
-	@$(MAKE) -C libft 
+	@make  -C libft 
 	@gcc -o $(BONUS) $(objb) $(LIBFT) miniliblx/minilibx_macos/libmlx.a -framework OpenGL -framework AppKit  
 	@echo "\033[0;32mcompilation and created fdf bonus programme\033[0m"
 

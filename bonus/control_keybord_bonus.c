@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 12:44:48 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 17:46:03 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	mouv_cote(int key, t_fdf **data)
 {
 	if (key == 124)
 		(*data)->mov_cote += 100;
-	else if (key == 123)
+	if (key == 123)
 		(*data)->mov_cote -= 100;
 }
 
@@ -87,11 +87,10 @@ int	key_press(int key, t_fdf **data)
 	else if (key == 9)
 		(*data)->color_change = 16777215;
 	mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
-	mlx_destroy_image((*data)->mlx_ptr, (*data)->img_print);
 	mlx_destroy_image((*data)->mlx_ptr, (*data)->img);
 	zoom(key, data);
 	mouv_cote(key, data);
 	mouve_haute(key, data);
-	draw(data);
+	draw(data, key);
 	return (0);
 }

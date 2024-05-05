@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 13:22:51 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 17:17:40 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../miniliblx/minilibx_macos/mlx.h"
 # include <math.h>
 # include <fcntl.h>
+# include "color.h"
 
 typedef struct s_fdf
 {
@@ -77,8 +78,8 @@ typedef struct s_Color
 	int	b;
 }t_Color;
 
-void			error(void);
-void			cheke_map(char *argv);
+void			error(t_fdf **data);
+void			cheke_map(char *argv, t_fdf **data);
 void			process_word(t_fdf **data, char ***line_int, int *i, int *y);
 void			process_line(t_fdf **data, char **line, 
 					char ***line_int, int *i);
@@ -86,7 +87,7 @@ int				ft_count_words(char const *str, char sep);
 int				rotate_object_z(t_fdf **data);
 int				reset(int key, t_fdf **data);
 int				rotate_object_y(t_fdf **data);
-void			draw(t_fdf **data);
+void			draw(t_fdf **data, int key);
 int				rotate_object_x(t_fdf **data);
 void			my_mlx_pixel_put(t_fdf **data, int x, int y, int color);
 int				len_str(char **str);
