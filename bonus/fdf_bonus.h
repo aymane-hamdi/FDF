@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 17:17:40 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 17:47:14 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ typedef struct s_fdf
 	int		color1;
 	int		color2;
 	void	*img;
-	void	*img_print;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;

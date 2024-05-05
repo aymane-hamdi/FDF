@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 17:14:57 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 17:47:03 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	set_zoom(t_fdf**data)
 int	close_window(t_fdf**data)
 {
 	mlx_destroy_window((*data)->mlx_ptr, (*data)->win_ptr);
-	mlx_destroy_image((*data)->mlx_ptr, (*data)->img_print);
 	mlx_destroy_image((*data)->mlx_ptr, (*data)->img);
 	free_data(data);
 	ft_putstr_fd(" close window", 1);

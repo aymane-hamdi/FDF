@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 16:57:26 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 17:47:29 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	mouse_press(int key, int x, int y, t_fdf **data)
 	else if (key == 5)
 		(*data)->zoom += 1;
 	mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
-	mlx_destroy_image((*data)->mlx_ptr, (*data)->img_print);
 	mlx_destroy_image((*data)->mlx_ptr, (*data)->img);
 	if ((*data)->form == 2)
 	{
