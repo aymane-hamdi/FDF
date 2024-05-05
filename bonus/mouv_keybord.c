@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:06 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/03 19:49:09 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 13:06:00 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ void	free_3d_char_array(t_fdf **data)
 	free((*data)->matrix);
 }
 
-// void free_data(t_fdf **data)
-// {
-//     free_3d_char_array(data);
-//     free(*data);
-// }
+void	free_data(t_fdf **data)
+{
+	free_3d_char_array(data);
+	free(*data);
+}

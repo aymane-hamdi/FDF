@@ -6,12 +6,11 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:37:45 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/01/16 13:21:02 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 13:24:07 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 void	ft_chekfree(char *str, char *buff)
 {

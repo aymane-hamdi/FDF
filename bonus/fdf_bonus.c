@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/03 19:58:48 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 13:07:49 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int	close_window(t_fdf**data)
 	mlx_destroy_window((*data)->mlx_ptr, (*data)->win_ptr);
 	mlx_destroy_image((*data)->mlx_ptr, (*data)->img_print);
 	mlx_destroy_image((*data)->mlx_ptr, (*data)->img);
-	free_3d_char_array(data);
-	free(*data); 
+	free_data(data);
 	ft_putstr_fd(" close window", 1);
 	exit(0); 
 }
@@ -84,8 +83,7 @@ int	main(int argc, char **argv)
 	if (data->mlx_ptr == NULL)
 	{
 		ft_putstr_fd("Failed to initialize mlx.\n", 2);
-		free_3d_char_array(&data);
-		free(data);
+		free_data(&data);
 		exit (1);
 	}
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->width_window,
@@ -93,8 +91,7 @@ int	main(int argc, char **argv)
 	if (data->win_ptr == NULL)
 	{
 		ft_putstr_fd("Failed to create a new window.\n", 2);
-		free_3d_char_array(&data);
-		free(data); 
+		free_data(&data);
 		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		exit(1);
 	}

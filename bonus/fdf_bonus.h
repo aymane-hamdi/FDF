@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 12:46:15 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 13:22:51 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int				rotate_object_x(t_fdf **data);
 void			my_mlx_pixel_put(t_fdf **data, int x, int y, int color);
 int				len_str(char **str);
 void			draw_bresenham(t_fdf **data);
-int				hextoint(const char *hex);
+int				hexto_int(const char *hex);
 void			center_and_zoom(t_fdf **data);
 unsigned int	get_gradient(unsigned int start_int, 
 					unsigned int end_int, double ratio);
@@ -111,7 +111,6 @@ void			mouve_haute(int key, t_fdf **data);
 void			rotate_z(t_fdf **data);
 void			rotate_y(t_fdf **data);
 void			rotate_x(t_fdf **data);
-void			chek_leaks(void);
 void			set_zoom(t_fdf **data);
 int				mouse_press(int key, int x, int y, t_fdf **data);
 void			free_3d_char_array(t_fdf **data);

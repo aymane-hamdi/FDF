@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:37:31 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 12:46:51 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 13:09:49 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	while_loop(t_fdf **data, double x_step, double y_step)
 	{
 		if (ft_strchr((*data)->matrix[(*data)->color_start_y]
 				[(*data)->color_start_x], ',') != NULL)
-			color = hextoint(ft_strchr((*data)->matrix[(*data)->color_start_y]
+			color = hexto_int(ft_strchr((*data)->matrix[(*data)->color_start_y]
 					[(*data)->color_start_x], ',') + 1);
 		else
 			color = get_color_3d(data);

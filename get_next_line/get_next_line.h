@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:37:55 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/01/16 15:44:53 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 13:23:55 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 # define GET_NEXT_LINE_H
 # include <stdlib.h>
 # include <unistd.h>
-#include"../libft/libft.h"
+# include "../libft/libft.h"
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
 # endif
-#include<stdio.h>
+
 char	*ft_read(int fd, char *str, int r_byt);
 char	*ft_premierstr(char *str, int i);
 char	*ft_desiemstr(char *s, size_t i);

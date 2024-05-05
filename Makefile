@@ -6,7 +6,7 @@
 #    By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 17:58:05 by ahamdi            #+#    #+#              #
-#    Updated: 2024/05/05 12:41:54 by ahamdi           ###   ########.fr        #
+#    Updated: 2024/05/05 13:15:02 by ahamdi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ objb = $(srcb:.c=.o)
 NAME =	fdf
 BONUS = fdf_bonus
 LIBFT = libft/libft.a
-
+Header_mandatory =  mandatory/fdf.h
+Header_bonus = bonus/fdf_bonus.h
+Header_gnl = get_next_line/get_next_line.h 
 all: $(NAME)
 
 $(NAME): $(obj)
@@ -33,7 +35,7 @@ $(BONUS): $(objb)
 	@gcc -o $(BONUS) $(objb) $(LIBFT) miniliblx/minilibx_macos/libmlx.a -framework OpenGL -framework AppKit  
 	@echo "\033[0;32mcompilation and created fdf bonus programme\033[0m"
 
-%.o: %.c mandatory/fdf.h get_next_line/get_next_line.h bonus/fdf_bonus.h
+%.o: %.c $(Header_mandatory) $(Header_gnl) $(Header_bonus)
 	@gcc -c $< -o $@
     
 clean:
