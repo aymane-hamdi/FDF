@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:32:16 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/03 12:11:03 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 12:58:43 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,50 +39,49 @@ unsigned int	get_gradient(unsigned int start_int,
 	return ((r << 16) | (g << 8) | b);
 }
 
-void	intianl(t_fdf *data, int *min, int *max, int *value)
+void	intianl(t_fdf *data, float *ratio)
 {
+	int		max;
+	int		min;
+	int		value;
+
 	if ((data->x2 - data->start_x) > (data->y2 - data->start_y))
 	{
-		*value = data->x1;
-		*min = data->start_x;
-		*max = data->x2;
+		value = data->x1;
+		min = data->start_x;
+		max = data->x2;
 	}
 	else
 	{
-		*value = data->y1;
-		*min = data->start_y;
-		*max = data->y2;
+		value = data->y1;
+		min = data->start_y;
+		max = data->y2;
 	}
+	*ratio = (value - min) / (float)(max - min);
 }
 
 int	get_color_3d(t_fdf **data)
 {
-	int		color;
 	int		color1;
 	int		color2; 
-	int		value;
-	int		min;
-	int		max;
 	int		start_color;
 	int		end_color;
 	float	ratio;
 
-	intianl(*data, &min , &max, &value);
-	ratio = (value - min) / (float)(max - min);
+	intianl(*data, &ratio);
 	start_color = ft_atoi((*data)->matrix[(*data)->color_start_y]
 		[(*data)->color_start_x]);
 	end_color = ft_atoi((*data)->matrix[(*data)->color_end_y]
 		[(*data)->color_end_x]);
-	if (start_color > 0)
-		color1 = (*data)->color1; 
+	if (start_color != 0)
+		color1 = 16711680;
 	else
-		color1 = (*data)->color2;
-	if (end_color > 0)
-		color2 = (*data)->color1;
+		color1 = 0x9F6976;
+	if (end_color != 0)
+		color2 = 16711680;
 	else
-		color2 = (*data)->color2 ;
-	color = get_gradient(color1, color2, ratio);
-	return (color);
+		color2 = 0x9F6976;
+	return (get_gradient(color1, color2, ratio));
 }
 
 int	change_colore(t_fdf **data)

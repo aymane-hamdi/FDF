@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:27:04 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/02 21:49:20 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 12:45:19 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	len_str(char **str)
 	int	i;
 
 	i = 0;
-	while (str[i]!= NULL)
+	while (str[i] != NULL)
 		i++;
 	return (i);
 }

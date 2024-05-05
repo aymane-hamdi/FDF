@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:06 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/03 15:37:36 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 19:49:09 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	reset(int key, t_fdf **data)
 	return (0);
 }
 
-void draw(t_fdf **data)
+void	draw(t_fdf **data)
 {
 	if ((*data)->form == 2)
 	{
@@ -51,30 +51,26 @@ void	mouve_haute(int key, t_fdf **data)
 
 void	free_3d_char_array(t_fdf **data)
 {
-    int	i;
-    int	j;
+	int	i;
+	int	j;
 
-    i = 0;
-    while ((*data)->matrix[i])
-    {
-        j = 0;
-        while ((*data)->matrix[i][j])
-        {
-            free((*data)->matrix[i][j]);
-            j++; 
-        }
-        free((*data)->matrix[i]);
-        i++;
-    }
-    free((*data)->matrix);
+	i = 0;
+	while ((*data)->matrix[i])
+	{
+		j = 0;
+		while ((*data)->matrix[i][j])
+		{
+			free((*data)->matrix[i][j]);
+			j++; 
+		}
+		free((*data)->matrix[i]);
+		i++;
+	}
+	free((*data)->matrix);
 }
 
-void free_data(t_fdf **data)
-{
-    free_3d_char_array(data);
-    free(*data);
-}
-void chek_leaks(void)
-{
-	system("leaks fdf");
-}
+// void free_data(t_fdf **data)
+// {
+//     free_3d_char_array(data);
+//     free(*data);
+// }

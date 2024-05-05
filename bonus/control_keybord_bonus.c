@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/03 14:21:54 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 12:44:48 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	autour_pres(int key, t_fdf **data)
 		(*data)->angel_z -= 0.2;
 	return (0);
 }
-
 
 void	zoom(int key, t_fdf **data)
 {

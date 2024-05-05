@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:10:45 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/03 10:27:58 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 12:57:24 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	rotate_object_z(t_fdf **data)
 		if ((*data)->b > 255)
 			(*data)->b = 0;
 		(*data)->color1 = rgb_to_number((*data)->r, (*data)->g, (*data)->b);
-		(*data)->color2 = 16777215;
+		(*data)->color2 = rgb_to_number((*data)->r, (*data)->g, (*data)->b);
 		(*data)->angel_z += 0.02;
 		draw_3d(data);
 		draw_3d_inverce(data); 

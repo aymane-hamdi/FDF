@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/03 15:48:04 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/03 19:58:48 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	close_window(t_fdf**data)
 
 void	initial_data(t_fdf **data, char **argv)
 {
-	(*data)->width_window = 1920;
-	(*data)->height_window = 1080;
+	(*data)->width_window = 1500;
+	(*data)->height_window = 1500;
 	(*data)->form = 3;
 	set_zoom(data);
 	(*data)->color_change = 16777215;
@@ -56,7 +56,7 @@ void	initial_data(t_fdf **data, char **argv)
 	(*data)->g = 30;
 	(*data)->b = 90;
 	(*data)->color1 = 16711680;
-	(*data)->color2 = 65280;
+	(*data)->color2 = 16777216;
 }
 
 void	fontion_mlx_and_draw(t_fdf**data)
@@ -64,6 +64,7 @@ void	fontion_mlx_and_draw(t_fdf**data)
 	int		img_width; 
 	int		img_height;
 	void	*img_ptr;
+
 	draw_3d(data);
 	draw_3d_inverce(data);
 	print_menu(data); 
@@ -75,7 +76,7 @@ void	fontion_mlx_and_draw(t_fdf**data)
 int	main(int argc, char **argv)
 {
 	t_fdf	*data;
-		atexit(chek_leaks);
+
 	data = (t_fdf *) malloc(sizeof(t_fdf));
 	data->mlx_ptr = mlx_init();
 	red_map(argv[1], &data);
