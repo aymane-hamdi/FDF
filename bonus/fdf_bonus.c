@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 17:47:03 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 20:49:49 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	main(int argc, char **argv)
 
 	data = (t_fdf *) malloc(sizeof(t_fdf));
 	data->mlx_ptr = mlx_init();
+	atexit(leaks);
 	red_map(argv[1], &data);
 	initial_data(&data, argv);
 	if (data->mlx_ptr == NULL)

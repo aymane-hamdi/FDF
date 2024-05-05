@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:39:53 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 15:21:20 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 21:03:38 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,14 @@ void	cheke_map(char *argv, t_fdf **data)
 void	error(t_fdf **data)
 {
 	ft_putstr_fd("invalid map\n", 2);
-	free_data(data);
 	exit(1);
 }
 
 int	hexto_int(const char *hex)
 {
 	return ((int)strtol(hex, NULL, 16));
+}
+void leaks(void)
+{
+	system("leaks fdf_bonus");
 }

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 17:47:14 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 20:49:13 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void			process_word(t_fdf **data, char ***line_int, int *i, int *y);
 void			process_line(t_fdf **data, char **line, 
 					char ***line_int, int *i);
 int				ft_count_words(char const *str, char sep);
+void			leaks(void);
 int				rotate_object_z(t_fdf **data);
 int				reset(int key, t_fdf **data);
 int				rotate_object_y(t_fdf **data);

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 17:47:29 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/05 17:49:29 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	print_menu(t_fdf **data)
 	int	img_width;
 	int	img_height;
 
-	
 }
 
 int	mouse_press(int key, int x, int y, t_fdf **data)
