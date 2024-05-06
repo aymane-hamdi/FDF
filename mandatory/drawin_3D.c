@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 11:02:31 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/06 17:24:27 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	trasformation(t_fdf **data)
 	(*data)->y2 = (tmp_x2 + (*data)->y2) * sin(angle) - (*data)->z2;
 }
 
-void	draw_bresenham(t_fdf **data)
+void	draw_dda(t_fdf **data)
 {
 	(*data)->z1 = ft_atoi((*data)->matrix[(int)(*data)->y1][(int)(*data)->x1]);
 	(*data)->z2 = ft_atoi((*data)->matrix[(int)(*data)->y2][(int)(*data)->x2]);
@@ -67,7 +67,7 @@ void	while_loop(t_fdf **data, double x_step, double y_step)
 	(*data)->y2 = (*data)->color_end_y;
 }
 
-void	bresenham(t_fdf **data)
+void	dda(t_fdf **data)
 {
 	double		x_step;
 	double		y_step;
@@ -75,7 +75,7 @@ void	bresenham(t_fdf **data)
 	double		abs_x_step;
 	double		abs_y_step;
 
-	draw_bresenham(data);
+	draw_dda(data);
 	center_and_zoom(data);
 	trasformation(data);
 	x_step = (*data)->x2 - (*data)->x1;
@@ -102,11 +102,11 @@ void	draw_3d(t_fdf **data)
 			(*data)->x2 = (*data)->x1 + 1;
 			(*data)->y2 = (*data)->y1;
 			if ((*data)->matrix[(int)(*data)->y1][(int)(*data)->x1 + 1])
-				bresenham(data);
+				dda(data);
 			(*data)->y2 = (*data)->y1 + 1;
 			(*data)->x2 = (*data)->x1;
 			if ((*data)->matrix[(int)(*data)->y1 + 1])
-				bresenham(data);
+				dda(data);
 			(*data)->x1++;
 		}
 		(*data)->y1++;

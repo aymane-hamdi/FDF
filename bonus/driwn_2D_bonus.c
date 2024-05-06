@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:37:31 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 13:09:49 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/06 17:21:41 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,14 @@ void	while_loop(t_fdf **data, double x_step, double y_step)
 	(*data)->y2 = (*data)->color_end_y;
 }
 
-void	bresenham_2d(t_fdf **data)
+void	dda_2d(t_fdf **data)
 {
 	double	x_step;
 	double	y_step;
 	double	abs_x_step;
 	double	abs_y_step;
 
-	draw_bresenham(data);
+	draw_dda(data);
 	center_and_zoom(data);
 	x_step = (*data)->x2 - (*data)->x1;
 	y_step = (*data)->y2 - (*data)->y1;
@@ -88,11 +88,11 @@ void	draw_2d(t_fdf **data)
 			(*data)->x2 = (*data)->x1 + 1;
 			(*data)->y2 = (*data)->y1;
 			if ((*data)->matrix[(int)(*data)->y1][(int)(*data)->x1 + 1])
-				bresenham_2d(data);
+				dda_2d(data);
 			(*data)->y2 = (*data)->y1 + 1;
 			(*data)->x2 = (*data)->x1;
 			if ((*data)->matrix[(int)(*data)->y1 + 1])
-				bresenham_2d(data);
+				dda_2d(data);
 			(*data)->x1++;
 		}
 		(*data)->y1++;
@@ -114,13 +114,13 @@ void	draw_2d_inverce(t_fdf **data)
 			if ((*data)->y1 + 1 < (*data)->height
 				&& (*data)->x1 + 1 < (*data)->width
 				&& (*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
-				bresenham_2d(data);
+				dda_2d(data);
 			if ((*data)->y1 - 1 >= 0)
 			{
 				(*data)->y2 = (*data)->y1 - 1;
 				(*data)->x2 = (*data)->x1 + 1;
 				if ((*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
-					bresenham_2d(data);
+					dda_2d(data);
 			}
 			(*data)->x1++;
 		}

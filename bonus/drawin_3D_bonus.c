@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 17:34:58 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/06 17:23:13 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	trasformation(t_fdf **data)
 	(*data)->y2 = (tmp_x2 + (*data)->y2) * sin(angle) - (*data)->z2;
 }
 
-void	draw_bresenham(t_fdf **data)
+void	draw_dda(t_fdf **data)
 {
 	(*data)->z1 = ft_atoi((*data)->matrix[(int)(*data)->y1][(int)(*data)->x1]);
 	(*data)->z2 = ft_atoi((*data)->matrix[(int)(*data)->y2][(int)(*data)->x2]);
@@ -44,7 +44,7 @@ void	draw_bresenham(t_fdf **data)
 	(*data)->color_end_y = (int)(*data)->y2;
 }
 
-void	bresenham(t_fdf **data)
+void	ddr(t_fdf **data)
 {
 	double		x_step;
 	double		y_step;
@@ -52,7 +52,7 @@ void	bresenham(t_fdf **data)
 	double		abs_x_step;
 	double		abs_y_step;
 
-	draw_bresenham(data);
+	draw_dda(data);
 	center_and_zoom(data);
 	trasformation(data);
 	x_step = (*data)->x2 - (*data)->x1;
@@ -79,11 +79,11 @@ void	draw_3d(t_fdf **data)
 			(*data)->x2 = (*data)->x1 + 1;
 			(*data)->y2 = (*data)->y1;
 			if ((*data)->matrix[(int)(*data)->y1][(int)(*data)->x1 + 1])
-				bresenham(data);
+				ddr(data);
 			(*data)->y2 = (*data)->y1 + 1;
 			(*data)->x2 = (*data)->x1;
 			if ((*data)->matrix[(int)(*data)->y1 + 1])
-				bresenham(data);
+				ddr(data);
 			(*data)->x1++;
 		}
 		(*data)->y1++;
@@ -105,13 +105,13 @@ void	draw_3d_inverce(t_fdf **data)
 			if ((*data)->y1 + 1 < (*data)->height
 				&& (*data)->x1 + 1 < (*data)->width
 				&& (*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
-				bresenham(data);
+				ddr(data);
 			if ((*data)->y1 - 1 >= 0)
 			{
 				(*data)->y2 = (*data)->y1 - 1;
 				(*data)->x2 = (*data)->x1 + 1;
 				if ((*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
-					bresenham(data);
+					ddr(data);
 			}
 			(*data)->x1++;
 		}
