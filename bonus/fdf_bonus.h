@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/06 17:19:30 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/07 14:59:22 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <fcntl.h>
 # include "../miniliblx/minilibx_macos/mlx.h"
 # include <math.h>
-# include <fcntl.h>
 # include "color.h"
 
 typedef struct s_fdf

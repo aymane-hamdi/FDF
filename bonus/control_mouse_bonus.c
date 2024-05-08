@@ -6,19 +6,19 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/06 17:16:12 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/08 11:10:22 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-static void print(void	*mlx, void	*win, int *y)
+static void	print(void	*mlx, void	*win, int *y)
 {
-	mlx_string_put(mlx, win, 65, *y += 20, 0x00FF00FF , "HOW TO USE");
+	mlx_string_put(mlx, win, 65, *y += 20, 0x00FF00FF, "HOW TO USE");
 	mlx_string_put(mlx, win, 15, *y += 35, 0x000000FF, "ZOOM:");
-	mlx_string_put(mlx, win, 90, *y,TEXT_COLOR, "Scroll or +/-");
+	mlx_string_put(mlx, win, 90, *y, TEXT_COLOR, "Scroll or +/-");
 	mlx_string_put(mlx, win, 15, *y += 35, 0x000000FF, "Clarification:");
-	mlx_string_put(mlx, win, 190, *y , TEXT_COLOR, "9 Key");
+	mlx_string_put(mlx, win, 190, *y, TEXT_COLOR, "9 Key");
 }
 
 void	print_menu(t_fdf **data)

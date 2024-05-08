@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:39:53 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 21:03:38 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/07 14:55:18 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ void	process_line(t_fdf **data, char **line, char ***line_int, int *i)
 	int		y;
 
 	(*data)->matrix[*i] = malloc (((*data)->width + 1) * sizeof(char *));
+	if (!(*data)->matrix[*i])
+		error(data);
 	*line_int = ft_split(*line, ' ');
 	if (ft_count_words(*line, ' ') != (*data)->width)
-		error(data);
+		error(data); 
 	y = 0;
 	while ((*line_int)[y])
 		process_word(data, line_int, i, &y);
