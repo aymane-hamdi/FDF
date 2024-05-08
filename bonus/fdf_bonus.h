@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/07 14:59:22 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/08 14:42:58 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ int				key_press(int key, t_fdf **data);
 int				close_window(t_fdf **data);
 int				get_color_3d(t_fdf **data);
 void			mouve_haute(int key, t_fdf **data);
-void			rotate_z(t_fdf **data);
-void			rotate_y(t_fdf **data);
-void			rotate_x(t_fdf **data);
+void			rotate_x(t_fdf **data, double angle);
+void			rotate_y(t_fdf **data, double angle);
+void			rotate_z(t_fdf **data, double angle);
 void			set_zoom(t_fdf **data);
 int				mouse_press(int key, int x, int y, t_fdf **data);
 void			free_3d_char_array(t_fdf **data);

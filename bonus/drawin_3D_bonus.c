@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/07 12:31:05 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/08 14:43:44 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	trasformation(t_fdf **data)
 	int		tmp_x2;
 	double	angle;
 
+	rotate_x(data, (*data)->angel_x);
+	rotate_y(data, (*data)->angel_y);
+	rotate_z(data, (*data)->angel_z);
 	angle = 30 * M_PI / 180;
-	rotate_x(data);
-	rotate_y(data);
-	rotate_z(data);
 	tmp_x1 = (*data)->x1;
 	(*data)->x1 = (tmp_x1 - (*data)->y1) * cos(angle);
 	(*data)->y1 = (tmp_x1 + (*data)->y1) * sin(angle) - (*data)->z1;

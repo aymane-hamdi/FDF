@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/08 10:45:00 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/08 14:31:37 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	initial_data(t_fdf **data, char **argv)
 	(*data)->argv = argv;
 	(*data)->h = 0;
 	(*data)->angel_x = 0;
+	(*data)->angel_z = 0;
 	(*data)->angel_y = 0;
 	(*data)->angel_z = -1.400000;
 	(*data)->r = 255;
