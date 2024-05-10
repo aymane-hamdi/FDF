@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/08 14:31:37 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/10 12:44:17 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	set_zoom(t_fdf**data)
 	int	x_zoom;
 	int	y_zoom;
 
-	x_zoom = (((*data)->width_window) / (*data)->width/2) / 2;
-	y_zoom = ((*data)->height_window / (*data)->height/2) / 2;
+	x_zoom = (((*data)->width_window) / (*data)->width) / 2;
+	y_zoom = ((*data)->height_window / (*data)->height) / 2;
 	if (x_zoom < y_zoom)
 		(*data)->zoom = x_zoom + 1;
 	else
@@ -44,13 +44,12 @@ void	initial_data(t_fdf **data, char **argv)
 	set_zoom(data);
 	(*data)->color_change = 16777215;
 	(*data)->mov_cote = (((*data)->width_window) / 2);
-	(*data)->mouv_haut = (*data)->height_window / 2;
+	(*data)->mouv_haut = (*data)->height_window / 2 + 200;
 	(*data)->argv = argv;
 	(*data)->h = 0;
-	(*data)->angel_x = 0;
-	(*data)->angel_z = 0;
-	(*data)->angel_y = 0;
-	(*data)->angel_z = -1.400000;
+	(*data)->angel_x = 1.063597;
+	(*data)->angel_y = -0.040001;
+	(*data)->angel_z = -0.760001;
 	(*data)->r = 255;
 	(*data)->g = 30;
 	(*data)->b = 90;
@@ -77,7 +76,6 @@ int	main(int argc, char **argv)
 
 	data = (t_fdf *) malloc(sizeof(t_fdf));
 	data->mlx_ptr = mlx_init();
-	atexit(leaks);
 	red_map(argv[1], &data);
 	initial_data(&data, argv);
 	if (data->mlx_ptr == NULL)

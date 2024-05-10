@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:39:53 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/07 14:55:18 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/10 12:43:45 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,4 @@ void	error(t_fdf **data)
 int	hexto_int(const char *hex)
 {
 	return ((int)strtol(hex, NULL, 16));
-}
-void leaks(void)
-{
-	system("leaks fdf_bonus");
 }

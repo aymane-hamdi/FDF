@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:10:45 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 17:45:14 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/10 11:59:41 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,6 @@ int	rotate_object_z(t_fdf **data)
 	{
 		mlx_clear_window((*data)->mlx_ptr, (*data)->win_ptr);
 		mlx_destroy_image((*data)->mlx_ptr, (*data)->img);
-		(*data)->r += 40;
-		if ((*data)->r > 255)
-			(*data)->r = 0;
-		(*data)->g += 20;
-		if ((*data)->g > 255)
-			(*data)->g = 0;
-		(*data)->b += 10;
-		if ((*data)->b > 255)
-			(*data)->b = 0;
-		(*data)->color1 = rgb_to_number((*data)->r, (*data)->g, (*data)->b);
-		(*data)->color2 = rgb_to_number((*data)->r, (*data)->g, (*data)->b);
 		(*data)->angel_z += 0.02;
 		draw_3d(data);
 		draw_3d_inverce(data); 

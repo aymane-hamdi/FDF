@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:32:16 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 10:55:25 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/09 19:28:32 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	get_color_3d(t_fdf **data)
 	if (start_color != 0)
 		color1 = 16711680;
 	else
-		color1 = 0x9F6976;
+		color1 = 16777215;
 	if (end_color != 0)
 		color2 = 16711680;
 	else
-		color2 = 0x9F6976;
+		color2 = 16777215;
 	return (get_gradient(color1, color2, ratio));
 }
 

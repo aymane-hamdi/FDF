@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 17:46:03 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/10 11:58:37 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static int	autour_continu(int key, t_fdf **data)
 {
-	if (key == 7)
+	if (key == 86)
 	{
 		(*data)->key = 1;
 		mlx_loop_hook((*data)->mlx_ptr, rotate_object_x, data);
 	}
-	if (key == 16)
+	if (key == 87)
 	{
 		(*data)->key = 1;
 		mlx_loop_hook((*data)->mlx_ptr, rotate_object_y, data);
 	}
-	if (key == 6)
+	if (key == 88)
 	{
 		(*data)->key = 1;
 		mlx_loop_hook((*data)->mlx_ptr, rotate_object_z, data);
@@ -36,15 +36,21 @@ int	autour_pres(int key, t_fdf **data)
 {
 	autour_continu(key, data);
 	if (key == 257)
-		mlx_loop_hook((*data)->mlx_ptr, change_colore, data);
+		change_colore(data);
 	else if (key == 2)
 		(*data)->angel_x -= 0.2;
 	else if (key == 32)
 		(*data)->angel_y -= 0.2;
+	else if (key == 7)
+		(*data)->angel_x += 0.2;
+	else if (key == 16)
+		(*data)->angel_y += 0.2;
 	if (key == 49) 
 		(*data)->key = 0;
 	if (key == 0)
 		(*data)->angel_z -= 0.2;
+	if (key == 6)
+		(*data)->angel_z += 0.2;
 	return (0);
 }
 

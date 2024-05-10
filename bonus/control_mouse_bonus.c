@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/08 11:10:22 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/10 11:55:13 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	print_menu(t_fdf **data)
 	mlx_string_put(mlx, win, 15, y += 30, 0x000000FF, "Move");
 	mlx_string_put(mlx, win, 90, y, TEXT_COLOR, "< / >");
 	mlx_string_put(mlx, win, 15, y += 30, 0x000000FF, "Rotate:");
-	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "X-Axis - X/D");
-	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "Y-Axis - Y/U");
-	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "Z-Axis - Z/A");
+	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "X-Axis - X/D (4)");
+	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "Y-Axis - Y/U (5)");
+	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "Z-Axis - Z/A (6)");
 	mlx_string_put(mlx, win, 15, y += 30, 0x000000FF, "Projection");
 	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "ISO: 3 Key");
 	mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "Parallel: 2 Key");

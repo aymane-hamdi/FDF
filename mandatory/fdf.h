@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 13:21:56 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/10 12:47:29 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ typedef struct s_Color
 	int	b;
 }t_Color;
 
+void			rotate_x(t_fdf **data, double angle);
+void			rotate_y(t_fdf **data, double angle);
+void			rotate_z(t_fdf **data, double angle);
 int				ft_count_words(char const *str, char sep);
 void			cheke_map(char *argv);
 void			process_word(t_fdf **data, char ***line_int, int *i, int *y);

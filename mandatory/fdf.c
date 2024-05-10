@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 11:39:56 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/10 13:13:30 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ void	initial_data(t_fdf **data, char **argv)
 	(*data)->form = 3;
 	set_zoom(data);
 	(*data)->color_change = 16777215;
-	(*data)->mov_cote = ((*data)->width_window - (*data)->width) / 2;
+	(*data)->mov_cote = ((*data)->width_window - (*data)->width) / 2 ;
 	(*data)->mouv_haut = ((*data)->height_window - (*data)->height) / 2;
 	(*data)->argv = argv;
-	(*data)->angel_z = -1.400000;
-	(*data)->z_max = 0;
+	(*data)->angel_x = 1.063597;
+	(*data)->angel_y = -0.040001;
+	(*data)->angel_z = -0.760001;
 }
 
 void	fontion_mlx_and_draw(t_fdf **data)
