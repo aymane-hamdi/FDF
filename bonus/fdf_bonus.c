@@ -6,13 +6,13 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 12:44:17 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/10 15:03:32 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-void	set_zoom(t_fdf**data)
+void	set_zoom(t_fdf **data)
 {
 	int	x_zoom;
 	int	y_zoom;
@@ -21,10 +21,22 @@ void	set_zoom(t_fdf**data)
 	y_zoom = ((*data)->height_window / (*data)->height) / 2;
 	if (x_zoom < y_zoom)
 		(*data)->zoom = x_zoom + 1;
-	else
+	if (x_zoom > y_zoom)
 		(*data)->zoom = y_zoom + 1;
 	if ((*data)->zoom == 0)
 		(*data)->zoom = 2;
+	if ((*data)->z_max <= 50)
+	{
+		(*data)->mov_cote = ((*data)->width_window) / 2 ;
+		(*data)->mouv_haut = ((*data)->height_window) / 2
+			+((*data)->z_max * (*data)->zoom) / 2;
+	}
+	else
+	{
+		(*data)->mov_cote = ((*data)->width_window) / 2 ;
+		(*data)->mouv_haut = ((*data)->height_window) / 2 
+			+ ((*data)->z_max) / 2;
+	}
 }
 
 int	close_window(t_fdf**data)
@@ -38,13 +50,11 @@ int	close_window(t_fdf**data)
 
 void	initial_data(t_fdf **data, char **argv)
 {
-	(*data)->width_window = 1820;
+	(*data)->width_window = 1920;
 	(*data)->height_window = 1080;
 	(*data)->form = 3;
 	set_zoom(data);
 	(*data)->color_change = 16777215;
-	(*data)->mov_cote = (((*data)->width_window) / 2);
-	(*data)->mouv_haut = (*data)->height_window / 2 + 200;
 	(*data)->argv = argv;
 	(*data)->h = 0;
 	(*data)->angel_x = 1.063597;

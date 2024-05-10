@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:32:16 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/09 19:28:32 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/10 15:02:44 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	get_color_3d(t_fdf **data)
 	return (get_gradient(color1, color2, ratio));
 }
 
-t_Color	int_to_color(unsigned int rgb)
+t_Color	int_to_rgb(unsigned int rgb)
 {
 	t_Color	color;
 
@@ -76,8 +76,8 @@ unsigned int	get_gradient(unsigned int start_int,
 	int		g;
 	int		b;
 
-	start = int_to_color(start_int);
-	rend = int_to_color(end_int);
+	start = int_to_rgb(start_int);
+	rend = int_to_rgb(end_int);
 	r = (int)(start.r + ratio * (rend.r - start.r));
 	g = (int)(start.g + ratio * (rend.g - start.g));
 	b = (int)(start.b + ratio * (rend.b - start.b));

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 13:13:30 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/10 15:02:26 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ void	set_zoom(t_fdf **data)
 		(*data)->zoom = y_zoom + 1;
 	if ((*data)->zoom == 0)
 		(*data)->zoom = 2;
+	if ((*data)->z_max <= 50)
+	{
+		(*data)->mov_cote = ((*data)->width_window) / 2 ;
+		(*data)->mouv_haut = ((*data)->height_window) / 2
+			+((*data)->z_max * (*data)->zoom) / 2;
+	}
+	else
+	{
+		(*data)->mov_cote = ((*data)->width_window) / 2 ;
+		(*data)->mouv_haut = ((*data)->height_window) / 2 
+			+ ((*data)->z_max) / 2;
+	}
 }
 
 int	close_window(t_fdf **data)
@@ -43,8 +55,6 @@ void	initial_data(t_fdf **data, char **argv)
 	(*data)->form = 3;
 	set_zoom(data);
 	(*data)->color_change = 16777215;
-	(*data)->mov_cote = ((*data)->width_window - (*data)->width) / 2 ;
-	(*data)->mouv_haut = ((*data)->height_window - (*data)->height) / 2;
 	(*data)->argv = argv;
 	(*data)->angel_x = 1.063597;
 	(*data)->angel_y = -0.040001;
