@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 12:44:25 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/11 14:18:30 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ typedef struct s_fdf
 	double	y1;
 	double	y2;
 	int		key;
-	float	angel_x;
-	float	angel_y;
-	float	angel_z;
+	double	angel_x;
+	double	angel_y;
+	double	angel_z;
 	int		x;
 	int		y;
 	int		color_change;
