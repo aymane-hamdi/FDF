@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/12 15:00:22 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/12 15:20:15 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	set_zoom(t_fdf **data)
 
 	(*data)->zoom = fminf(((*data)->width_window) / (*data)->width / 2, 
 			(*data)->height_window / (*data)->height / 2);
-		(*data)->mov_cote = ((*data)->width_window) / 2 ;
-		(*data)->mouv_haut = ((*data)->height_window) / 2 + 200;
+	(*data)->mov_cote = ((*data)->width_window) / 2 ;
+	(*data)->mouv_haut = ((*data)->height_window) / 2 + 200;
 }
 
 int	close_window(t_fdf **data)
@@ -34,14 +34,14 @@ int	close_window(t_fdf **data)
 
 void	initial_data(t_fdf **data, char **argv)
 {
-	(*data)->width_window = 1920;
+	(*data)->width_window = 1080;
 	(*data)->height_window = 1080;
 	(*data)->form = 3;
 	set_zoom(data);
 	(*data)->argv = argv;
 	(*data)->angel_x = 0.863597;
 	(*data)->angel_y = -0.040001;
-	(*data)->angel_z = 13.039991;
+	(*data)->angel_z = 18.039997;
 }
 
 void	fontion_mlx_and_draw(t_fdf **data)
