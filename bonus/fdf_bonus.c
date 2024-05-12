@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/12 11:50:31 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/12 15:03:21 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,10 @@ void	set_zoom(t_fdf **data)
 	int	x_zoom;
 	int	y_zoom;
 
-	x_zoom = ((*data)->width_window / (*data)->width) / 2;
-	y_zoom = ((*data)->height_window / (*data)->height) / 2;
-	if (x_zoom < y_zoom)
-		(*data)->zoom = y_zoom + 1;
-	else if (x_zoom > y_zoom)
-		(*data)->zoom = x_zoom + 1;
-	else
-		(*data)->zoom = x_zoom + 1;
-	if ((*data)->zoom == 0)
-		(*data)->zoom = 2;
-	if ((*data)->z_max <= 50)
-	{
+	(*data)->zoom = fminf(((*data)->width_window - 250) / (*data)->width / 2, 
+			(*data)->height_window / (*data)->height / 2);
 		(*data)->mov_cote = ((*data)->width_window) / 2 ;
-		(*data)->mouv_haut = ((*data)->height_window) / 2
-			+ 100;
-	}
-	else
-	{
-		(*data)->mov_cote = ((*data)->width_window) / 2 ;
-		(*data)->mouv_haut = ((*data)->height_window) / 2;
-	}
+		(*data)->mouv_haut = ((*data)->height_window) / 2 + 200;
 }
 
 int	close_window(t_fdf**data)
@@ -55,17 +38,11 @@ void	initial_data(t_fdf **data, char **argv)
 	(*data)->height_window = 1080;
 	(*data)->form = 3;
 	set_zoom(data);
-	(*data)->color_change = 16777215;
 	(*data)->argv = argv;
 	(*data)->h = 0;
 	(*data)->angel_x = 0.863597;
 	(*data)->angel_y = -0.040001;
 	(*data)->angel_z = 13.039991;
-	(*data)->r = 255;
-	(*data)->g = 30;
-	(*data)->b = 90;
-	(*data)->color1 = 16711680;
-	(*data)->color2 = 16777215;
 }
 
 void	fontion_mlx_and_draw(t_fdf**data)

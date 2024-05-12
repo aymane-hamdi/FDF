@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:06 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/11 20:59:52 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/12 15:03:33 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,6 @@ int	reset(int key, t_fdf **data)
 	if (key == 15)
 	{
 		set_zoom(data);
-		if ((*data)->z_max <= 50)
-		{
-			(*data)->mov_cote = ((*data)->width_window) / 2 ;
-			(*data)->mouv_haut = ((*data)->height_window) / 2
-				+ ((*data)->z_max * (*data)->zoom) / 2;
-		}
-		else
-		{
-			(*data)->mov_cote = ((*data)->width_window) / 2 ;
-			(*data)->mouv_haut = ((*data)->height_window) / 2 
-				+ ((*data)->z_max) / 2;
-		}
 		(*data)->angel_x = 0.863597;
 		(*data)->angel_y = -0.040001;
 		(*data)->angel_z = 13.039991;

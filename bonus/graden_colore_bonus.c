@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:32:16 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/05 16:09:54 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/12 15:01:42 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,28 +74,12 @@ int	get_color_3d(t_fdf **data)
 	end_color = ft_atoi((*data)->matrix[(*data)->color_end_y]
 		[(*data)->color_end_x]);
 	if (start_color != 0)
-		color1 = (*data)->color1;
+		color1 = 16711680;
 	else
-		color1 = (*data)->color2;
+		color1 = 16777215;
 	if (end_color != 0)
-		color2 = (*data)->color1;
+		color2 = 16711680;
 	else
-		color2 = (*data)->color2;
+		color2 = 16777215;
 	return (get_gradient(color1, color2, ratio));
-}
-
-int	change_colore(t_fdf **data)
-{
-	(*data)->r += 1;
-	if ((*data)->r > 255)
-		(*data)->r = 0;
-	(*data)->g += 1;
-	if ((*data)->g > 255)
-		(*data)->g = 0;
-	(*data)->b += 1;
-	if ((*data)->b > 255)
-		(*data)->b = 0;
-	(*data)->color1 = rgb_to_number((*data)->r, (*data)->g, (*data)->b);
-	(*data)->color2 = rgb_to_number((*data)->r, (*data)->g, (*data)->b);
-	return (0);
 }

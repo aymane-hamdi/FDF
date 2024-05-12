@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 11:58:37 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/12 15:04:58 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ static int	autour_continu(int key, t_fdf **data)
 int	autour_pres(int key, t_fdf **data)
 {
 	autour_continu(key, data);
-	if (key == 257)
-		change_colore(data);
-	else if (key == 2)
+	if (key == 2)
 		(*data)->angel_x -= 0.2;
 	else if (key == 32)
 		(*data)->angel_y -= 0.2;

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/12 10:14:57 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/12 15:06:28 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ typedef struct s_fdf
 	int		r;
 	int		g;
 	int		b;
-	int		color1;
-	int		color2;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -99,7 +97,6 @@ int				get_width(char *argv);
 void			draw_3d(t_fdf **data);
 void			draw_2d(t_fdf **data);
 void			print_menu(t_fdf **data);
-int				change_colore(t_fdf **data);
 int				autour_pres(int key, t_fdf **data);
 int				key_press(int key, t_fdf **data);
 int				close_window(t_fdf **data);
