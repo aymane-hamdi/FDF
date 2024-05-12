@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:39:53 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 12:43:45 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/12 10:55:42 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	process_line(t_fdf **data, char **line, char ***line_int, int *i)
 	if (!(*data)->matrix[*i])
 		error(data);
 	*line_int = ft_split(*line, ' ');
-	if (ft_count_words(*line, ' ') != (*data)->width)
-		error(data); 
 	y = 0;
 	while ((*line_int)[y])
 		process_word(data, line_int, i, &y);
@@ -66,5 +64,21 @@ void	error(t_fdf **data)
 
 int	hexto_int(const char *hex)
 {
-	return ((int)strtol(hex, NULL, 16));
+	int	i;
+	int	result;
+
+	i = 0;
+	result = 0;
+	while (hex[i])
+	{
+		result *= 16;
+		if (hex[i] >= '0' && hex[i] <= '9' )
+			result += hex[i] - '0';
+		else if (hex[i] >= 'a' && hex[i] <= 'f')
+			result += hex[i] - 'a' + 10;
+		else if (hex[i] >= 'A' && hex[i] <= 'F')
+			result += hex[i] - 'A' + 10;
+		i++;
+	}
+	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 15:03:32 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/12 11:50:31 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,26 @@ void	set_zoom(t_fdf **data)
 	int	x_zoom;
 	int	y_zoom;
 
-	x_zoom = (((*data)->width_window) / (*data)->width) / 2;
+	x_zoom = ((*data)->width_window / (*data)->width) / 2;
 	y_zoom = ((*data)->height_window / (*data)->height) / 2;
 	if (x_zoom < y_zoom)
-		(*data)->zoom = x_zoom + 1;
-	if (x_zoom > y_zoom)
 		(*data)->zoom = y_zoom + 1;
+	else if (x_zoom > y_zoom)
+		(*data)->zoom = x_zoom + 1;
+	else
+		(*data)->zoom = x_zoom + 1;
 	if ((*data)->zoom == 0)
 		(*data)->zoom = 2;
 	if ((*data)->z_max <= 50)
 	{
 		(*data)->mov_cote = ((*data)->width_window) / 2 ;
 		(*data)->mouv_haut = ((*data)->height_window) / 2
-			+((*data)->z_max * (*data)->zoom) / 2;
+			+ 100;
 	}
 	else
 	{
 		(*data)->mov_cote = ((*data)->width_window) / 2 ;
-		(*data)->mouv_haut = ((*data)->height_window) / 2 
-			+ ((*data)->z_max) / 2;
+		(*data)->mouv_haut = ((*data)->height_window) / 2;
 	}
 }
 
@@ -57,9 +58,9 @@ void	initial_data(t_fdf **data, char **argv)
 	(*data)->color_change = 16777215;
 	(*data)->argv = argv;
 	(*data)->h = 0;
-	(*data)->angel_x = 1.063597;
+	(*data)->angel_x = 0.863597;
 	(*data)->angel_y = -0.040001;
-	(*data)->angel_z = -0.760001;
+	(*data)->angel_z = 13.039991;
 	(*data)->r = 255;
 	(*data)->g = 30;
 	(*data)->b = 90;
@@ -74,6 +75,7 @@ void	fontion_mlx_and_draw(t_fdf**data)
 	void	*img_ptr;
 
 	draw_3d(data);
+	draw_3d_inverce(data);
 	print_menu(data); 
 	mlx_key_hook((*data)->win_ptr, key_press, data);
 	mlx_hook((*data)->win_ptr, 4, 0, mouse_press, data);

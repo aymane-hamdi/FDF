@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 13:20:27 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/12 11:37:45 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,15 @@ void	center_and_zoom(t_fdf **data)
 	(*data)->y1 = ((*data)->y1 - new_height) * (*data)->zoom;
 	(*data)->x2 = ((*data)->x2 - new_with) * (*data)->zoom;
 	(*data)->y2 = ((*data)->y2 - new_height) * (*data)->zoom;
-	if ((*data)->z_max <= 50)
+	if ((*data)->z_max <= 20)
 	{
 		(*data)->z1 *= (*data)->zoom;
 		(*data)->z2 *= (*data)->zoom;
+	}
+	else
+	{
+		(*data)->z1 *= (*data)->zoom / 2;
+		(*data)->z2 *= (*data)->zoom / 2;
 	}
 }
 
@@ -65,5 +70,21 @@ void	free_data(t_fdf **data)
 
 int	hexto_int(const char *hex)
 {
-	return ((int)strtol(hex, NULL, 16));
+	int	i;
+	int	result;
+
+	i = 0;
+	result = 0;
+	while (hex[i])
+	{
+		result *= 16;
+		if (hex[i] >= '0' && hex[i] <= '9' )
+			result += hex[i] - '0';
+		else if (hex[i] >= 'a' && hex[i] <= 'f')
+			result += hex[i] - 'a' + 10;
+		else if (hex[i] >= 'A' && hex[i] <= 'F')
+			result += hex[i] - 'A' + 10;
+		i++;
+	}
+	return (result);
 }

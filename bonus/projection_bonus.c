@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:27:04 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/11 14:18:52 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/10 12:43:23 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	rotate_x(t_fdf **data, double angle)
 {
-	double	y1;
-	double	z1;
-	double	y2;
-	double	z2;
+	int	y1;
+	int	z1;
+	int	y2;
+	int	z2;
 
 	y1 = (*data)->y1;
 	z1 = (*data)->z1;
@@ -31,10 +31,10 @@ void	rotate_x(t_fdf **data, double angle)
 
 void	rotate_y(t_fdf **data, double angle)
 {
-	double	x1;
-	double	z1;
-	double	x2;
-	double	z2;
+	int	x1;
+	int	z1;
+	int	x2;
+	int	z2;
 
 	x1 = (*data)->x1;
 	z1 = (*data)->z1;
@@ -48,10 +48,10 @@ void	rotate_y(t_fdf **data, double angle)
 
 void	rotate_z(t_fdf **data, double angle)
 {
-	double	x1;
-	double	y1;
-	double	x2;
-	double	y2;
+	int	x1;
+	int	y1;
+	int	x2;
+	int	y2;
 
 	x1 = (*data)->x1;
 	y1 = (*data)->y1;

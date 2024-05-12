@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:06 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 15:06:57 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/11 20:59:52 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int	reset(int key, t_fdf **data)
 			(*data)->mouv_haut = ((*data)->height_window) / 2 
 				+ ((*data)->z_max) / 2;
 		}
-		(*data)->angel_x = 1.063597;
+		(*data)->angel_x = 0.863597;
 		(*data)->angel_y = -0.040001;
-		(*data)->angel_z = -0.760001;
+		(*data)->angel_z = 13.039991;
 	}
 	return (0);
 }
@@ -39,18 +39,22 @@ int	reset(int key, t_fdf **data)
 void	draw(t_fdf **data, int key)
 {
 	if ((*data)->form == 2)
-		draw_2d(data); 
-	else
-		draw_3d(data);
-	if (key == 92 && (*data)->form == 2)
 	{
 		draw_2d(data);
 		draw_2d_inverce(data);
 	}
-	if (key == 92 && (*data)->form == 3)
+	else
 	{
 		draw_3d(data);
 		draw_3d_inverce(data);
+	}
+	if (key == 92 && (*data)->form == 2)
+	{
+		draw_2d(data);
+	}
+	if (key == 92 && (*data)->form == 3)
+	{
+		draw_3d(data);
 	}
 	print_menu(data);
 }

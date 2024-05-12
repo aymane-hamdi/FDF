@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/11 14:18:30 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/12 10:14:57 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <fcntl.h>
 # include "../miniliblx/minilibx_macos/mlx.h"
 # include <math.h>
-# include "color.h"
 
 typedef struct s_fdf
 {
@@ -28,9 +27,9 @@ typedef struct s_fdf
 	double	y1;
 	double	y2;
 	int		key;
-	double	angel_x;
-	double	angel_y;
-	double	angel_z;
+	float	angel_x;
+	float	angel_y;
+	float	angel_z;
 	int		x;
 	int		y;
 	int		color_change;

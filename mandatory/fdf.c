@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 15:02:26 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/12 11:50:16 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,26 @@ void	set_zoom(t_fdf **data)
 	int	x_zoom;
 	int	y_zoom;
 
-	x_zoom = (((*data)->width_window) / (*data)->width) / 2;
+	x_zoom = ((*data)->width_window / (*data)->width) / 2;
 	y_zoom = ((*data)->height_window / (*data)->height) / 2;
 	if (x_zoom < y_zoom)
-		(*data)->zoom = x_zoom + 1;
-	if (x_zoom > y_zoom)
 		(*data)->zoom = y_zoom + 1;
+	else if (x_zoom > y_zoom)
+		(*data)->zoom = x_zoom + 1;
+	else
+		(*data)->zoom = x_zoom + 1;
 	if ((*data)->zoom == 0)
 		(*data)->zoom = 2;
 	if ((*data)->z_max <= 50)
 	{
 		(*data)->mov_cote = ((*data)->width_window) / 2 ;
 		(*data)->mouv_haut = ((*data)->height_window) / 2
-			+((*data)->z_max * (*data)->zoom) / 2;
+			+ 100;
 	}
 	else
 	{
 		(*data)->mov_cote = ((*data)->width_window) / 2 ;
-		(*data)->mouv_haut = ((*data)->height_window) / 2 
-			+ ((*data)->z_max) / 2;
+		(*data)->mouv_haut = ((*data)->height_window) / 2;
 	}
 }
 
