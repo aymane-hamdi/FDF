@@ -6,12 +6,17 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/13 12:22:08 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/13 18:27:35 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
+void leaks(void)
+{
+	system("leaks fdf_bonus");
+
+}
 void	set_zoom(t_fdf **data)
 {
 	int	x_zoom;
@@ -63,6 +68,7 @@ int	main(int argc, char **argv)
 {
 	t_fdf	*data;
 
+	atexit(leaks);
 	data = (t_fdf *) malloc(sizeof(t_fdf));
 	data->mlx_ptr = mlx_init();
 	red_map(argv[1], &data);
