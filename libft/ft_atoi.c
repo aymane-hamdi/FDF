@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 21:08:35 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/04/27 15:06:50 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/13 12:23:32 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_atoi(const char *str)
 
 	signe = 1;
 	result = 0;
-	if(!str)
+	if (!str)
 		return (0);
 	while (*str && (*str == ' ' || (*str >= 9 && *str <= 13)))
 		str++;

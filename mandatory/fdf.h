@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 12:47:29 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/13 12:21:12 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include "../libft/libft.h"
 # include "../get_next_line/get_next_line.h"
 # include <fcntl.h>
-# include "../miniliblx/minilibx_macos/mlx.h"
+# include "mlx.h"
 # include <math.h>
 
 typedef struct s_fdf
@@ -69,6 +69,7 @@ typedef struct s_Color
 	int	b;
 }t_Color;
 
+void			free_data(t_fdf **data);
 void			rotate_x(t_fdf **data, double angle);
 void			rotate_y(t_fdf **data, double angle);
 void			rotate_z(t_fdf **data, double angle);

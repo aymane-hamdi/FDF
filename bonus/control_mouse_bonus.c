@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/12 10:14:44 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/13 11:44:27 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static void	print(void	*mlx, void	*win, int *y)
 	mlx_string_put(mlx, win, 65, *y += 20, 0x00FF00FF, "HOW TO USE");
 	mlx_string_put(mlx, win, 15, *y += 35, 0x000000FF, "ZOOM:");
 	mlx_string_put(mlx, win, 90, *y, 0xEAEAEA, "Scroll or +/-");
-	mlx_string_put(mlx, win, 15, *y += 35, 0x000000FF, "Clarification:");
-	mlx_string_put(mlx, win, 190, *y, 0xEAEAEA, "9 Key");
 }
 
 void	print_menu(t_fdf **data)

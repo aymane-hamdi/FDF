@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/12 15:20:15 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/13 12:21:54 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	main(int argc, char **argv)
 	if (data->mlx_ptr == NULL)
 	{
 		ft_putstr_fd("Failed to initialize mlx.\n", 2);
-		free(data);
+		free_data(&data);
 		exit (1);
 	}
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->width_window,
