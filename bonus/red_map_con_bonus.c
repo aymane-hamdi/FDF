@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:39:53 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/13 17:54:15 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/13 18:00:59 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	cheke_map(char *argv, t_fdf **data)
 
 	str = ft_strrchr(argv, '.');
 	if (!str)
-		error(data);
+		error();
 	if (ft_strncmp(str, ".fdf", ft_strlen(".fdf")) != 0)
 	{
 		ft_putstr_fd("invalid map\n", 2);
