@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/13 12:21:54 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/13 17:46:07 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	set_zoom(t_fdf **data)
 int	close_window(t_fdf **data)
 {
 	mlx_destroy_window((*data)->mlx_ptr, (*data)->win_ptr);
+	mlx_destroy_image((*data)->mlx_ptr, (*data)->img);
 	ft_putstr_fd(" close window", 1);
 	free_3d_char_array(data);
 	free(*data); 

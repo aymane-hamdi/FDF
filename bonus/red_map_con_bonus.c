@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:39:53 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/12 10:55:42 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/13 17:54:15 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	process_line(t_fdf **data, char **line, char ***line_int, int *i)
 {
 	int		y;
 
+	if ((*data)->width > get_width(*line))
+		error();
 	(*data)->matrix[*i] = malloc (((*data)->width + 1) * sizeof(char *));
-	if (!(*data)->matrix[*i])
-		error(data);
+	if ((*data)->matrix[*i] == NULL)
+		exit(1);
 	*line_int = ft_split(*line, ' ');
 	y = 0;
 	while ((*line_int)[y])
@@ -56,7 +58,7 @@ void	cheke_map(char *argv, t_fdf **data)
 	}
 }
 
-void	error(t_fdf **data)
+void	error(void)
 {
 	ft_putstr_fd("invalid map\n", 2);
 	exit(1);

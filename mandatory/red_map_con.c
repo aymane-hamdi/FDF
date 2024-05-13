@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:22:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/08 10:36:44 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/13 17:53:35 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	process_line(t_fdf **data, char **line, char ***line_int, int *i)
 {
 	int		y;
 
+	if ((*data)->width > get_width(*line))
+		error();
 	(*data)->matrix[*i] = malloc (((*data)->width + 1) * sizeof(char *));
 	if ((*data)->matrix[*i] == NULL)
 		exit(1);
