@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/13 17:55:52 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 11:06:19 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,15 @@ typedef struct s_Color
 	int	b;
 }t_Color;
 
+void			invalid_argument(int argc);
+void			erre_fd(void);
 void			free_data(t_fdf **data);
 void			error(void);
 void			cheke_map(char *argv, t_fdf **data);
 void			process_word(t_fdf **data, char ***line_int, int *i, int *y);
 void			process_line(t_fdf **data, char **line, 
 					char ***line_int, int *i);
-int				ft_count_words(char const *str, char sep);
+int				ft_count_words(char *str);
 int				rotate_object_z(t_fdf **data);
 int				reset(int key, t_fdf **data);
 int				rotate_object_y(t_fdf **data);
@@ -107,9 +109,8 @@ void			rotate_x(t_fdf **data, double angle);
 void			rotate_y(t_fdf **data, double angle);
 void			rotate_z(t_fdf **data, double angle);
 void			set_zoom(t_fdf **data);
-int				mouse_press(int key, int x, int y, t_fdf **data);
+int				mouse_press(int key, t_fdf **data);
 void			free_3d_char_array(t_fdf **data);
-int				rgb_to_number(int r, int g, int b);
 void			draw_3d_inverce(t_fdf **data);
 void			draw_2d_inverce(t_fdf **data);
 void			my_mlx_pixel_put(t_fdf **data, int x, int y, int color);

@@ -6,21 +6,14 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/13 18:26:12 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 10:34:39 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void leaks(void)
-{
-	system("leaks fdf");
-}
 void	set_zoom(t_fdf **data)
 {
-	int	x_zoom;
-	int	y_zoom;
-
 	(*data)->zoom = fminf(((*data)->width_window) / (*data)->width / 2, 
 			(*data)->height_window / (*data)->height / 2);
 	(*data)->mov_cote = ((*data)->width_window) / 2 ;
@@ -51,10 +44,6 @@ void	initial_data(t_fdf **data, char **argv)
 
 void	fontion_mlx_and_draw(t_fdf **data)
 {
-	int		img_width;
-	int		img_height;
-	void	*img_ptr;
-
 	draw_3d(data);
 	mlx_key_hook((*data)->win_ptr, key_press, data);
 	mlx_hook((*data)->win_ptr, 17, 0, close_window, data);
@@ -64,7 +53,7 @@ int	main(int argc, char **argv)
 {
 	t_fdf	*data;
 
-	atexit(leaks);
+	invalid_argument(argc);
 	data = (t_fdf *)malloc(sizeof(t_fdf));
 	data->mlx_ptr = mlx_init();
 	red_map(argv[1], &data);
@@ -81,7 +70,6 @@ int	main(int argc, char **argv)
 	{
 		ft_putstr_fd("Failed to create a new window.\n", 2);
 		free(data); 
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 		exit(1);
 	}
 	fontion_mlx_and_draw(&data);

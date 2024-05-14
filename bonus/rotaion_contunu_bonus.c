@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:10:45 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 11:59:41 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 10:25:17 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int	rotate_object_x(t_fdf **data)
 	return (0);
 }
 
-int	rgb_to_number(int r, int g, int b)
+void	erre_fd(void)
 {
-	return ((r << 16) + (g << 8) + b);
+	ft_putstr_fd("Error in open\n", 2);
+	exit(1);
 }

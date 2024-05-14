@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:46:11 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/10 12:46:24 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 10:26:11 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,10 @@ void	rotate_z(t_fdf **data, double angle)
 	(*data)->y1 = x1 * sin(angle) + y1 * cos(angle);
 	(*data)->x2 = x2 * cos(angle) - y2 * sin(angle);
 	(*data)->y2 = x2 * sin(angle) + y2 * cos(angle);
+}
+
+void	erre_fd(void)
+{
+	ft_putstr_fd("Error in open\n", 2);
+	exit(1);
 }

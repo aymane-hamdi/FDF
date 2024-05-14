@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/13 11:44:27 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 10:37:44 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	print_menu(t_fdf **data)
 		0xEAEAEA, "change color: SHIFT Key");
 }
 
-int	mouse_press(int key, int x, int y, t_fdf **data)
+int	mouse_press(int key, t_fdf **data)
 {
 	if (key == 4)
 	{
