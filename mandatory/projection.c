@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:46:11 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 10:26:11 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 13:13:24 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,14 @@ void	erre_fd(void)
 {
 	ft_putstr_fd("Error in open\n", 2);
 	exit(1);
+}
+
+int	len_str(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:37:31 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/12 11:34:07 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 13:22:20 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	draw_2d(t_fdf **data)
 	while ((*data)->y1 < (*data)->height)
 	{
 		(*data)->x1 = 0;
+		(*data)->width = len_str((*data)->matrix[(int)(*data)->y1]);
 		while ((*data)->x1 < (*data)->width)
 		{
 			(*data)->x2 = (*data)->x1 + 1;
@@ -112,6 +113,7 @@ void	draw_2d_inverce(t_fdf **data)
 	while ((*data)->y1 < (*data)->height)
 	{
 		(*data)->x1 = 0;
+		(*data)->width = len_str((*data)->matrix[(int)(*data)->y1]);
 		while ((*data)->x1 < (*data)->width)
 		{
 			(*data)->x2 = (*data)->x1 + 1;

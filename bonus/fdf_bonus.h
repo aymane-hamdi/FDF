@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 11:06:19 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 13:20:53 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_fdf
 	int		r;
 	int		g;
 	int		b;
+	int		min_with;
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -73,6 +74,7 @@ typedef struct s_Color
 	int	b;
 }t_Color;
 
+int				len_str(char **str);
 void			invalid_argument(int argc);
 void			erre_fd(void);
 void			free_data(t_fdf **data);

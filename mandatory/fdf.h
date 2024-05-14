@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 11:10:54 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 13:13:53 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_fdf
 	void		*win_ptr;
 	char		**argv;
 	int			form;
+	int			min_with;
 	int			z_max;
 	void		*img;
 	char		*addr;
@@ -91,6 +92,7 @@ void			center_and_zoom(t_fdf **data);
 void			free_3d_char_array(t_fdf **data);
 void			red_map(char *argv, t_fdf **data);
 int				get_height(char *argv);
+int				len_str(char **str);
 int				get_width(char *argv);
 void			draw_3d(t_fdf **data);
 void			error(void);

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:12:43 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 11:23:34 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 13:20:20 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	red_map(char *argv, t_fdf **data)
 	if (!line)
 		error();
 	(*data)->width = (get_width(line));
+	(*data)->min_with = (*data)->width;
 	while (line)
 		process_line(data, &line, &line_int, &i);
 	(*data)->matrix[i] = NULL;

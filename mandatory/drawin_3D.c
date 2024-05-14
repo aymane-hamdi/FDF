@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/13 17:45:12 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 13:15:38 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	draw_3d(t_fdf **data)
 	while ((*data)->y1 < (*data)->height)
 	{
 		(*data)->x1 = 0;
+		(*data)->width = len_str((*data)->matrix[(int)(*data)->y1]);
 		while ((*data)->x1 < (*data)->width)
 		{
 			(*data)->x2 = (*data)->x1 + 1;
