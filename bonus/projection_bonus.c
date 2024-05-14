@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:27:04 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 13:20:42 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 13:24:29 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	rotate_z(t_fdf **data, double angle)
 	(*data)->x2 = x2 * cos(angle) - y2 * sin(angle);
 	(*data)->y2 = x2 * sin(angle) + y2 * cos(angle);
 }
+
 int	len_str(char **str)
 {
 	int	i;

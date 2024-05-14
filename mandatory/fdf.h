@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 13:13:53 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 13:23:17 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <fcntl.h>
 # include "mlx.h"
 # include <math.h>
-#include <stdio.h>
 
 typedef struct s_fdf
 {

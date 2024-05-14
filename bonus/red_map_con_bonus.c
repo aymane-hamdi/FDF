@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:39:53 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 13:19:26 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/14 13:24:43 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	process_line(t_fdf **data, char **line, char ***line_int, int *i)
 {
 	int		y;
-
 
 	(*data)->width = get_width(*line);
 	if ((*data)->min_with > (*data)->width)
