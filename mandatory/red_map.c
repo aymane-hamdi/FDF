@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 10:50:07 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 12:43:01 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/15 15:40:12 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,11 @@ void	red_map(char *argv, t_fdf **data)
 		erre_fd();
 	i = 0;
 	line = get_next_line((*data)->fd);
-	if (!line)
-		error();
+		if (!line)
+			error();
+		line_int = ft_split(line);
+		if (!*line_int)
+			error();
 	(*data)->width = (get_width(line));
 	(*data)->min_with = (*data)->width;
 	while (line)
