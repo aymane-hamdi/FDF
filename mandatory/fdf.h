@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/15 14:41:28 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/15 16:28:11 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void			rotate_x(t_fdf **data, double angle);
 void			rotate_y(t_fdf **data, double angle);
 void			rotate_z(t_fdf **data, double angle);
 int				ft_count_words(char *str);
-void			cheke_map(char *argv);
+void			cheke_map(char *argv, t_fdf **data);
 void			process_word(t_fdf **data, char ***line_int, int *i, int *y);
 void			process_line(t_fdf **data, char **line, 
 					char ***line_int, int *i);

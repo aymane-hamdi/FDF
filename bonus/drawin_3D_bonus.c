@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 13:21:49 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/15 19:41:14 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	draw_dda(t_fdf **data)
 	(*data)->color_end_y = (int)(*data)->y2;
 }
 
-void	ddr(t_fdf **data)
+void	dda(t_fdf **data)
 {
 	double		x_step;
 	double		y_step;
@@ -69,11 +69,11 @@ void	draw_3d(t_fdf **data)
 			(*data)->x2 = (*data)->x1 + 1;
 			(*data)->y2 = (*data)->y1;
 			if ((*data)->matrix[(int)(*data)->y1][(int)(*data)->x1 + 1])
-				ddr(data);
+				dda(data);
 			(*data)->y2 = (*data)->y1 + 1;
 			(*data)->x2 = (*data)->x1;
 			if ((*data)->matrix[(int)(*data)->y1 + 1])
-				ddr(data);
+				dda(data);
 			(*data)->x1++;
 		}
 		(*data)->y1++;
@@ -96,13 +96,13 @@ void	draw_3d_inverce(t_fdf **data)
 			if ((*data)->y1 + 1 < (*data)->height
 				&& (*data)->x1 + 1 < (*data)->width
 				&& (*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
-				ddr(data);
+				dda(data);
 			if ((*data)->y1 - 1 >= 0)
 			{
 				(*data)->y2 = (*data)->y1 - 1;
 				(*data)->x2 = (*data)->x1 + 1;
 				if ((*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
-					ddr(data);
+					dda(data);
 			}
 			(*data)->x1++;
 		}
