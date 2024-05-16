@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 10:37:44 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/16 18:52:47 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ void	print_menu(t_fdf **data)
 	mlx_string_put(mlx, win, 15, y += 30, 0x000000FF, "Projection");
 	mlx_string_put(mlx, win, 57, y += 25, 0xEAEAEA, "ISO: 3 Key");
 	mlx_string_put(mlx, win, 57, y += 25, 0xEAEAEA, "Parallel: 2 Key");
-	mlx_string_put(mlx, win, 15, y += 30, 0x000000FF, "color");
-	mlx_string_put(mlx, win, 57, y += 25, 
-		0xEAEAEA, "change color: SHIFT Key");
 }
 
 int	mouse_press(int key, t_fdf **data)

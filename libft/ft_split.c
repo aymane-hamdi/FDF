@@ -6,12 +6,11 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 14:11:30 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 11:04:56 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/16 19:16:26 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 
 static void	ft_free(char **result, int j)
 {

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/15 19:41:14 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/16 18:59:35 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,12 @@ void	draw_3d_inverce(t_fdf **data)
 				&& (*data)->x1 + 1 < (*data)->width
 				&& (*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
 				dda(data);
-			if ((*data)->y1 - 1 >= 0)
-			{
-				(*data)->y2 = (*data)->y1 - 1;
-				(*data)->x2 = (*data)->x1 + 1;
-				if ((*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
-					dda(data);
-			}
+			(*data)->y2 = (*data)->y1 - 1;
+			(*data)->x2 = (*data)->x1 + 1;
+			if ((*data)->y1 - 1 >= 0
+				&& (*data)->x1 + 1 < (*data)->width
+				&& (*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
+				dda(data);
 			(*data)->x1++;
 		}
 		(*data)->y1++;
