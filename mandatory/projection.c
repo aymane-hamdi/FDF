@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:46:11 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 13:13:24 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 15:08:45 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,6 @@ void	rotate_z(t_fdf **data, double angle)
 	(*data)->y2 = x2 * sin(angle) + y2 * cos(angle);
 }
 
-void	erre_fd(void)
-{
-	ft_putstr_fd("Error in open\n", 2);
-	exit(1);
-}
-
 int	len_str(char **str)
 {
 	int	i;
@@ -77,4 +71,17 @@ int	len_str(char **str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+void	free_2d_erray(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }

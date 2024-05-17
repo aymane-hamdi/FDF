@@ -6,7 +6,7 @@
 #    By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 17:58:05 by ahamdi            #+#    #+#              #
-#    Updated: 2024/05/14 10:28:18 by ahamdi           ###   ########.fr        #
+#    Updated: 2024/05/17 10:15:33 by ahamdi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,14 @@ all: $(NAME)
 
 $(NAME): $(obj)
 	@$(MAKE) -C libft 
-	@gcc $(CFLAGS)  -o $(NAME) $(obj) $(LIBFT) -lmlx -framework OpenGL -framework AppKit
+	@cc $(CFLAGS)  -o $(NAME) $(obj) $(LIBFT) -lmlx -framework OpenGL -framework AppKit
 	@echo "\033[0;32mcompilation and created fdf programme\033[0m"
 
 bonus: $(BONUS)
 
 $(BONUS): $(objb)
 	@make  -C libft 
-	@gcc $(CFLAGS) -o $(BONUS) $(objb) $(LIBFT) -lmlx -framework OpenGL -framework AppKit
+	@cc $(CFLAGS) -o $(BONUS) $(objb) $(LIBFT) -lmlx -framework OpenGL -framework AppKit
 	@echo "\033[0;32mcompilation and created fdf bonus programme\033[0m"
 
 %.o: %.c $(Header_mandatory) $(Header_gnl) $(Header_bonus)

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:10:45 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 10:25:17 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 15:14:59 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,33 @@ int	rotate_object_x(t_fdf **data)
 	return (0);
 }
 
-void	erre_fd(void)
+void	free_2d_erray(char **str)
 {
-	ft_putstr_fd("Error in open\n", 2);
-	exit(1);
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+void	chek_line(char *line, t_fdf **data)
+{
+	int		i;
+	char	**str;
+
+	if (!line)
+		error();
+	str = ft_split(line);
+	i = 0;
+	if (!*str)
+	{
+		free_2d_erray(str);
+		free(data);
+		error();
+	}
+	free_2d_erray(str);
 }

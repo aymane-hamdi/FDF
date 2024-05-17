@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:12:43 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/15 16:35:34 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 15:10:15 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	get_height(char *argv)
 	i = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-		erre_fd();
+		error();
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -82,14 +82,10 @@ void	red_map(char *argv, t_fdf **data)
 		exit(1);
 	(*data)->fd = open(argv, O_RDONLY);
 	if ((*data)->fd < 0)
-		erre_fd();
+		error();
 	i = 0;
 	line = get_next_line((*data)->fd);
-	if (!line)
-		error();
-	line_int = ft_split(line);
-	if (!*line_int)
-		error();
+	chek_line(line, data);
 	(*data)->width = (get_width(line));
 	(*data)->min_with = (*data)->width;
 	while (line)

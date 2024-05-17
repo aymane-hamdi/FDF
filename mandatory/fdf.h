@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/16 19:15:30 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 15:07:01 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ typedef struct s_Color
 	int	b;
 }t_Color;
 
+void			free_2d_erray(char **str);
 void			invalid_argument(int argc);
-void			erre_fd(void);
 void			free_data(t_fdf **data);
 void			rotate_x(t_fdf **data, double angle);
 void			rotate_y(t_fdf **data, double angle);
@@ -97,4 +97,5 @@ void			draw_3d(t_fdf **data);
 void			error(void);
 int				close_window(t_fdf **data);
 int				get_color_3d(t_fdf **data);
+void			chek_line(char *line, t_fdf **data);
 #endif

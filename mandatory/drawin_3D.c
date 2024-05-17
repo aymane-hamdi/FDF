@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 13:15:38 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 11:20:11 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,9 @@ void	dda(t_fdf **data)
 void	draw_3d(t_fdf **data)
 {
 	(*data)->y1 = 0;
-	(*data)->img = mlx_new_image((*data)->mlx_ptr, 2000, 2000);
+	(*data)->img = mlx_new_image((*data)->mlx_ptr, 1080, 1080);
+	(*data)->addr = mlx_get_data_addr((*data)->img, &(*data)->bits_per_pixel, 
+			&(*data)->line_length, &(*data)->endian);
 	while ((*data)->y1 < (*data)->height)
 	{
 		(*data)->x1 = 0;

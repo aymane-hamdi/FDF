@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:22:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/15 16:27:35 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 15:15:20 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,22 @@ void	error(void)
 {
 	ft_putstr_fd("invalid map\n", 2);
 	exit(1);
+}
+
+void	chek_line(char *line, t_fdf **data)
+{
+	int		i;
+	char	**str;
+
+	if (!line)
+		error();
+	str = ft_split(line);
+	i = 0;
+	if (!*str)
+	{
+		free_2d_erray(str);
+		free(data);
+		error();
+	}
+	free_2d_erray(str);
 }

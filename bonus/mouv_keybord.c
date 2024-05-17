@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 13:07:06 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/12 15:12:53 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 11:34:57 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	reset(int key, t_fdf **data)
 	if (key == 15)
 	{
 		set_zoom(data);
-		(*data)->angel_x = 0.863597;
-		(*data)->angel_y = -0.040001;
-		(*data)->angel_z = 18.039997;
+		(*data)->angel_x = 48 * M_PI / 180;
+		(*data)->angel_y = 1 * M_PI / 180;
+		(*data)->angel_z = 30 * M_PI / 180;
 	}
 	return (0);
 }

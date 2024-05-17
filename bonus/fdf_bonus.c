@@ -6,18 +6,23 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/15 16:43:52 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 12:40:26 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
+void leaks(void)
+{
+	system("leaks fdf_bonus");
+
+}
 void	set_zoom(t_fdf **data)
 {
-	(*data)->zoom = fminf(((*data)->width_window - 250) / (*data)->width / 2, 
+	(*data)->zoom = fminf(((*data)->width_window) / (*data)->width / 2, 
 			(*data)->height_window / (*data)->height / 2);
 	(*data)->mov_cote = ((*data)->width_window) / 2 ;
-	(*data)->mouv_haut = ((*data)->height_window) / 2 + 200;
+	(*data)->mouv_haut = ((*data)->height_window) / 2 + 100;
 }
 
 int	close_window(t_fdf**data)
@@ -31,15 +36,15 @@ int	close_window(t_fdf**data)
 
 void	initial_data(t_fdf **data, char **argv)
 {
-	(*data)->width_window = 1920;
-	(*data)->height_window = 1080;
+	(*data)->width_window = 1320;
+	(*data)->height_window = 1320;
 	(*data)->form = 3;
 	set_zoom(data);
 	(*data)->argv = argv;
 	(*data)->h = 0;
-	(*data)->angel_x = 0.863597;
-	(*data)->angel_y = -0.040001;
-	(*data)->angel_z = 18.039997;
+	(*data)->angel_x = 48 * M_PI / 180;
+	(*data)->angel_y = 1 * M_PI / 180;
+	(*data)->angel_z = 30 * M_PI / 180;
 }
 
 void	fontion_mlx_and_draw(t_fdf**data)
@@ -48,7 +53,6 @@ void	fontion_mlx_and_draw(t_fdf**data)
 	draw_3d_inverce(data);
 	print_menu(data); 
 	mlx_key_hook((*data)->win_ptr, key_press, data);
-	mlx_hook((*data)->win_ptr, 4, 0, mouse_press, data);
 	mlx_hook((*data)->win_ptr, 17, 0, close_window, data);
 }
 
@@ -56,6 +60,7 @@ int	main(int argc, char **argv)
 {
 	t_fdf	*data;
 
+	atexit(leaks);
 	invalid_argument(argc);
 	data = (t_fdf *) malloc(sizeof(t_fdf));
 	data->mlx_ptr = mlx_init();

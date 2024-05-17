@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/16 19:15:55 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 15:09:50 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ typedef struct s_Color
 	int	b;
 }t_Color;
 
+void			chek_line(char *line, t_fdf **data);
+void			free_2d_erray(char **str);
 int				len_str(char **str);
 void			invalid_argument(int argc);
 void			erre_fd(void);
