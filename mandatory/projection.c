@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 12:46:11 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 15:08:45 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 17:24:47 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,10 @@ int	len_str(char **str)
 	return (i);
 }
 
-void	free_2d_erray(char **str)
+void error_intalis(t_fdf **data)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
+	ft_putstr_fd("Failed to initialize mlx.\n", 2);
+	free_3d_char_array(data);
+	free(data);
+	exit (1);
 }

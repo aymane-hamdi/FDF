@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 10:50:07 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 15:01:21 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 19:22:11 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	get_width(char *line)
 	return (width);
 }
 
-int	get_height(char *argv)
+int	get_height(char *argv, t_fdf **data)
 {
 	char	*line;
 	int		fd;
@@ -48,7 +48,7 @@ int	get_height(char *argv)
 	i = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd < 0)
-		error();
+		exit_err_fd(data);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -76,13 +76,16 @@ void	red_map(char *argv, t_fdf **data)
 	char	**line_int;
 
 	cheke_map(argv, data);
-	(*data)->height = get_height(argv);
-	(*data)->matrix = malloc (((*data)->height + 1) * sizeof(char **));
-	if ((*data)->matrix == NULL)
-		exit(1);
 	(*data)->fd = open(argv, O_RDONLY);
 	if ((*data)->fd < 0)
-		error();
+		exit_err_fd(data);
+	(*data)->height = get_height(argv, data);
+	(*data)->matrix = malloc (((*data)->height + 1) * sizeof(char **));
+	if ((*data)->matrix == NULL)
+	{
+		free(*data);
+		exit(1);
+	}
 	i = 0;
 	line = get_next_line((*data)->fd);
 	chek_line(line, data);

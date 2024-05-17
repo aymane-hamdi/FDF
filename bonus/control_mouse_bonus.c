@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:27:59 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 11:05:34 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 19:24:05 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,26 @@ void	my_mlx_pixel_put(t_fdf **data, int x, int y, int color)
 	dst = (*data)->addr + (y * (*data)->line_length 
 			+ x * ((*data)->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+}
+
+void	free_line(int pos, t_fdf **data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while ((*data)->matrix[i])
+	{
+		if (i == pos)
+			break ;
+		j = 0;
+		while ((*data)->matrix[i][j])
+		{
+			free((*data)->matrix[i][j]);
+			j++; 
+		}
+		free((*data)->matrix[i]);
+		i++;
+	}
+	free((*data)->matrix);
 }

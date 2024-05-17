@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:22:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 15:15:20 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 17:21:14 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,18 @@ void	process_line(t_fdf **data, char **line, char ***line_int, int *i)
 
 	(*data)->width = get_width(*line);
 	if ((*data)->min_with > (*data)->width)
-		error();
+	{
+		free_line(*i, data);
+		free(*line);
+		error(data);
+	}
 	(*data)->matrix[*i] = malloc (((*data)->width + 1) * sizeof(char *));
 	if ((*data)->matrix[*i] == NULL)
-		exit(1);
+	{
+		free_line(*i, data);
+		free(*line);
+		error(data);
+	}
 	*line_int = ft_split(*line);
 	y = 0;
 	while ((*line_int)[y])
@@ -47,18 +55,17 @@ void	cheke_map(char *argv, t_fdf **data)
 	char	*str;
 
 	str = ft_strrchr(argv, '.');
-	if (!str)
-		error();
-	if (ft_strncmp(str, ".fdf", ft_strlen(".fdf")) != 0)
+	if (!str || ft_strlen(str) != 4 || ft_strncmp(str, ".fdf", 4) != 0)
 	{
+		free(*data);
 		ft_putstr_fd("invalid map\n", 2);
-		free_data(data);
 		exit(1);
 	}
 }
 
-void	error(void)
+void	error(t_fdf **data)
 {
+	free(*data);
 	ft_putstr_fd("invalid map\n", 2);
 	exit(1);
 }
@@ -69,14 +76,14 @@ void	chek_line(char *line, t_fdf **data)
 	char	**str;
 
 	if (!line)
-		error();
+		error(data);
 	str = ft_split(line);
 	i = 0;
 	if (!*str)
 	{
+		free((*data)->matrix);
 		free_2d_erray(str);
-		free(data);
-		error();
+		error(data);
 	}
 	free_2d_erray(str);
 }

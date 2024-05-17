@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 15:07:01 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 18:50:50 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include "mlx.h"
 # include <math.h>
+# include <stdio.h>
 
 typedef struct s_fdf
 {
@@ -25,6 +26,8 @@ typedef struct s_fdf
 	float		x2;
 	float		y1;
 	float		y2;
+	double		x_max;
+	double		y_max;
 	int			key;
 	float		angel_x;
 	float		angel_y;
@@ -41,7 +44,7 @@ typedef struct s_fdf
 	int			color;
 	int			mov_cote;
 	int			mouv_haut;
-	int			zoom;
+	double			zoom;
 	int			width;
 	int			height;
 	int			width_window;
@@ -70,9 +73,13 @@ typedef struct s_Color
 	int	b;
 }t_Color;
 
+void			set_zoom(t_fdf **data);
+void			draw_dda(t_fdf **data);
+void			get_max_x_and_y(t_fdf **data);
+void			trasformation(t_fdf **data);
 void			free_2d_erray(char **str);
 void			invalid_argument(int argc);
-void			free_data(t_fdf **data);
+void			exit_err_fd(t_fdf **data);
 void			rotate_x(t_fdf **data, double angle);
 void			rotate_y(t_fdf **data, double angle);
 void			rotate_z(t_fdf **data, double angle);
@@ -83,18 +90,19 @@ void			process_line(t_fdf **data, char **line,
 					char ***line_int, int *i);
 int				key_press(int key, t_fdf **data);
 void			my_mlx_pixel_put(t_fdf **data, int x, int y, int color);
+void			error_intalis(t_fdf **data);
 int				hexto_int(const char *hex);
 void			center_and_zoom(t_fdf **data);
+void			free_line(int pos, t_fdf **data);
 unsigned int	get_gradient(unsigned int start_int, 
 					unsigned int end_int, double ratio);
 void			center_and_zoom(t_fdf **data);
 void			free_3d_char_array(t_fdf **data);
 void			red_map(char *argv, t_fdf **data);
-int				get_height(char *argv);
 int				len_str(char **str);
 int				get_width(char *argv);
 void			draw_3d(t_fdf **data);
-void			error(void);
+void			error(t_fdf **data);
 int				close_window(t_fdf **data);
 int				get_color_3d(t_fdf **data);
 void			chek_line(char *line, t_fdf **data);

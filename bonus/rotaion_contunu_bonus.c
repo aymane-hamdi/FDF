@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:10:45 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 15:14:59 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 19:19:06 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ void	chek_line(char *line, t_fdf **data)
 	char	**str;
 
 	if (!line)
-		error();
+		error(data);
 	str = ft_split(line);
 	i = 0;
 	if (!*str)
 	{
+		free((*data)->matrix);
 		free_2d_erray(str);
-		free(data);
-		error();
+		error(data);
 	}
 	free_2d_erray(str);
 }

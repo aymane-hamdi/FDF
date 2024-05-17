@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 12:40:26 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 19:24:49 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void leaks(void)
 {
 	system("leaks fdf_bonus");
-
 }
 void	set_zoom(t_fdf **data)
 {
@@ -62,26 +61,24 @@ int	main(int argc, char **argv)
 
 	atexit(leaks);
 	invalid_argument(argc);
-	data = (t_fdf *) malloc(sizeof(t_fdf));
-	data->mlx_ptr = mlx_init();
+	data = (t_fdf *)malloc(sizeof(t_fdf));
 	red_map(argv[1], &data);
+	data->mlx_ptr = mlx_init();
 	initial_data(&data, argv);
 	if (data->mlx_ptr == NULL)
-	{
-		ft_putstr_fd("Failed to initialize mlx.\n", 2);
-		free_data(&data);
-		exit (1);
-	}
+		error_intalis(&data);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, data->width_window,
-			data->height_window, "t_t_fdfproject");
+			data->height_window, "t_fdf project");
 	if (data->win_ptr == NULL)
-	{
-		ft_putstr_fd("Failed to create a new window.\n", 2);
-		free_data(&data);
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		exit(1);
-	}
+		error_intalis(&data);
+	data->img = mlx_new_image(data->mlx_ptr, 1080, 1080);
+	if (!data->img)
+		error_intalis(&data);
+	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, 
+			&data->line_length, &data->endian);
 	fontion_mlx_and_draw(&data);
 	mlx_loop(data->mlx_ptr);
+	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	return (0);
 }
+

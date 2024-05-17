@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 10:31:01 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 18:33:25 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,30 +46,11 @@ void	center_and_zoom(t_fdf **data)
 	}
 }
 
-void	free_3d_char_array(t_fdf **data)
+void	exit_err_fd(t_fdf **data)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while ((*data)->matrix[i])
-	{
-		j = 0;
-		while ((*data)->matrix[i][j])
-		{
-			free((*data)->matrix[i][j]);
-			j++; 
-		}
-		free((*data)->matrix[i]);
-		i++;
-	}
-	free((*data)->matrix);
-}
-
-void	free_data(t_fdf **data)
-{
-	free_3d_char_array(data);
 	free(*data);
+	ft_putstr_fd("error in open fd\n", 2);
+	exit(1);
 }
 
 int	hexto_int(const char *hex)

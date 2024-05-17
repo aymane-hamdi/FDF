@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 15:09:50 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 19:26:52 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ typedef struct s_Color
 	int	b;
 }t_Color;
 
+void			exit_err_fd(t_fdf **data);
 void			chek_line(char *line, t_fdf **data);
 void			free_2d_erray(char **str);
 int				len_str(char **str);
 void			invalid_argument(int argc);
-void			erre_fd(void);
 void			free_data(t_fdf **data);
-void			error(void);
+void			error(t_fdf **data);
 void			cheke_map(char *argv, t_fdf **data);
 void			process_word(t_fdf **data, char ***line_int, int *i, int *y);
 void			process_line(t_fdf **data, char **line, 
@@ -91,14 +91,16 @@ int				reset(int key, t_fdf **data);
 int				rotate_object_y(t_fdf **data);
 void			draw(t_fdf **data, int key);
 int				rotate_object_x(t_fdf **data);
+void			free_3d_char_array(t_fdf **data);
+void			error_intalis(t_fdf **data);
 void			my_mlx_pixel_put(t_fdf **data, int x, int y, int color);
 void			draw_dda(t_fdf **data);
 int				hexto_int(const char *hex);
 void			center_and_zoom(t_fdf **data);
+void			free_line(int pos, t_fdf **data);
 unsigned int	get_gradient(unsigned int start_int, 
 					unsigned int end_int, double ratio);
 void			red_map(char *argv, t_fdf **data);
-int				get_height(char *argv);
 void			while_loop(t_fdf **data, double x_step, double y_step);
 int				get_width(char *argv);
 void			draw_3d(t_fdf **data);
@@ -113,7 +115,6 @@ void			rotate_x(t_fdf **data, double angle);
 void			rotate_y(t_fdf **data, double angle);
 void			rotate_z(t_fdf **data, double angle);
 void			set_zoom(t_fdf **data);
-int				mouse_press(int key, t_fdf **data);
 void			free_3d_char_array(t_fdf **data);
 void			draw_3d_inverce(t_fdf **data);
 void			draw_2d_inverce(t_fdf **data);

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 20:27:04 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/14 13:24:29 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 19:22:51 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,11 @@ int	len_str(char **str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+void	exit_err_fd(t_fdf **data)
+{
+	free(*data);
+	ft_putstr_fd("error in open fd\n", 2);
+	exit(1);
 }

@@ -6,12 +6,12 @@
 #    By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 17:58:05 by ahamdi            #+#    #+#              #
-#    Updated: 2024/05/17 10:15:33 by ahamdi           ###   ########.fr        #
+#    Updated: 2024/05/17 17:17:17 by ahamdi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-src = mandatory/fdf.c  mandatory/red_map.c  get_next_line/get_next_line_utils.c get_next_line/get_next_line.c mandatory/drawin_3D.c   mandatory/control_keybord.c  mandatory/graden_colore.c  mandatory/red_map_con.c mandatory/projection.c
+src = mandatory/fdf.c  mandatory/red_map.c mandatory/free.c  get_next_line/get_next_line_utils.c get_next_line/get_next_line.c mandatory/drawin_3D.c   mandatory/control_keybord.c  mandatory/graden_colore.c  mandatory/red_map_con.c mandatory/projection.c
 srcb = bonus/control_keybord_bonus.c  bonus/control_mouse_bonus.c  bonus/drawin_3D_bonus.c  bonus/mouv_keybord.c bonus/driwn_2D_bonus.c  bonus/fdf_bonus.c  bonus/graden_colore_bonus.c  bonus/red_map_bonus.c bonus/rotaion_contunu_bonus.c bonus/projection_bonus.c  get_next_line/get_next_line_utils.c get_next_line/get_next_line.c bonus/red_map_con_bonus.c
 obj = $(src:.c=.o)
 objb = $(srcb:.c=.o)
