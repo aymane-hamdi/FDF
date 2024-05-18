@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:39:53 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 19:19:45 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/18 10:54:15 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	process_word(t_fdf **data, char ***line_int, int *i, int *y)
 	(*y)++;
 }
 
-
 void	cheke_map(char *argv, t_fdf **data)
 {
 	char	*str;
@@ -66,6 +65,7 @@ void	cheke_map(char *argv, t_fdf **data)
 
 void	error(t_fdf **data)
 {
+	close((*data)->fd);
 	free(*data);
 	ft_putstr_fd("invalid map\n", 2);
 	exit(1);

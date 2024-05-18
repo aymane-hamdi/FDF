@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 18:50:50 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 21:11:45 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <fcntl.h>
 # include "mlx.h"
 # include <math.h>
-# include <stdio.h>
 
 typedef struct s_fdf
 {
@@ -26,8 +25,6 @@ typedef struct s_fdf
 	float		x2;
 	float		y1;
 	float		y2;
-	double		x_max;
-	double		y_max;
 	int			key;
 	float		angel_x;
 	float		angel_y;
@@ -39,12 +36,12 @@ typedef struct s_fdf
 	int			color_start_y;
 	int			color_end_x;
 	int			color_end_y;
-	double		z1;
-	double		z2;
+	float		z1;
+	float		z2;
 	int			color;
 	int			mov_cote;
 	int			mouv_haut;
-	double			zoom;
+	int			zoom;
 	int			width;
 	int			height;
 	int			width_window;
@@ -74,9 +71,6 @@ typedef struct s_Color
 }t_Color;
 
 void			set_zoom(t_fdf **data);
-void			draw_dda(t_fdf **data);
-void			get_max_x_and_y(t_fdf **data);
-void			trasformation(t_fdf **data);
 void			free_2d_erray(char **str);
 void			invalid_argument(int argc);
 void			exit_err_fd(t_fdf **data);

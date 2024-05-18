@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 10:32:16 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 11:20:02 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/18 10:25:24 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	my_mlx_pixel_put(t_fdf **data, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < 0 || y < 0 || x >= 1080 || y >= 1080)
+	if (x < 0 || y < 0 || x >= 1300 || y >= 1300)
 		return ;
 	dst = (*data)->addr + (y * (*data)->line_length + 
 			x * ((*data)->bits_per_pixel / 8));

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 19:26:43 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 21:15:16 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,24 +97,4 @@ int	key_press(int key, t_fdf **data)
 	mouve_haute(key, data);
 	draw(data, key);
 	return (0);
-}
-
-void	free_3d_char_array(t_fdf **data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while ((*data)->matrix[i])
-	{
-		j = 0;
-		while ((*data)->matrix[i][j])
-		{
-			free((*data)->matrix[i][j]);
-			j++; 
-		}
-		free((*data)->matrix[i]);
-		i++;
-	}
-	free((*data)->matrix);
 }

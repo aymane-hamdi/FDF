@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:22:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 17:21:14 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/18 10:52:27 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	cheke_map(char *argv, t_fdf **data)
 
 void	error(t_fdf **data)
 {
+	close((*data)->fd);
 	free(*data);
 	ft_putstr_fd("invalid map\n", 2);
 	exit(1);
@@ -75,12 +76,11 @@ void	chek_line(char *line, t_fdf **data)
 	int		i;
 	char	**str;
 
-	if (!line)
-		error(data);
 	str = ft_split(line);
 	i = 0;
 	if (!*str)
 	{
+		free(line);
 		free((*data)->matrix);
 		free_2d_erray(str);
 		error(data);

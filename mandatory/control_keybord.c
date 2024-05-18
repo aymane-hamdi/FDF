@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 21:01:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 18:33:25 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/17 21:08:32 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,24 +26,12 @@ void	center_and_zoom(t_fdf **data)
 
 	new_with = (*data)->width / 2;
 	new_height = (*data)->height / 2;
-	if ((*data)->z_max < 20)
-	{
-		(*data)->x1 = ((*data)->x1 - new_with) * (*data)->zoom;
-		(*data)->y1 = ((*data)->y1 - new_height) * (*data)->zoom;
-		(*data)->x2 = ((*data)->x2 - new_with) * (*data)->zoom;
-		(*data)->y2 = ((*data)->y2 - new_height) * (*data)->zoom;
-		(*data)->z1 *= (*data)->zoom;
-		(*data)->z2 *= (*data)->zoom;
-	}
-	else
-	{
-		(*data)->x1 = ((*data)->x1 - new_with) * (*data)->zoom / 2;
-		(*data)->y1 = ((*data)->y1 - new_height) * (*data)->zoom / 2;
-		(*data)->x2 = ((*data)->x2 - new_with) * (*data)->zoom / 2;
-		(*data)->y2 = ((*data)->y2 - new_height) * (*data)->zoom / 2;
-		(*data)->z1 *= (*data)->zoom / 2;
-		(*data)->z2 *= (*data)->zoom / 2;
-	}
+	(*data)->x1 = ((*data)->x1 - new_with) * (*data)->zoom;
+	(*data)->y1 = ((*data)->y1 - new_height) * (*data)->zoom;
+	(*data)->x2 = ((*data)->x2 - new_with) * (*data)->zoom;
+	(*data)->y2 = ((*data)->y2 - new_height) * (*data)->zoom;
+	(*data)->z1 *= (*data)->zoom;
+	(*data)->z2 *= (*data)->zoom;
 }
 
 void	exit_err_fd(t_fdf **data)

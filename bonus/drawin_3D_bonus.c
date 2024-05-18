@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 11:58:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 11:35:26 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/18 10:09:08 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,7 @@ void	dda(t_fdf **data)
 void	draw_3d(t_fdf **data)
 {
 	(*data)->y1 = 0;
-	(*data)->img = mlx_new_image((*data)->mlx_ptr, 1320, 1320);
-	(*data)->addr = mlx_get_data_addr((*data)->img,
-			&(*data)->bits_per_pixel, &(*data)->line_length, &(*data)->endian);
+	creat_img(data);
 	while ((*data)->y1 < (*data)->height)
 	{
 		(*data)->x1 = 0;
@@ -87,22 +85,19 @@ void	draw_3d(t_fdf **data)
 void	draw_3d_inverce(t_fdf **data)
 {
 	(*data)->y1 = 0;
-	while ((*data)->y1 < (*data)->height)
+	while ((*data)->y1 + 1 < (*data)->height)
 	{
 		(*data)->x1 = 0;
 		(*data)->width = len_str((*data)->matrix[(int)(*data)->y1]);
-		while ((*data)->x1 < (*data)->width)
+		while ((*data)->x1 + 1 < (*data)->width)
 		{
 			(*data)->x2 = (*data)->x1 + 1;
 			(*data)->y2 = (*data)->y1 + 1;
-			if ((*data)->y1 + 1 < (*data)->height
-				&& (*data)->x1 + 1 < (*data)->width
-				&& (*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
+			if ((*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
 				dda(data);
 			(*data)->y2 = (*data)->y1 - 1;
 			(*data)->x2 = (*data)->x1 + 1;
-			if ((*data)->y1 - 1 >= 0
-				&& (*data)->x1 + 1 < (*data)->width
+			if ((*data)->y2 >= 0 
 				&& (*data)->matrix[(int)(*data)->y2][(int)(*data)->x2])
 				dda(data);
 			(*data)->x1++;

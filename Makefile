@@ -6,7 +6,7 @@
 #    By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/17 17:58:05 by ahamdi            #+#    #+#              #
-#    Updated: 2024/05/17 17:17:17 by ahamdi           ###   ########.fr        #
+#    Updated: 2024/05/17 21:17:18 by ahamdi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,5 +51,6 @@ fclean: clean
 	@echo "\033[0;32mdelete fdf programme\033[0m"
 
 re: fclean all
+42:all bonus clean
 
 .PHONY: all clean fclean re

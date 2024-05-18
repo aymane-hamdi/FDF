@@ -6,22 +6,28 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 19:24:49 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/18 11:00:39 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-void leaks(void)
-{
-	system("leaks fdf_bonus");
-}
 void	set_zoom(t_fdf **data)
 {
-	(*data)->zoom = fminf(((*data)->width_window) / (*data)->width / 2, 
-			(*data)->height_window / (*data)->height / 2);
+	(*data)->zoom = 1;
+	if ((*data)->width > 200 || (*data)->height > 200 || 
+		(*data)-> z_max >= 200)
+		(*data)->zoom = 1;
+	else if ((*data)->width >= 100 || (*data)->height >= 100 
+		|| (*data)-> z_max >= 100)
+		(*data)->zoom = 5;
+	else if ((*data)->width >= 50 || (*data)->height >= 50 
+		|| (*data)-> z_max >= 50)
+		(*data)->zoom = 15;
+	else
+		(*data)->zoom = 20;
 	(*data)->mov_cote = ((*data)->width_window) / 2 ;
-	(*data)->mouv_haut = ((*data)->height_window) / 2 + 100;
+	(*data)->mouv_haut = ((*data)->height_window) / 2 + 200;
 }
 
 int	close_window(t_fdf**data)
@@ -35,8 +41,8 @@ int	close_window(t_fdf**data)
 
 void	initial_data(t_fdf **data, char **argv)
 {
-	(*data)->width_window = 1320;
-	(*data)->height_window = 1320;
+	(*data)->width_window = 1300;
+	(*data)->height_window = 1300;
 	(*data)->form = 3;
 	set_zoom(data);
 	(*data)->argv = argv;
@@ -59,7 +65,6 @@ int	main(int argc, char **argv)
 {
 	t_fdf	*data;
 
-	atexit(leaks);
 	invalid_argument(argc);
 	data = (t_fdf *)malloc(sizeof(t_fdf));
 	red_map(argv[1], &data);
@@ -71,14 +76,8 @@ int	main(int argc, char **argv)
 			data->height_window, "t_fdf project");
 	if (data->win_ptr == NULL)
 		error_intalis(&data);
-	data->img = mlx_new_image(data->mlx_ptr, 1080, 1080);
-	if (!data->img)
-		error_intalis(&data);
-	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, 
-			&data->line_length, &data->endian);
 	fontion_mlx_and_draw(&data);
 	mlx_loop(data->mlx_ptr);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	return (0);
 }
-
