@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/17 21:11:45 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/18 13:18:38 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,5 @@ void			draw_3d(t_fdf **data);
 void			error(t_fdf **data);
 int				close_window(t_fdf **data);
 int				get_color_3d(t_fdf **data);
-void			chek_line(char *line, t_fdf **data);
+void			chek_line(char *line, t_fdf **data, int *j);
 #endif

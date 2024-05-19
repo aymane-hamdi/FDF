@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 12:12:43 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/18 10:53:27 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/18 13:27:10 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,18 +87,16 @@ void	red_map(char *argv, t_fdf **data)
 	(*data)->height = get_height(argv, data);
 	(*data)->matrix = malloc (((*data)->height + 1) * sizeof(char **));
 	if ((*data)->matrix == NULL)
-	{
-		close((*data)->fd);
-		free(*data);
-		exit(1);
-	}
+		error(data);
 	i = 0;
 	line = get_next_line((*data)->fd);
-	chek_line(line, data);
 	(*data)->width = (get_width(line));
 	(*data)->min_with = (*data)->width;
 	while (line)
+	{
+		chek_line(line, data, &i);
 		process_line(data, &line, &line_int, &i);
+	}
 	(*data)->matrix[i] = NULL;
 	close ((*data)->fd);
 }
