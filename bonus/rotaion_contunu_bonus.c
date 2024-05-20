@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 21:10:45 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/18 13:25:44 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/20 13:24:43 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,16 @@ void	free_2d_erray(char **str)
 
 void	chek_line(char *line, t_fdf **data, int *j)
 {
-	int		i;
 	char	**str;
 
 	str = ft_split(line);
-	i = 0;
 	if (!str)
 	{
 		free_line(*j, data);
 		free(line);
 		error(data);
 	}
-	if (!*str)
+	if (!str[0])
 	{
 		free(line);
 		free_line(*j, data);

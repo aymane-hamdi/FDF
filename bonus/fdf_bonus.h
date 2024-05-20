@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/18 10:24:07 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/20 15:00:53 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ typedef struct s_Color
 
 void			creat_img(t_fdf **data);
 void			exit_err_fd(t_fdf **data);
-void			chek_line(char *line, t_fdf **data);
+void			chek_line(char *line, t_fdf **data, int *j);
 void			free_2d_erray(char **str);
 int				len_str(char **str);
 void			invalid_argument(int argc);
@@ -103,7 +103,7 @@ unsigned int	get_gradient(unsigned int start_int,
 					unsigned int end_int, double ratio);
 void			red_map(char *argv, t_fdf **data);
 void			while_loop(t_fdf **data, double x_step, double y_step);
-int				get_width(char *argv);
+int				get_width(char *argv, t_fdf **data);
 void			draw_3d(t_fdf **data);
 void			draw_2d(t_fdf **data);
 void			print_menu(t_fdf **data);

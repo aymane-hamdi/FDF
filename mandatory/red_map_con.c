@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 12:22:42 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/18 13:22:59 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/20 15:15:14 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	process_line(t_fdf **data, char **line, char ***line_int, int *i)
 {
 	int		y;
 
-	(*data)->width = get_width(*line);
+	(*data)->width = get_width(*line, data);
 	if ((*data)->min_with > (*data)->width)
 	{
 		free_line(*i, data);
@@ -73,18 +73,16 @@ void	error(t_fdf **data)
 
 void	chek_line(char *line, t_fdf **data, int *j)
 {
-	int		i;
 	char	**str;
 
 	str = ft_split(line);
-	i = 0;
 	if (!str)
 	{
 		free_line(*j, data);
 		free(line);
 		error(data);
 	}
-	if (!*str)
+	if (!str[0])
 	{
 		free(line);
 		free_line(*j, data);

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/04 10:50:07 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/18 13:27:34 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/20 15:19:22 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,18 @@ int	ft_count_words(char *str)
 	return (count);
 }
 
-int	get_width(char *line)
+int	get_width(char *line, t_fdf **data)
 {
 	int	width;
 
+	if (!line)
+	{
+		free((*data)->matrix);
+		close((*data)->fd);
+		free(*data);
+		ft_putstr_fd("invalid map\n", 2);
+		exit(1);
+	}
 	width = ft_count_words(line);
 	return (width);
 }
@@ -53,7 +61,9 @@ int	get_height(char *argv, t_fdf **data)
 	if (!line)
 	{
 		close(fd);
-		error(data);
+		free(*data);
+		ft_putstr_fd("invalid map\n", 2);
+		exit(1);
 	}
 	while (line)
 	{
@@ -81,16 +91,16 @@ void	red_map(char *argv, t_fdf **data)
 	char	**line_int;
 
 	cheke_map(argv, data);
+	(*data)->height = get_height(argv, data);
 	(*data)->fd = open(argv, O_RDONLY);
 	if ((*data)->fd < 0)
 		exit_err_fd(data);
-	(*data)->height = get_height(argv, data);
 	(*data)->matrix = malloc (((*data)->height + 1) * sizeof(char **));
 	if ((*data)->matrix == NULL)
 		error(data);
 	i = 0;
 	line = get_next_line((*data)->fd);
-	(*data)->width = (get_width(line));
+	(*data)->width = (get_width(line, data));
 	(*data)->min_with = (*data)->width;
 	while (line)
 	{

@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:38 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/18 10:56:31 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/20 14:48:59 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	set_zoom(t_fdf **data)
 	else
 		(*data)->zoom = 20;
 	(*data)->mov_cote = ((*data)->width_window) / 2 ;
-	(*data)->mouv_haut = ((*data)->height_window) / 2 + 200;
+	(*data)->mouv_haut = (((*data)->height_window) / 2) + 100;
 }
 
 int	close_window(t_fdf **data)

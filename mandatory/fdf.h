@@ -6,7 +6,7 @@
 /*   By: ahamdi <ahamdi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:58:12 by ahamdi            #+#    #+#             */
-/*   Updated: 2024/05/18 13:18:38 by ahamdi           ###   ########.fr       */
+/*   Updated: 2024/05/20 15:15:35 by ahamdi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void			center_and_zoom(t_fdf **data);
 void			free_3d_char_array(t_fdf **data);
 void			red_map(char *argv, t_fdf **data);
 int				len_str(char **str);
-int				get_width(char *argv);
+int				get_width(char *argv, t_fdf **data);
 void			draw_3d(t_fdf **data);
 void			error(t_fdf **data);
 int				close_window(t_fdf **data);
